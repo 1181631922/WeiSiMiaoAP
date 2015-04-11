@@ -1,0 +1,74 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+
+    tools:context="cn.edu.sjzc.fanyafeng.activity.EventInfoActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/event_info_name"
+            android:text="活动名称"
+            android:textColor="@color/black"
+            android:textSize="26dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/event_info_img"
+            android:layout_width="200dp"
+            android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:src="@drawable/event" />
+
+        <TextView
+            android:id="@+id/event_info_time"
+            android:text="活动时间"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/event_info_detail"
+            android:layout_width="fill_parent"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="  1、发心短期出家的男众和受持八关斋戒的女众，要求身心健康，无传染病，戒烟酒，无社会恶习及其它不良嗜好。
+    2、所有参加本次活动者，须具足正信，严格遵守寺院各项规章制度，能积极配合并主动服从常住安排。
+    3、参加期间，不得闲言杂话、谈论是非，应互相包容、与大众和谐共住。
+    4、参加期间，须留在寺内精进修行，未经许可，不得外出。
+    5、年龄20---60岁以内，具有初中以上学历。
+    6、名额：此次活动人数限制100名。
+    7、法会服务义工菩萨5人（可机动）。"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/event_info_submit_but"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/login_selector"
+        android:gravity="center"
+        android:text="确定报名"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
+
+</RelativeLayout>

@@ -1,0 +1,78 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        configSign {
+            keyAlias 'xiaojia'
+            keyPassword '5072172'
+            storeFile file('D:/AS/WeiSiMiaoAP/xiaojia.keystore')
+            storePassword '5072172'
+        }
+    }
+    compileSdkVersion 21
+    buildToolsVersion "21.1.1"
+    defaultConfig {
+        applicationId 'com.xj.af'
+        minSdkVersion 8
+        targetSdkVersion 21
+
+        versionCode 1
+        versionName "5.1.8"
+        signingConfig signingConfigs.configSign
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
+            zipAlignEnabled true
+            signingConfig signingConfigs.configSign
+        }
+    }
+    productFlavors {
+        u657817936 {applicationId "com.xj.af.u657817936"
+            manifestPlaceholders = [ APP_NAME:"南华禅寺",JPUSH_APPKEY:"a309d78a53d58b901482c5f6",JPUSH_PACKAGE:"com.xj.af.u657817936"]}
+        u518094907 {applicationId "com.xj.af.u518094907"
+            manifestPlaceholders = [ APP_NAME:"护国金刚寺",JPUSH_APPKEY:"970a64c544437a76dbd9eebc",JPUSH_PACKAGE:"com.xj.af.u518094907"]}
+        u713428391 {applicationId "com.xj.af.u713428391"
+            manifestPlaceholders = [ APP_NAME:"净域寺",JPUSH_APPKEY:"8ffcbb608fc1b6f8409c5582",JPUSH_PACKAGE:"com.xj.af.u713428391"]}
+        u930745985 {applicationId "com.xj.af.u930745985"
+            manifestPlaceholders = [ APP_NAME:"镜华庵",JPUSH_APPKEY:"d4acb2341772c9bff0b76f7f",JPUSH_PACKAGE:"com.xj.af.u930745985"]}
+
+    }
+    aaptOptions {
+        noCompress 'qqq', 'www'
+        ignoreAssetsPattern "!.svn:!.git:!.ds_store:!*.scc:.*:<dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"
+    }
+}
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile files('libs/slidemenu_library.jar')
+    compile files('libs/viewpagerindicator_library.jar')
+    compile files('libs/support-v4.jar')
+    compile files('libs/alipaysdk.jar')
+    compile files('libs/alipaysecsdk.jar')
+    compile files('libs/alipayutdid.jar')
+    compile files('libs/ShareSDK-Core-2.5.8.jar')
+    compile files('libs/ShareSDK-Email-2.5.8.jar')
+    compile files('libs/ShareSDK-QQ-2.5.8.jar')
+    compile files('libs/ShareSDK-QZone-2.5.8.jar')
+    compile files('libs/ShareSDK-ShortMessage-2.5.8.jar')
+    compile files('libs/ShareSDK-SinaWeibo-2.5.8.jar')
+    compile files('libs/ShareSDK-TencentWeibo-2.5.8.jar')
+    compile files('libs/ShareSDK-Wechat-2.5.8.jar')
+    compile files('libs/ShareSDK-Wechat-Core-2.5.8.jar')
+    compile files('libs/ShareSDK-Wechat-Favorite-2.5.8.jar')
+    compile files('libs/ShareSDK-Wechat-Moments-2.5.8.jar')
+    compile files('libs/jpush-sdk-release1.7.2.jar')
+    compile files('libs/gson-2.2.4.jar')
+    compile files('libs/android-support-v4.jar')
+    compile files('libs/cn.edu.sjzc.fanyafeng.jar')
+}

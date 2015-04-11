@@ -1,0 +1,265 @@
+<<<<<<< Original
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.xj.af">
+
+    <permission
+        android:name="${JPUSH_PACKAGE}.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="${JPUSH_PACKAGE}.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_UPDATES" />
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:allowBackup="true"
+        android:label="${APP_NAME}"
+        android:icon="@drawable/ico"
+        android:theme="@style/AppTheme">
+        <!-- 支付宝相关 -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"></activity>
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"></activity>
+        <!-- 支付宝结束 -->
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER" />
+                <action android:name="cn.jpush.android.intent.REPORT" />
+                <action android:name="cn.jpush.android.intent.PushService" />
+                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+            </intent-filter>
+        </service>
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:enabled="true">
+            <intent-filter android:priority="1000"> <!--since 1.3.5 -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
+                <!--since 1.3.5 -->
+                <category android:name="${JPUSH_PACKAGE}" />
+                <!--since 1.3.5 -->
+            </intent-filter>
+            <!--since 1.3.5 -->
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <!-- Required SDK核心功能-->
+        <activity
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden">
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="${JPUSH_PACKAGE}" />
+            </intent-filter>
+        </activity>
+        <!-- Required SDK核心功能-->
+        <service
+            android:name="cn.jpush.android.service.DownloadService"
+            android:enabled="true"
+            android:exported="false"></service>
+        <!-- Required SDK核心功能-->
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
+
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default" />
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="${JPUSH_APPKEY}" />
+        <meta-data
+            android:name="api_key"
+            android:value="3mZxnzD3TLP3PIjbV5k8ataK" />
+
+        <activity
+            android:name="cn.sharesdk.framework.ShareSDKUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <data android:scheme="tencent100371282" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.xj.af.wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.xj.af.guide.GuideActivity"
+            android:label="@string/app_name"
+            android:theme="@style/noTitle"></activity>
+        <activity
+            android:name="com.xj.af.main.TabMainActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/noTitle"></activity>
+        <activity
+            android:name="com.xj.af.StartActivity"
+            android:label="${APP_NAME}"
+            android:theme="@style/noTitle">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.xj.af.news.NewsActivity"
+            android:label="@string/title_activity_news"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.xj.af.index.TabActivity"
+            android:label="@string/title_activity_tab"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.xj.af.gdl.ShopsyDetailActivity"
+            android:label="@string/title_activity_shopsy_detail"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.xj.af.gdl.PayActivity"
+            android:label="@string/title_activity_pay"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.xj.af.persion.PersionActivity"
+            android:label="@string/title_activity_persion"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.xj.af.persion.RegisterActivity"
+            android:label="@string/title_activity_register"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.xj.af.wenda.QuestionAddActivity"
+            android:label="@string/title_activity_question_add"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.xj.af.news.NewsActivitActivity"
+            android:label="@string/title_activity_news_activit"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.xj.af.gdl.MyGdlActivity"
+            android:label="@string/title_activity_my_gdl"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.xj.af.manager.ManagerActivity"
+            android:label="@string/title_activity_manager"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.xj.af.manager.AddNewsActivity"
+            android:label="@string/title_activity_add_news"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.xj.af.news.NewsSortActivity"
+            android:label="@string/title_activity_news_sort"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.xj.af.index.TabFixActivity"
+            android:label="@string/title_activity_tab_fix"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.xj.af.index.jieyuan.JieYuanDetailActivity"
+            android:label="@string/title_activity_jie_yuan_detail"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.xj.af.index.jieyuan.ZhuyinDetailActivity"
+            android:label="@string/title_activity_zhuyin_detail"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="cn.edu.sjzc.fanyafeng.activity.SignUpActivity"
+            android:label="@string/title_activity_listed_on"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.edu.sjzc.fanyafeng.activity.BuddhistServicesInfo"
+            android:label="@string/title_activity_buddhist_services_info"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.edu.sjzc.fanyafeng.activity.FindsActivity"
+            android:label="@string/title_activity_buddhist_services_info"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.edu.sjzc.fanyafeng.activity.EventsActivity"
+            android:label="@string/title_activity_buddhist_services_info"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.edu.sjzc.fanyafeng.activity.EventInfoActivity"
+            android:label="@string/title_activity_buddhist_services_info"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.edu.sjzc.fanyafeng.activity.EventSignUpActivity"
+            android:label="@string/title_activity_buddhist_services_info"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.edu.sjzc.fanyafeng.fragment.MainTabActivity"
+            android:label="@string/title_activity_buddhist_services_info"
+            android:screenOrientation="portrait" />
+
+    </application>
+
+</manifest>
+
+
+
+
+=======
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <application>
+        <activity android:name="cn.edu.sjzc.fanyafeng.payactivity.SingUpPayActivity"
+            android:label="@string/title_activity_sing_up_pay"
+            >
+        </activity>
+    </application>
+
+</manifest>
+>>>>>>> Added

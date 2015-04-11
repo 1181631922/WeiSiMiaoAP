@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout01"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="4dip"
+    android:background="@color/gray"
+    android:layout_marginBottom="20dip"
+    android:paddingLeft="12dip"
+    android:paddingRight="12dip" >
+                       
+            <TextView
+                android:id="@+id/newsSortList_ItemTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dip"
+                android:gravity="center_vertical"
+                android:height="60dip"
+                android:paddingRight="20dip"
+                android:text="TextView01"
+                android:textColor="@color/gray2"
+                android:textSize="17sp" />
+
+            <ImageView
+                android:id="@+id/newsSortList_ItemImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dip"
+                android:height="50dip"
+                android:layout_centerInParent="true"
+                android:layout_alignParentRight="true"
+                android:scaleType="center"
+                android:src="@drawable/right_arror" 
+                
+                />
+      
+
+</RelativeLayout>

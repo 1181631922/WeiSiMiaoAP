@@ -1,0 +1,30 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.xj.af.index.foshi.FoShiFuWuFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/bs_progress"
+            android:layout_gravity="center"
+            android:layout_width="24dp"
+            android:layout_height="24dp" />
+
+
+        <ListView
+            android:id="@+id/buddhistservices_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="#DADBDA"
+            android:fadingEdge="none" />
+
+    </LinearLayout>
+</FrameLayout>

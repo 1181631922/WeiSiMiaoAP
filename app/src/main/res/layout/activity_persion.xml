@@ -1,0 +1,308 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".PersionActivity" >
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/news_sort_bg"
+        android:contentDescription="@string/app_name2"
+        android:scaleType="fitXY" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/persion_logined_linearLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dip"
+                    android:layout_marginTop="20dip"
+                    android:background="@drawable/nor_concor"
+                    android:orientation="vertical"
+                    android:visibility="visible" >
+
+                    <RelativeLayout
+                        android:id="@+id/persion_wenti_relative"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dip"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="12dip"
+                            android:layout_height="22dip"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="15dip"
+                            android:background="@drawable/right_arror_gray"
+                            android:contentDescription="@string/app_name2" />
+
+                        <TextView
+                            android:id="@+id/persion_wenti_textView"
+                            style="@style/settingText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:text="我的提问" />
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dip"
+                        android:background="@drawable/line_gray"
+                        android:contentDescription="@string/app_name2" />
+
+                    <RelativeLayout
+                        android:id="@+id/persion_huifu_relative"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dip"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/persion_huifu_textView"
+                            style="@style/settingText"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="我的回复" />
+
+                        <ImageView
+                            android:layout_width="12dip"
+                            android:layout_height="22dip"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="15dip"
+                            android:background="@drawable/right_arror_gray"
+                            android:contentDescription="@string/app_name2" />
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dip"
+                        android:background="@drawable/line_gray"
+                        android:contentDescription="@string/app_name2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/persion_logined_linearLayout2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:visibility="visible" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dip"
+                        android:layout_marginTop="20dip"
+                        android:background="@drawable/nor_concor"
+                        android:orientation="vertical"
+                        android:visibility="visible" >
+
+                        <RelativeLayout
+                            android:id="@+id/persion_suixi_relative"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dip"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:layout_width="12dip"
+                                android:layout_height="22dip"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="15dip"
+                                android:background="@drawable/right_arror_gray"
+                                android:contentDescription="@string/app_name2" />
+
+                            <TextView
+                                android:id="@+id/persion_suixi_textView"
+                                style="@style/settingText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:text="我参与的法会" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dip"
+                            android:background="@drawable/line_gray"
+                            android:contentDescription="@string/app_name2" />
+
+                        <RelativeLayout
+                            android:id="@+id/persion_gdl_relative"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dip"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/persion_gdl_textView"
+                                style="@style/settingText"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:text="我参与的布施" />
+
+                            <ImageView
+                                android:layout_width="12dip"
+                                android:layout_height="22dip"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="15dip"
+                                android:background="@drawable/right_arror_gray"
+                                android:contentDescription="@string/app_name2" />
+                        </RelativeLayout>
+                         <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dip"
+                            android:background="@drawable/line_gray"
+                            android:contentDescription="@string/app_name2" />
+
+                        <RelativeLayout
+                            android:id="@+id/persion_news_relative"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dip"
+                            android:visibility="gone"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/persion_news_textView"
+                                style="@style/settingText"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:text="信息发布" />
+
+                            <ImageView
+                                android:layout_width="12dip"
+                                android:layout_height="22dip"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="15dip"
+                                android:background="@drawable/right_arror_gray"
+                                android:contentDescription="@string/app_name2" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                
+                
+
+                <Button
+                    android:id="@+id/persion_loginout_button"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dip"
+                    android:layout_marginRight="15dip"
+                    android:layout_marginTop="20dip"
+                    android:text="登出"
+                    android:bottomLeftRadius="10.0dip"
+                    android:bottomRightRadius="10.0dip"
+                    android:topLeftRadius="10.0dip"
+                    android:topRightRadius="10.0dip" 
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/persion_login_linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="50dip"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" >
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        style="@style/settingText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="用户名:"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/persion_username_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10" >
+
+                        <requestFocus />
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1" >
+
+                    <TextView
+                        style="@style/settingText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="密　码:"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/persion_password_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="textPassword" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dip"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal" >
+
+                    <Button
+                        android:id="@+id/persion_regedit_button"
+                        android:layout_width="120dip"
+                        android:layout_height="45dip"
+                        android:text="注册" />
+
+                    <Button
+                        android:id="@+id/persion_login_button"
+                        android:layout_width="120dip"
+                        android:layout_height="45dip"
+                        android:text="登录" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
