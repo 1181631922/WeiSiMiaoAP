@@ -1,10 +1,14 @@
 package cn.edu.sjzc.fanyafeng.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -23,41 +27,38 @@ import com.xj.af.util.ThreadUtil;
 import java.util.HashMap;
 import java.util.Map;
 
-
-/**
- * 佛事报名界面
- */
-public class SignUpActivity extends BaseBackActivity implements View.OnClickListener {
-
-    private TextView su_title,signUp_result;
-    private EditText su_name_et, su_phone_et, su_detail_et;
-    private Button su_submit_but,signUp_backBtn;
-    private String sutitle,newsId,money;
+public class EventApplyActivity extends BaseBackActivity implements View.OnClickListener {
+    private TextView ea_title, eventApply_result;
+    private EditText ea_name_et, ea_phone_et, ea_detail_et;
+    private Button ea_submit_but, apply_backBtn;
+    private String eatitle, newsId, money, event_apply_title;
     private Handler alipayHandler;
     private String orderInfo = "";
     private Handler handler;
-    private LinearLayout signup_input_linearLayout;
+    private LinearLayout eventapply_input_linearLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         boolean flag = requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_event_apply);
         getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title_bar);
         initView();
-        initDate();
+        initData();
     }
 
     private void initView() {
-        this.su_title = (TextView) SignUpActivity.this.findViewById(R.id.su_title);
-        this.su_name_et = (EditText) SignUpActivity.this.findViewById(R.id.su_name_et);
-        this.su_phone_et = (EditText) SignUpActivity.this.findViewById(R.id.su_phone_et);
-        this.su_detail_et = (EditText) SignUpActivity.this.findViewById(R.id.su_detail_et);
-        this.su_submit_but = (Button) SignUpActivity.this.findViewById(R.id.su_submit_but);
-        //////布局增加返回按钮，成功提示
-        signup_input_linearLayout = findLinearLayout(R.id.signup_input_linearLayout);
-        signUp_result = findTextView(R.id.signUp_result);
-        signUp_backBtn = findButton(R.id.signUp_backBtn);
-        this.su_submit_but.setOnClickListener(this);
+        this.ea_title = (TextView) EventApplyActivity.this.findViewById(R.id.ea_title);
+        this.ea_name_et = (EditText) EventApplyActivity.this.findViewById(R.id.ea_name_et);
+        this.ea_phone_et = (EditText) EventApplyActivity.this.findViewById(R.id.ea_phone_et);
+        this.ea_detail_et = (EditText) EventApplyActivity.this.findViewById(R.id.ea_detail_et);
+        this.ea_submit_but = (Button) EventApplyActivity.this.findViewById(R.id.ea_submit_but);
+
+        eventapply_input_linearLayout = findLinearLayout(R.id.eventapply_input_linearLayout);
+        eventApply_result = findTextView(R.id.eventApply_result);
+        apply_backBtn = findButton(R.id.apply_backBtn);
+        this.ea_submit_but.setOnClickListener(this);
+
 
         alipayHandler = new Handler(){
             @Override
@@ -90,7 +91,7 @@ public class SignUpActivity extends BaseBackActivity implements View.OnClickList
                         if(!b){
                             orderInfo += "&paymethod="+paymethod;
                         }
-                        PayUtils.pay(SignUpActivity.this,alipayHandler,orderInfo);
+                        PayUtils.pay(EventApplyActivity.this,alipayHandler,orderInfo);
                         break;
                     }
                     default:
@@ -100,44 +101,40 @@ public class SignUpActivity extends BaseBackActivity implements View.OnClickList
         };
     }
 
-    private void initDate() {
+    private void initData() {
         Intent it = this.getIntent();
-        sutitle = it.getStringExtra("su_title");
-        title = "报名" + sutitle;
-        this.su_title.setText(sutitle);
+        event_apply_title = it.getStringExtra("eventapply_title");
+        title = "参加" + event_apply_title;
         ///增加付款对应的佛事服务新闻id，金额
         newsId = it.getStringExtra("newsId");//新闻id
         money = it.getStringExtra("money");
         if(StrUtil.isNotBlank(money) && new Float(money).floatValue() < 0){
-            su_detail_et.setText("");
+            ea_detail_et.setText("");
         }else{
-            su_detail_et.setText(money);
-            su_detail_et.setEnabled(false);
+            ea_detail_et.setText(money);
+            ea_detail_et.setEnabled(false);
         }
     }
 
-    /**
-     * 不需要支付或支付成功后提交表单
-     */
-    private void submit(){
+    private void submit() {
         //--------------------------------------------------------------------
         Message msg = new Message();
         Bundle bd = new Bundle();
         msg.setData(bd);
         Map map = new HashMap();
-        map.put("money",su_detail_et.getText().toString());
+        map.put("money", ea_detail_et.getText().toString());
         map.put("alipay", PayUtils.SELLER);
         int outtradeNoIndex = orderInfo.indexOf("out_trade_no=");
-        map.put("tradeNo",orderInfo.substring(outtradeNoIndex+14,outtradeNoIndex+29));
+        map.put("tradeNo", orderInfo.substring(outtradeNoIndex + 14, outtradeNoIndex + 29));
         map.put("newsSimple.id", newsId);
-        ThreadUtil tu = new ThreadUtil(handler,getServerURL() + "/api/shopsy/accountMoney/create", map);
+        ThreadUtil tu = new ThreadUtil(handler, getServerURL() + "/api/shopsy/accountMoney/create", map);
         tu.start();
     }
 
     /**
      * 提交表单后更新界面
      */
-    class MyHandler extends Handler{
+    class MyHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
@@ -145,39 +142,60 @@ public class SignUpActivity extends BaseBackActivity implements View.OnClickList
             String emsg = bd.getString("emsg");
             String imsg = bd.getString("imsg");
             if (StrUtil.isNotBlank(emsg)) {
-                Toast.makeText(getApplicationContext(),emsg,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), emsg, Toast.LENGTH_SHORT).show();
                 return;
             } else if (StrUtil.isNotBlank(imsg)) {
                 //保存成功
                 if (StrUtil.isNotBlank(imsg)) {
-                    signUp_result.setText(imsg);
+                    eventApply_result.setText(imsg);
                 }
-                signUp_backBtn.setVisibility(View.VISIBLE);
-                signUp_result.setVisibility(View.VISIBLE);
-                signup_input_linearLayout.setVisibility(View.GONE);
+                apply_backBtn.setVisibility(View.VISIBLE);
+                eventApply_result.setVisibility(View.VISIBLE);
+                eventapply_input_linearLayout.setVisibility(View.GONE);
             }
         }
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_event_apply, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.su_submit_but:
-                //TODO:此处需要判断是否登录
-                if(StrUtil.isNotBlank(money) && new Float(money).floatValue()!=0) {
+            case R.id.ea_submit_but:
+                if (StrUtil.isNotBlank(money) && new Float(money).floatValue() != 0) {
                     //如果需要支付则创建订单，提交支付宝
-                    String subject = su_name_et.getText().toString();
-                    orderInfo = PayUtils.getMyOrderInfo(SignUpActivity.this, sutitle+"-"+subject, sutitle+"-"+subject, su_detail_et.getText().toString(), getUsername());
-                    PayUtils.checkAndPay(SignUpActivity.this, alipayHandler);
-                }else {
-                    //不需要支付，直接提交报名信息
-                    submit();
+                    String subject = ea_name_et.getText().toString();
+                    orderInfo = PayUtils.getMyOrderInfo(EventApplyActivity.this, eatitle + "-" + subject, eatitle + "-" + subject, ea_detail_et.getText().toString(), getUsername());
+                    PayUtils.checkAndPay(EventApplyActivity.this, alipayHandler);
+                    break;
                 }
-                break;
-            case R.id.signUp_backBtn:
+            case R.id.apply_backBtn:
                 finish();
+                break;
             default:
                 break;
+
         }
     }
+
 }

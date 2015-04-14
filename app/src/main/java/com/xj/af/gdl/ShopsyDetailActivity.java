@@ -62,10 +62,13 @@ public class ShopsyDetailActivity extends BaseBackActivity {
         buttonPayBank = (Button)findViewById(R.id.shopsy_pay_bank);
 
         Intent intent = this.getIntent();
+        //
         id = intent.getStringExtra("id");
+        //
         picPath = intent.getStringExtra("picPath");
         newsId = intent.getStringExtra("newsId");
         subject = intent.getStringExtra("subject");
+        //金额
         price = intent.getStringExtra("price");
         title = subject;
         if(!getAlipayEnable().equals("true")){
@@ -97,6 +100,7 @@ public class ShopsyDetailActivity extends BaseBackActivity {
                 }
             }
         };
+        //支付
         alipayHandler = new Handler(){
             @Override
             public void handleMessage(Message msg) {

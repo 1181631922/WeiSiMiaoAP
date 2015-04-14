@@ -1,4 +1,3 @@
-<<<<<<< Original
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.xj.af">
@@ -243,6 +242,14 @@
             android:name="cn.edu.sjzc.fanyafeng.fragment.MainTabActivity"
             android:label="@string/title_activity_buddhist_services_info"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.edu.sjzc.fanyafeng.payactivity.SignUpPayActivity"
+            android:label="@string/title_activity_buddhist_services_info"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.edu.sjzc.fanyafeng.activity.EventApplyActivity"
+            android:label="@string/title_activity_buddhist_services_info"
+            android:screenOrientation="portrait" />
 
     </application>
 
@@ -250,16 +257,3 @@
 
 
 
-
-=======
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" >
-
-    <application>
-        <activity android:name="cn.edu.sjzc.fanyafeng.payactivity.SingUpPayActivity"
-            android:label="@string/title_activity_sing_up_pay"
-            >
-        </activity>
-    </application>
-
-</manifest>
->>>>>>> Added

@@ -77,5 +77,6 @@
     <string name="fragment_4">展会</string>
     <string name="fragment_5">更多</string>
     <string name="title_activity_sing_up_pay">SingUpPayActivity</string>
+    <string name="title_activity_event_apply">EventApplyActivity</string>
 
 </resources>

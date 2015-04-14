@@ -3,6 +3,7 @@ package com.xj.af.common;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -15,6 +16,8 @@ import com.xj.af.util.StrUtil;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Properties;
 
 /**
@@ -35,6 +38,7 @@ public class BaseActivity extends Activity {
             assertsPro.load(assertsInputStream);
             unitId = assertsPro.getProperty("unitId");
             serverURL = assertsPro.getProperty("serverUrl");
+            Log.d("url",serverURL);
             alipayEnable = assertsPro.getProperty("ALIPAY_ENABLE");
         } catch (IOException e) {
             e.printStackTrace();
@@ -96,5 +100,11 @@ public class BaseActivity extends Activity {
 
     public void alert(String str) {
         Toast.makeText(getApplicationContext(), str, Toast.LENGTH_SHORT).show();
+    }
+
+    public static String getMilliToDate(String time){
+        Date date = new Date(Long.valueOf(time));
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return formatter.format(date);
     }
 }

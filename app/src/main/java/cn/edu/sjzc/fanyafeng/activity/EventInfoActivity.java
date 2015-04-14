@@ -2,18 +2,25 @@ package cn.edu.sjzc.fanyafeng.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
+import android.webkit.WebViewClient;
+import android.webkit.WebChromeClient;
+import android.view.KeyEvent;
+import android.app.AlertDialog;
 
 import com.xj.af.R;
 import com.xj.af.common.BaseBackActivity;
@@ -25,9 +32,12 @@ public class EventInfoActivity extends BaseBackActivity implements View.OnClickL
     private ImageView event_info_img;
     private TextView event_info_name, event_info_time, event_info_detail;
     private Button event_info_submit_but;
-    private String eventinfo_img, eventinfo_name, eventinfo_detail, eventinfo_time;
+    private String eventinfo_img, eventinfo_name, eventinfo_detail, eventinfo_time,eventinfo_api,newsId,money;
     private ProgressDialog mDialog;
+    private ProgressBar event_info_progress;
     private boolean isUse = true;
+    private WebView wv;
+    private Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,105 +45,117 @@ public class EventInfoActivity extends BaseBackActivity implements View.OnClickL
         boolean flag = requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
         setContentView(R.layout.activity_event_info);
         getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title_bar);
+
+
         initView();
         initData();
+        loadurl(wv, eventinfo_api);
     }
 
 
     private void initView() {
-        this.event_info_img = (ImageView) EventInfoActivity.this.findViewById(R.id.event_info_img);
-        this.event_info_name = (TextView) EventInfoActivity.this.findViewById(R.id.event_info_name);
-        this.event_info_detail = (TextView) EventInfoActivity.this.findViewById(R.id.event_info_detail);
-        this.event_info_time = (TextView) EventInfoActivity.this.findViewById(R.id.event_info_time);
 
+        Intent it = this.getIntent();
+        eventinfo_name = it.getStringExtra("event_title");
+        title = eventinfo_name;
+        eventinfo_api = it.getStringExtra("event_api");
+        newsId = it.getStringExtra("event_newsId");
+        money = it.getStringExtra("event_money");
+        this.event_info_progress = (ProgressBar)EventInfoActivity.this.findViewById(R.id.event_info_progress);
         this.event_info_submit_but = (Button) EventInfoActivity.this.findViewById(R.id.event_info_submit_but);
         this.event_info_submit_but.setOnClickListener(this);
+
+
     }
 
-    private void initData() {
-        Intent it = this.getIntent();
-        eventinfo_img = it.getStringExtra("eventimg_info");
-        SingleImageTaskUtil imageTask = new SingleImageTaskUtil(this.event_info_img);
-        imageTask.execute(eventinfo_img);
-        eventinfo_name = it.getStringExtra("eventname_info");
-        title = eventinfo_name;
-        this.event_info_name.setText(eventinfo_name);
-        eventinfo_time = it.getStringExtra("eventtime_info");
-        this.event_info_time.setText(eventinfo_time);
+    public void initData() {
+        handler = new Handler() {
+            public void handleMessage(Message msg) {
+                if (!Thread.currentThread().isInterrupted()) {
+                    switch (msg.what) {
+                        case 0:
+                            event_info_progress.showContextMenu();;
+                            break;
+                        case 1:
+                            event_info_progress.setVisibility(View.GONE);
+                            break;
+                    }
+                }
+                super.handleMessage(msg);
+            }
+        };
+        wv = (WebView) findViewById(R.id.event_info_webview);
+        wv.getSettings().setJavaScriptEnabled(true);
+        wv.setScrollBarStyle(0);
+        wv.setWebViewClient(new WebViewClient() {
+            public boolean shouldOverrideUrlLoading(final WebView view,
+                                                    final String url) {
+                loadurl(view, url);
+                return true;
+            }
 
+        });
+
+        wv.setWebChromeClient(new WebChromeClient() {
+            public void onProgressChanged(WebView view, int progress) {// 载入进度改变而触发
+                if (progress == 100) {
+                    handler.sendEmptyMessage(1);// 如果全部载入,隐藏进度对话框
+                }
+                super.onProgressChanged(view, progress);
+            }
+        });
+    }
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {// 捕捉返回键
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && wv.canGoBack()) {
+            wv.goBack();
+            return true;
+        } else if (keyCode == KeyEvent.KEYCODE_BACK) {
+            ConfirmExit();// 按了返回键，但已经不能返回，则执行退出确认
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    public void ConfirmExit() {// 退出确认
+        AlertDialog.Builder ad = new AlertDialog.Builder(EventInfoActivity.this);
+        ad.setTitle("退出");
+        ad.setMessage("是否返回到主页?");
+        ad.setPositiveButton("是", new DialogInterface.OnClickListener() {// 退出按钮
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                EventInfoActivity.this.finish();// 关闭activity
+
+            }
+        });
+        ad.setNegativeButton("否", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                // 不退出不用执行任何操作
+            }
+        });
+        ad.show();// 显示对话框
+    }
+
+    public void loadurl(final WebView view, final String url) {
+                handler.sendEmptyMessage(0);
+                view.loadUrl(url);// 载入网页
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.event_info_submit_but:
-                mDialog = new ProgressDialog(EventInfoActivity.this);
-                mDialog.setTitle("加载");
-                mDialog.setMessage("正在获取网络数据。。。");
-                mDialog.show();
-                Thread loadDataThread = new Thread(new LoadDataThread());
-                loadDataThread.start();
-
-
+                Intent it_event_apply = new Intent(EventInfoActivity.this,EventApplyActivity.class);
+                it_event_apply.putExtra("eventapply_title",eventinfo_name);
+                it_event_apply.putExtra("newsId",newsId);
+                it_event_apply.putExtra("money",money);
+                startActivity(it_event_apply);
                 break;
             default:
                 break;
         }
 
     }
-
-    class LoadDataThread implements Runnable {
-
-        @Override
-        public void run() {
-            Message msg = handler.obtainMessage();
-            if (isUse) {
-                msg.what = 0;
-                handler.sendMessage(msg);
-            } else {
-                msg.what = 1;
-                handler.sendMessage(msg);
-            }
-        }
-    }
-
-    Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case 0:
-                    mDialog.cancel();
-                    Toast.makeText(getApplicationContext(), "加载成功！",Toast.LENGTH_SHORT).show();
-                    Intent it_event_signup = new Intent(EventInfoActivity.this, EventSignUpActivity.class);
-                    startActivity(it_event_signup);
-                    break;
-                case 1:
-                    break;
-            }
-        }
-    };
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_event_info, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
 
 }

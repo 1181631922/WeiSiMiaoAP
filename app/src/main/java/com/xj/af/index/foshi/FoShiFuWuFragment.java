@@ -71,11 +71,10 @@ public class FoShiFuWuFragment extends BaseFragment implements View.OnClickListe
     private List<BuddhistServicesBean> buddhistServicesBeans;
     private List<Map<String, Object>> buddhistServicesList = new ArrayList<Map<String, Object>>();
     private String bsTitle, bsDetail, bsFirst, bsSecond, bsThird;
-//    http://192.168.56.1:8080/wsm/api/newssort/page/{enName}/{unitId}?page=1&pageSize=20
-    private String FOSHIFUWU_API = "http://192.168.56.1:8080/wsm/api/foshifuwu/foShi/list.action";
+    private String FOSHIFUWU_API = "/api/newssort/page/foShiFuWu/";
     private ProgressDialog mDialog;
     private boolean isNet;
-    private String endDate;
+    private String startDate,endDate,FOSHIFUWU_API_new;
     private List<String> data = new ArrayList<String>();
 
     private OnFragmentInteractionListener mListener;
@@ -122,8 +121,8 @@ public class FoShiFuWuFragment extends BaseFragment implements View.OnClickListe
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initView();
-        String FOSHIFUWU_API_new =FOSHIFUWU_API+"/{unitId}";
-        Log.d("FOSHIFUWU_API_new",FOSHIFUWU_API_new);
+        FOSHIFUWU_API_new =getServerURL()+FOSHIFUWU_API+getUnitId();
+        String unitId = getUnitId();
         bs_progress.showContextMenu();
         Thread loadThread = new Thread(new LoadThread());
         loadThread.start();
@@ -149,7 +148,7 @@ public class FoShiFuWuFragment extends BaseFragment implements View.OnClickListe
 
         HttpGet request;
         try {
-            request = new HttpGet(new URI(FOSHIFUWU_API));
+            request = new HttpGet(new URI(FOSHIFUWU_API_new));
             HttpResponse response = httpClient.execute(request);
             if (response.getStatusLine().getStatusCode() == 200) {
 
@@ -162,24 +161,30 @@ public class FoShiFuWuFragment extends BaseFragment implements View.OnClickListe
                         buddhistServicesBeans = new ArrayList<BuddhistServicesBean>();
                         for (int i = 0; i < bsArray.length(); i++) {
                             JSONObject bsobj = bsArray.getJSONObject(i);
+                            String id = bsobj.getString("id");
+                            String bsInfoAPI = getServerURL() + "/m/news/newsDetail/" + id;
                             String title = bsobj.getString("title");
                             String des = bsobj.getString("des");
-                            String money = bsobj.getString("money");
-                            String unitId = bsobj.getString("unitId");
-                            String enddate = bsobj.getString("endDate");
-                            if (!enddate.equals("null")) {
-                                endDate = getMilliToDate(enddate);
+                            String money = "每人所需金额:"+bsobj.getString("money");
+                            String startTime = bsobj.getString("createTime");
+                            if (!startTime.equals("null")) {
+                                startDate ="开始时间："+ getMilliToDate(startTime);
+                            } else {
+                                startDate = null;
+                            }
+                            String endTime = bsobj.getString("endTime");
+                            if (!endTime.equals("null")) {
+                                endDate ="结束时间："+ getMilliToDate(endTime);
                             } else {
                                 endDate = null;
                             }
                             Map<String, Object> map = new HashMap<String, Object>();
+                            map.put("bsInfoApi", bsInfoAPI);
+                            map.put("newsId",id);
                             map.put("bsTitle", title);
-                            map.put("bsDetail", des);
-                            map.put("bsFirst", money);
-                            map.put("bsSecond", unitId);
-                            map.put("bsThird", endDate);
+                            map.put("money",bsobj.getString("money"));
                             buddhistServicesList.add(map);
-                            buddhistServicesBeans.add(new BuddhistServicesBean(title, des, money, unitId, endDate));
+                            buddhistServicesBeans.add(new BuddhistServicesBean(title, des, money, startDate, endDate));
 
                         }
                         isNet = true;
@@ -234,15 +239,11 @@ public class FoShiFuWuFragment extends BaseFragment implements View.OnClickListe
                 if (position == i) {
                     Map map = (Map) buddhistServicesList.get(i);
                     String btitle = (String) map.get("bsTitle");
-                    String bdetail = (String) map.get("bsDetail");
-                    String bfirst = (String) map.get("bsFirst");
-                    String bsecond = (String) map.get("bsSecond");
-                    String bthird = (String) map.get("bsThird");
+                    String bapi = (String) map.get("bsInfoApi");
+                    it_bs_info.putExtra("newsId",(String)map.get("newsId"));
                     it_bs_info.putExtra("btitle_info", btitle);
-                    it_bs_info.putExtra("bdetail_info", bdetail);
-                    it_bs_info.putExtra("bfirst_info", bfirst);
-                    it_bs_info.putExtra("bsecond_info", bsecond);
-                    it_bs_info.putExtra("bthird_info", bthird);
+                    it_bs_info.putExtra("bapi_info", bapi);
+                    it_bs_info.putExtra("money",(String)map.get("money"));
 
                 }
             }

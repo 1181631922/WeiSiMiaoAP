@@ -14,78 +14,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <ProgressBar
+            android:id="@+id/bs_info_progress"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="match_parent" />
 
-        <ScrollView
+        <WebView
+            android:id="@+id/bs_info_webview"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/bsi_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="30dp"
-                    android:paddingTop="5dp"
-                    android:paddingLeft="15dp"
-                    android:textColor="@color/black"
-                    android:text="挂牌位" />
-
-                <TextView
-                    android:id="@+id/bsi_detail"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:paddingTop="5dp"
-
-                    android:text="《早课》 《晚课》都可以和寺院师傅一起在寺院大殿做功课。佛家认为，早课经咒全部是历来被证明最有灵验的。在早晨诵读这些经咒的基本作用是消灾解难，祈祷吉祥如意，保佑一切平安。晚课的三堂功课，在一般寺院中是单日念《佛说阿弥陀经》和念佛；双日拜八十八佛和念《礼佛大忏悔文》" />
-
-
-                <TextView
-                    android:id="@+id/bsi_first"
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16dp"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-
-                    android:textColor="@color/black"
-                    android:text="参加方式" />
-
-                <TextView
-                    android:id="@+id/bsi_second"
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16dp"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:textColor="@color/black"
-                    android:text="费用说明" />
-
-                <TextView
-                    android:id="@+id/bsi_third"
-                    android:layout_weight="1"
-                    android:textSize="16dp"
-                    android:textColor="@color/black"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:text="ohter" />
-
-
-            </LinearLayout>
-        </ScrollView>
+            android:layout_height="fill_parent"
+            android:layout_x="0.0dip"
+            android:layout_y="0.0dip"
+            android:layout_weight="1.0" />
     </LinearLayout>
 
     <LinearLayout

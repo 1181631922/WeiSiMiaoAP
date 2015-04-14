@@ -131,7 +131,7 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/user_newpassword"
+                android:id="@+id/user_newpass"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_marginLeft="20dp"
@@ -142,12 +142,12 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/userrealname"
+                android:id="@+id/baomingrenshu"
                 android:layout_width="fill_parent"
                 android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="1dp"
-                android:layout_toRightOf="@id/user_newpassword"
+                android:layout_toRightOf="@id/user_newpass"
                 android:background="@android:color/transparent"
                 android:hint="4"
                 android:textSize="16sp" />

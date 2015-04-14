@@ -3,23 +3,25 @@ package cn.edu.sjzc.fanyafeng.bean;
 /**
  * Created by Administrator on 2015/4/2.
  */
-public class EventBean implements java.lang.Comparable{
+public class EventBean implements java.lang.Comparable {
     private String EventImg;
     private String EventName;
+    private String EventStartName;
+    private String EventEndTime;
     private String EventDetail;
-    private String EventTime;
+    private String EventMoney;
 
-    public EventBean(String eventImg, String eventName, String eventDetail, String eventTime) {
+    public EventBean(String eventImg, String eventName, String eventStartName, String eventEndTime, String eventDetail, String eventMoney) {
         EventImg = eventImg;
         EventName = eventName;
+        EventStartName = eventStartName;
+        EventEndTime = eventEndTime;
         EventDetail = eventDetail;
-        EventTime = eventTime;
+        EventMoney = eventMoney;
     }
 
-    public EventBean(String eventImg, String eventName, String eventTime) {
-        EventImg = eventImg;
-        EventName = eventName;
-        EventTime = eventTime;
+    public String getEventImg() {
+        return EventImg;
     }
 
     public void setEventImg(String eventImg) {
@@ -34,6 +36,22 @@ public class EventBean implements java.lang.Comparable{
         EventName = eventName;
     }
 
+    public String getEventStartName() {
+        return EventStartName;
+    }
+
+    public void setEventStartName(String eventStartName) {
+        EventStartName = eventStartName;
+    }
+
+    public String getEventEndTime() {
+        return EventEndTime;
+    }
+
+    public void setEventEndTime(String eventEndTime) {
+        EventEndTime = eventEndTime;
+    }
+
     public String getEventDetail() {
         return EventDetail;
     }
@@ -42,16 +60,12 @@ public class EventBean implements java.lang.Comparable{
         EventDetail = eventDetail;
     }
 
-    public String getEventTime() {
-        return EventTime;
+    public String getEventMoney() {
+        return EventMoney;
     }
 
-    public void setEventTime(String eventTime) {
-        EventTime = eventTime;
-    }
-
-    public String getEventImg() {
-        return EventImg;
+    public void setEventMoney(String eventMoney) {
+        EventMoney = eventMoney;
     }
 
     @Override
@@ -59,8 +73,10 @@ public class EventBean implements java.lang.Comparable{
         return "EventBean{" +
                 "EventImg='" + EventImg + '\'' +
                 ", EventName='" + EventName + '\'' +
+                ", EventStartName='" + EventStartName + '\'' +
+                ", EventEndTime='" + EventEndTime + '\'' +
                 ", EventDetail='" + EventDetail + '\'' +
-                ", EventTime='" + EventTime + '\'' +
+                ", EventMoney='" + EventMoney + '\'' +
                 '}';
     }
 

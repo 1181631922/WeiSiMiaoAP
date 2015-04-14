@@ -1,8 +1,10 @@
 package cn.edu.sjzc.fanyafeng.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,22 +12,33 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.xj.af.R;
-import com.xj.af.common.BaseActivity;
 import com.xj.af.common.BaseBackActivity;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import cn.edu.sjzc.fanyafeng.adapter.EventAdapter;
 import cn.edu.sjzc.fanyafeng.bean.EventBean;
-import cn.edu.sjzc.fanyafeng.listviewui.PullToRefreshListView;
 import cn.edu.sjzc.fanyafeng.util.RefreshableView;
 
 import java.text.SimpleDateFormat;
@@ -33,21 +46,23 @@ import java.text.SimpleDateFormat;
 public class EventsActivity extends BaseBackActivity {
 
     private ImageView event_img;
-    private TextView event_name, event_time;
+    private ProgressBar eventProgressBar;
+    private TextView event_name, eventstart_time, eventend_time, event_money;
     private ListView event_listview;
     private EventAdapter eventAdapter;
     private List<EventBean> eventBeans;
     private List<Map<String, Object>> eventsList = new ArrayList<Map<String, Object>>();
-    private String eventImg, eventName, eventTime;
+    private String eventImg, eventName, eventStartTime, eventEndTime;
     private EventBean[] eventArray;
 
-    private PullToRefreshListView mPullListView;
     private SimpleDateFormat mDateFormat = new SimpleDateFormat("MM-dd HH:mm");
     private boolean mIsStart = true;
     private int mCurIndex = 0;
     private static final int mLoadDataCount = 100;
+    private boolean isNet;
 
     private RefreshableView refreshableView;
+    private String SIYUANHUODOND = "/api/newssort/page/siYuanHuoDong/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,39 +74,102 @@ public class EventsActivity extends BaseBackActivity {
         getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title_bar);
         title = "活动";
         initView();
-        initData();
+        eventProgressBar.showContextMenu();
+        Thread loadThread = new Thread(new LoadThread());
+        loadThread.start();
+    }
 
+    class LoadThread implements Runnable {
+        @Override
+        public void run() {
+            initData();
+        }
     }
 
     private void initView() {
+        this.eventProgressBar = (ProgressBar) EventsActivity.this.findViewById(R.id.event_progress);
         this.event_name = (TextView) EventsActivity.this.findViewById(R.id.event_name);
-        this.event_time = (TextView) EventsActivity.this.findViewById(R.id.event_time);
-
+        this.eventstart_time = (TextView) EventsActivity.this.findViewById(R.id.eventstart_time);
+        this.eventend_time = (TextView) EventsActivity.this.findViewById(R.id.eventend_time);
         this.event_img = (ImageView) EventsActivity.this.findViewById(R.id.event_img);
+        this.event_money = (TextView) EventsActivity.this.findViewById(R.id.event_money);
+        refreshableView = (RefreshableView) findViewById(R.id.events_refreshable);
+        event_listview = (ListView) EventsActivity.this.findViewById(R.id.event_listview);
     }
 
     private void initData() {
-        refreshableView = (RefreshableView) findViewById(R.id.events_refreshable);
-        event_listview = (ListView) EventsActivity.this.findViewById(R.id.event_listview);
-        eventBeans = new ArrayList<EventBean>();
-        eventArray = new EventBean[]{
-                new EventBean("http://hiphotos.baidu.com/lzc196806/pic/item/d84f738da76514d2f11f3665.jpg", "放生", "2015/4/7"),
-                new EventBean("http://img.pusa123.com/www/uploads/allimg/130602/5424_130602094335_1.jpg", "夏令营", "2015/4/8"),
-                new EventBean("http://img.pusa123.com/www/uploads/allimg/150403/17422_150403102211_1.jpg", "传灯", "2015/4/8"),
-                new EventBean("http://img.pusa123.com/www/uploads/allimg/150403/17422_150403151837_1.jpg", "交流", "2015/4/8"),
-                new EventBean("http://img.pusa123.com/www/uploads/allimg/150403/17422_150403102211_2.jpg", "普茶", "2015/4/8"),
-                new EventBean("http://img.pusa123.com/www/uploads/allimg/150403/17422_150403102211_2.jpg", "行脚", "2015/4/8"),
-                new EventBean("http://img.pusa123.com/www/uploads/allimg/150403/17422_150403102211_3.jpg", "朝圣", "2015/4/8"),
-                new EventBean("http://img.pusa123.com/www/uploads/allimg/150403/17422_150403102211_4.jpg", "坐禅", "2015/4/8")
-        };
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpGet request;
+        try {
+            String SIYUANHUODOND_API = getServerURL() + SIYUANHUODOND + getUnitId();
+            request = new HttpGet(new URI(SIYUANHUODOND_API));
+            Log.d("------------------------------------------------------------->SIYUANHUODONDAPI", SIYUANHUODOND_API);
+            HttpResponse response = httpClient.execute(request);
+            if (response.getStatusLine().getStatusCode() == 200) {
+                HttpEntity entity = response.getEntity();
+                if (entity != null) {
+                    String out = EntityUtils.toString(entity, "UTF-8");
+                    Log.d("-------------------------------------------------->out", out);
+                    try {
+                        JSONObject jsonObject = jsonObject = new JSONObject(out);
+                        JSONArray eveArray = jsonObject.getJSONArray("content");
+                        eventBeans = new ArrayList<EventBean>();
+                        for (int i = 0; i < eveArray.length() - 2; i++) {
+                            JSONObject eveobj = eveArray.getJSONObject(i);
+                            String id = eveobj.getString("id");
+                            String EventInfoAPI = getServerURL() + "/m/news/newsDetail/" + id;
+                            String title = eveobj.getString("title");
+                            String createTime = eveobj.getString("createTime");
+                            if (!createTime.equals("null")) {
+                                createTime = "开始时间："+getMilliToDate(createTime);
+                            } else {
+                                createTime = null;
+                            }
+                            String endTime = eveobj.getString("endTime");
+                            if (!endTime.equals("null")) {
+                                endTime = "结束时间："+getMilliToDate(endTime);
+                            } else {
+                                endTime = null;
+                            }
+                            String money ="报名金额："+ eveobj.getString("money");
+                            String smallPic = getServerURL() + eveobj.getString("smallPic");
+                            String des = eveobj.getString("des");
 
-        putData();
-        Arrays.sort(eventArray);
-        eventBeans = Arrays.asList(eventArray);
+                            Map<String, Object> map = new HashMap<String, Object>();
+                            map.put("eveName", title);
+                            map.put("eveApi", EventInfoAPI);
+                            map.put("eveId",eveobj.getString("id"));
+                            map.put("eveMoney",eveobj.getString("money"));
+                            eventsList.add(map);
+                            eventBeans.add(new EventBean(smallPic, title, createTime, endTime, des, money));
 
-        eventAdapter = new EventAdapter(EventsActivity.this, eventBeans);
-        event_listview.setAdapter(eventAdapter);
-        event_listview.setOnItemClickListener(new eventInfoOnItemClickListener());
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+
+                    }
+                }
+                isNet = true;
+            } else {
+                isNet = false;
+            }
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        Message msg = Message.obtain();
+        if (isNet) {
+            msg.what = 0;
+            handler.sendMessage(msg);
+        } else {
+            msg.what = 1;
+            handler.sendMessage(msg);
+        }
         refreshableView.setOnRefreshListener(new RefreshableView.PullToRefreshListener() {
             @Override
             public void onRefresh() {
@@ -106,41 +184,43 @@ public class EventsActivity extends BaseBackActivity {
 
     }
 
-    private void putData() {
-        for (int i = 0; i < eventArray.length-4; i++) {
-            EventBean eventBean = new EventBean(eventImg, eventName, "点击查看详情", eventTime);
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 0:
+                    eventProgressBar.setVisibility(View.GONE);
+                    eventAdapter = new EventAdapter(EventsActivity.this, eventBeans);
+                    event_listview.setAdapter(eventAdapter);
 
-            String mimg = eventArray[i].getEventImg();
-            String mname = eventArray[i].getEventName();
-            String mtime = eventArray[i].getEventTime();
-
-            Map<String, Object> map = new HashMap<>();
-            map.put("eventImg", mimg);
-            map.put("eventName", mname);
-            map.put("eventTime", mtime);
-            eventsList.add(map);
-
+                    event_listview.setOnItemClickListener(new eventInfoOnItemClickListener());
+                    break;
+                case 1:
+                    break;
+            }
         }
-    }
+    };
 
     protected class eventInfoOnItemClickListener implements AdapterView.OnItemClickListener {
-
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Intent it_event_info = new Intent(EventsActivity.this, EventInfoActivity.class);
             for (int i = 0; i <= position; i++) {
                 if (position == i) {
                     Map map = (Map) eventsList.get(i);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("eventimg_info", (String) map.get("eventImg"));
-                    bundle.putString("eventname_info", (String) map.get("eventName"));
-                    bundle.putString("eventtime_info", (String) map.get("eventTime"));
-                    it_event_info.putExtras(bundle);
+                    String etitle = (String) map.get("eveName");
+                    String eapi = (String) map.get("eveApi");
+                    String newsId = (String)map.get("eveId");
+                    it_event_info.putExtra("event_title", etitle);
+                    it_event_info.putExtra("event_api", eapi);
+                    it_event_info.putExtra("event_newsId",newsId);
+                    it_event_info.putExtra("event_money",(String)map.get("eveMoney"));
                 }
             }
             startActivity(it_event_info);
         }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

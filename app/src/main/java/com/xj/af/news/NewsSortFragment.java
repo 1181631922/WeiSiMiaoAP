@@ -141,7 +141,7 @@ public class NewsSortFragment extends BaseXjFragment  implements PullDownView.On
 
     public void loadData( ){
         UIhandler = new UIHandler();
-        UIThread thread = new UIThread( WHAT_DID_LOAD_DATA);
+        UIThread thread = new UIThread(WHAT_DID_LOAD_DATA);
         thread.start();
     }
 

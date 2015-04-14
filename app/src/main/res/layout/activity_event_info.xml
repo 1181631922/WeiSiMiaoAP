@@ -12,49 +12,21 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/event_info_name"
-            android:text="活动名称"
-            android:textColor="@color/black"
-            android:textSize="26dp"
-            android:layout_gravity="center"
+        <ProgressBar
+            android:id="@+id/event_info_progress"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <ImageView
-            android:id="@+id/event_info_img"
-            android:layout_width="200dp"
-            android:layout_height="160dp"
             android:layout_gravity="center"
-            android:src="@drawable/event" />
+            android:layout_height="match_parent" />
 
-        <TextView
-            android:id="@+id/event_info_time"
-            android:text="活动时间"
-            android:layout_gravity="center"
-            android:textSize="20dp"
-            android:textColor="@color/black"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/event_info_detail"
+        <WebView
+            android:id="@+id/event_info_webview"
             android:layout_width="fill_parent"
-            android:paddingTop="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="  1、发心短期出家的男众和受持八关斋戒的女众，要求身心健康，无传染病，戒烟酒，无社会恶习及其它不良嗜好。
-    2、所有参加本次活动者，须具足正信，严格遵守寺院各项规章制度，能积极配合并主动服从常住安排。
-    3、参加期间，不得闲言杂话、谈论是非，应互相包容、与大众和谐共住。
-    4、参加期间，须留在寺内精进修行，未经许可，不得外出。
-    5、年龄20---60岁以内，具有初中以上学历。
-    6、名额：此次活动人数限制100名。
-    7、法会服务义工菩萨5人（可机动）。"
-            android:textColor="@color/black"
-            android:layout_height="wrap_content" />
+            android:layout_height="fill_parent"
+            android:layout_x="0.0dip"
+            android:layout_y="0.0dip"
+            android:layout_weight="1.0" />
     </LinearLayout>
 
     <Button

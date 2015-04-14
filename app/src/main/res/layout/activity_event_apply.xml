@@ -21,19 +21,18 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/signup_input_linearLayout"
+            android:id="@+id/eventapply_input_linearLayout"
             android:orientation="vertical"
             android:layout_width="fill_parent"
 
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/su_title"
+                android:id="@+id/ea_title"
                 android:layout_width="fill_parent"
                 android:background="@color/white"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-
                 android:textColor="@color/black"
                 android:textSize="24dp"
                 android:text="报名活动的名称" />
@@ -50,7 +49,7 @@
                     android:background="#808A87" />
 
                 <TextView
-                    android:id="@+id/su_name_tv"
+                    android:id="@+id/ea_name_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:layout_marginLeft="20dp"
@@ -61,12 +60,12 @@
                     android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/su_name_et"
+                    android:id="@+id/ea_name_et"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="1dp"
-                    android:layout_toRightOf="@id/su_name_tv"
+                    android:layout_toRightOf="@id/ea_name_tv"
                     android:background="@android:color/transparent"
                     android:hint="请输入您的姓名"
                     android:textSize="16sp" />
@@ -84,7 +83,7 @@
                 android:gravity="center">
 
                 <TextView
-                    android:id="@+id/su_phone_tv"
+                    android:id="@+id/ea_phone_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:layout_marginLeft="20dp"
@@ -95,12 +94,12 @@
                     android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/su_phone_et"
+                    android:id="@+id/ea_phone_et"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="1dp"
-                    android:layout_toRightOf="@id/su_phone_tv"
+                    android:layout_toRightOf="@id/ea_phone_tv"
                     android:background="@android:color/transparent"
                     android:hint="请输入您的电话"
                     android:textSize="16sp" />
@@ -118,7 +117,7 @@
                 android:gravity="center">
 
                 <TextView
-                    android:id="@+id/su_detail_tv"
+                    android:id="@+id/ea_detail_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:layout_marginLeft="20dp"
@@ -129,12 +128,12 @@
                     android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/su_detail_et"
+                    android:id="@+id/ea_detail_et"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@id/su_detail_tv"
+                    android:layout_toRightOf="@id/ea_detail_tv"
                     android:background="@android:color/transparent"
                     android:hint="100"
                     android:textSize="16sp" />
@@ -143,7 +142,7 @@
 
 
             <Button
-                android:id="@+id/su_submit_but"
+                android:id="@+id/ea_submit_but"
                 android:layout_width="fill_parent"
                 android:layout_height="35dp"
                 android:layout_marginLeft="5dp"
@@ -161,13 +160,13 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/signUp_result"
+            android:id="@+id/eventApply_result"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
             android:textColor="#ff1182ff" />
 
         <Button
-            android:id="@+id/signUp_backBtn"
+            android:id="@+id/apply_backBtn"
             android:layout_width="fill_parent"
             android:layout_height="35dp"
             android:layout_marginLeft="5dp"

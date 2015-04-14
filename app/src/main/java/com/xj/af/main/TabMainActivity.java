@@ -33,6 +33,7 @@ import com.xj.af.persion.LoginFragment;
 import com.xj.af.persion.PersionActivity;
 import com.xj.af.persion.PersionFragment;
 import com.xj.af.util.Contant;
+import com.xj.af.util.DataUtils;
 import com.xj.af.util.StrUtil;
 import com.xj.af.util.http.PostUtil;
 
@@ -69,9 +70,9 @@ public class TabMainActivity extends BaseFragmentActivity implements IndexFragme
 
     /**FragmentPage 适配器*/
     private class MyAdapter extends IndicatorFragmentPagerAdapter {
-        private String[] tabNames = { "首页", "功德林", "我" };
+        private String[] tabNames = DataUtils.getDataFromUnitProp(getApplicationContext(),"downMenu")[0].split(",");
         private int[] tabIcons = { R.drawable.maintab_1_selector, R.drawable.maintab_2_selector, R.drawable.maintab_4_selector,
-                R.drawable.maintab_4_selector };
+                R.drawable.maintab_3_selector };
         private LayoutInflater inflater;
 
         public MyAdapter(FragmentManager fragmentManager) {

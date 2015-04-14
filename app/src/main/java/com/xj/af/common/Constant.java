@@ -18,6 +18,8 @@ public class Constant {
     public final static String NEWSSORT_ENNAME_jinRiShuoFa = "jinRiShuoFa";
     /**经典解读*/
     public final static String NEWSSORT_ENNAME_jingDianJieDu = "jingDianJieDu";
+    /**佛学基础*/
+    public final static String NEWSSORT_ENNAME_global_foXueJiChu = "global_foXueJiChu";
 
     public static final String LOGIN_DATA = "data";
     public static final String LOGIN_DATA_LOGINED = "logined";

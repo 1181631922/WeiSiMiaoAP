@@ -167,7 +167,8 @@ public class TabActivity extends BaseBackFragmentActivity implements FoShiFuWuFr
                 } else if (position == 2) {//答疑解惑
                     return new QuestionFragment();
                 } else if (position == 3) {//佛学基础
-
+                    String url = getServerURL() + "/api/newssort/page/findByEnName/global_foXueJiChu";
+                    return NewsSortFragment.newInstance(url, "global_foXueJiChu", 0, Constant.NEWSSORT_ENNAME_global_foXueJiChu);
                 }
             }else if(value.equals(FaXian)){
                     if(position==0){//发现
