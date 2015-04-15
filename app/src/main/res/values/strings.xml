@@ -78,5 +78,6 @@
     <string name="fragment_5">更多</string>
     <string name="title_activity_sing_up_pay">SingUpPayActivity</string>
     <string name="title_activity_event_apply">EventApplyActivity</string>
+    <string name="title_activity_gong_zhuo">GongZhuoActivity</string>
 
 </resources>

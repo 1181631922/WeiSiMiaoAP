@@ -50,9 +50,10 @@ public class EventsActivity extends BaseBackActivity {
     private TextView event_name, eventstart_time, eventend_time, event_money;
     private ListView event_listview;
     private EventAdapter eventAdapter;
-    private List<EventBean> eventBeans;
+    private static List<EventBean> eventBeans;
+
     private List<Map<String, Object>> eventsList = new ArrayList<Map<String, Object>>();
-    private String eventImg, eventName, eventStartTime, eventEndTime;
+    private String eventImg, eventName, eventStartTime, eventEndTime, smallPic, createTime, endTime, des, money, lastPage;
     private EventBean[] eventArray;
 
     private SimpleDateFormat mDateFormat = new SimpleDateFormat("MM-dd HH:mm");
@@ -60,7 +61,7 @@ public class EventsActivity extends BaseBackActivity {
     private int mCurIndex = 0;
     private static final int mLoadDataCount = 100;
     private boolean isNet;
-
+    private int k = 1;
     private RefreshableView refreshableView;
     private String SIYUANHUODOND = "/api/newssort/page/siYuanHuoDong/";
 
@@ -72,6 +73,7 @@ public class EventsActivity extends BaseBackActivity {
         setContentView(R.layout.activity_events);
 
         getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title_bar);
+
         title = "活动";
         initView();
         eventProgressBar.showContextMenu();
@@ -82,7 +84,7 @@ public class EventsActivity extends BaseBackActivity {
     class LoadThread implements Runnable {
         @Override
         public void run() {
-            initData();
+            initData(k);
         }
     }
 
@@ -95,51 +97,55 @@ public class EventsActivity extends BaseBackActivity {
         this.event_money = (TextView) EventsActivity.this.findViewById(R.id.event_money);
         refreshableView = (RefreshableView) findViewById(R.id.events_refreshable);
         event_listview = (ListView) EventsActivity.this.findViewById(R.id.event_listview);
+
     }
 
-    private void initData() {
+    private int initData(int k) {
         HttpClient httpClient = new DefaultHttpClient();
         HttpGet request;
         try {
-            String SIYUANHUODOND_API = getServerURL() + SIYUANHUODOND + getUnitId();
+            String SIYUANHUODOND_API_OLD = getServerURL() + SIYUANHUODOND + getUnitId() + "?page=";
+            String SIYUANHUODOND_API = SIYUANHUODOND_API_OLD + k;
             request = new HttpGet(new URI(SIYUANHUODOND_API));
-            Log.d("------------------------------------------------------------->SIYUANHUODONDAPI", SIYUANHUODOND_API);
             HttpResponse response = httpClient.execute(request);
             if (response.getStatusLine().getStatusCode() == 200) {
                 HttpEntity entity = response.getEntity();
                 if (entity != null) {
                     String out = EntityUtils.toString(entity, "UTF-8");
-                    Log.d("-------------------------------------------------->out", out);
                     try {
-                        JSONObject jsonObject = jsonObject = new JSONObject(out);
+                        JSONObject jsonObject = new JSONObject(out);
+
                         JSONArray eveArray = jsonObject.getJSONArray("content");
+
+                        lastPage = jsonObject.getString("last");
+
                         eventBeans = new ArrayList<EventBean>();
-                        for (int i = 0; i < eveArray.length() - 2; i++) {
+                        for (int i = 0; i < eveArray.length(); i++) {
                             JSONObject eveobj = eveArray.getJSONObject(i);
                             String id = eveobj.getString("id");
                             String EventInfoAPI = getServerURL() + "/m/news/newsDetail/" + id;
                             String title = eveobj.getString("title");
                             String createTime = eveobj.getString("createTime");
                             if (!createTime.equals("null")) {
-                                createTime = "开始时间："+getMilliToDate(createTime);
+                                createTime = "开始时间：" + getMilliToDate(createTime);
                             } else {
                                 createTime = null;
                             }
                             String endTime = eveobj.getString("endTime");
                             if (!endTime.equals("null")) {
-                                endTime = "结束时间："+getMilliToDate(endTime);
+                                endTime = "结束时间：" + getMilliToDate(endTime);
                             } else {
                                 endTime = null;
                             }
-                            String money ="报名金额："+ eveobj.getString("money");
+                            String money = "报名金额：" + eveobj.getString("money");
                             String smallPic = getServerURL() + eveobj.getString("smallPic");
                             String des = eveobj.getString("des");
 
                             Map<String, Object> map = new HashMap<String, Object>();
                             map.put("eveName", title);
                             map.put("eveApi", EventInfoAPI);
-                            map.put("eveId",eveobj.getString("id"));
-                            map.put("eveMoney",eveobj.getString("money"));
+                            map.put("eveId", eveobj.getString("id"));
+                            map.put("eveMoney", eveobj.getString("money"));
                             eventsList.add(map);
                             eventBeans.add(new EventBean(smallPic, title, createTime, endTime, des, money));
 
@@ -170,17 +176,7 @@ public class EventsActivity extends BaseBackActivity {
             msg.what = 1;
             handler.sendMessage(msg);
         }
-        refreshableView.setOnRefreshListener(new RefreshableView.PullToRefreshListener() {
-            @Override
-            public void onRefresh() {
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                refreshableView.finishRefreshing();
-            }
-        }, 0);
+        return k;
 
     }
 
@@ -194,6 +190,25 @@ public class EventsActivity extends BaseBackActivity {
                     event_listview.setAdapter(eventAdapter);
 
                     event_listview.setOnItemClickListener(new eventInfoOnItemClickListener());
+
+                    refreshableView.setOnRefreshListener(new RefreshableView.PullToRefreshListener() {
+                        @Override
+                        public void onRefresh() {
+                            if (lastPage.equalsIgnoreCase("true")) {
+                                k = 1;
+                            } else {
+                                k++;
+                            }
+                            Log.d("-----------------------------------------------",""+k);
+                            initData(k);
+                            eventProgressBar.setVisibility(View.GONE);
+                            eventAdapter = new EventAdapter(EventsActivity.this, eventBeans);
+                            event_listview.setAdapter(eventAdapter);
+
+                            event_listview.setOnItemClickListener(new eventInfoOnItemClickListener());
+                            refreshableView.finishRefreshing();
+                        }
+                    }, 0);
                     break;
                 case 1:
                     break;
@@ -210,11 +225,11 @@ public class EventsActivity extends BaseBackActivity {
                     Map map = (Map) eventsList.get(i);
                     String etitle = (String) map.get("eveName");
                     String eapi = (String) map.get("eveApi");
-                    String newsId = (String)map.get("eveId");
+                    String newsId = (String) map.get("eveId");
                     it_event_info.putExtra("event_title", etitle);
                     it_event_info.putExtra("event_api", eapi);
-                    it_event_info.putExtra("event_newsId",newsId);
-                    it_event_info.putExtra("event_money",(String)map.get("eveMoney"));
+                    it_event_info.putExtra("event_newsId", newsId);
+                    it_event_info.putExtra("event_money", (String) map.get("eveMoney"));
                 }
             }
             startActivity(it_event_info);

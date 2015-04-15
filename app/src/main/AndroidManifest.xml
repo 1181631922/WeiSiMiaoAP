@@ -250,10 +250,12 @@
             android:name="cn.edu.sjzc.fanyafeng.activity.EventApplyActivity"
             android:label="@string/title_activity_buddhist_services_info"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.edu.sjzc.fanyafeng.activity.GongZhuoActivity"
+            android:label="@string/title_activity_buddhist_services_info"
+            android:screenOrientation="portrait" />
 
     </application>
 
 </manifest>
-
-
 

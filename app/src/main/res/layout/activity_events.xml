@@ -27,4 +27,6 @@
             android:divider="#DADBDA"
             android:fadingEdge="none"></ListView>
     </cn.edu.sjzc.fanyafeng.util.RefreshableView>
+
+
 </RelativeLayout>
