@@ -39,7 +39,8 @@
         <Button
             android:id="@+id/bsi_but"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/login_selector"
             android:text="立即预定" />
     </LinearLayout>
 

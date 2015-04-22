@@ -1,0 +1,99 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="cn.edu.sjzc.fanyafeng.fragment.XiangLuFragment">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/xianglu_frag_one_ib"
+                android:layout_width="160dp"
+                android:layout_height="80dp"
+                android:onClick="onClick" />
+
+            <TextView
+                android:id="@+id/xianglu_frag_one_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="这是供桌的标题1"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textColor="@color/black" />
+
+            <ImageView
+                android:id="@+id/xianglu_frag_two_ib"
+                android:layout_width="160dp"
+                android:layout_height="80dp"
+                android:onClick="onClick" />
+
+            <TextView
+                android:id="@+id/xianglu_frag_two_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="这是供桌的标题2"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:paddingTop="10dp"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/xianglu_frag_three_ib"
+                android:layout_width="160dp"
+                android:layout_height="80dp"
+                android:onClick="onClick"
+
+                />
+
+            <TextView
+                android:id="@+id/xianglu_frag_three_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="这是供桌的标题3"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textColor="@color/black" />
+
+            <ImageView
+                android:id="@+id/xianglu_frag_four_ib"
+                android:layout_width="160dp"
+                android:layout_height="80dp"
+                android:onClick="onClick" />
+
+            <TextView
+                android:id="@+id/xianglu_frag_four_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="这是供桌的标题4"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:paddingTop="10dp"
+                android:textColor="@color/black" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

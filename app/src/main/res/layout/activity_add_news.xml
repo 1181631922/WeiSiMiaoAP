@@ -9,10 +9,11 @@
     <Button
         android:id="@+id/addnews_submit_button1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
+        android:background="@drawable/login_selector"
         android:text="提交" />
 
     <EditText
@@ -44,10 +45,11 @@
     <Button
         android:id="@+id/addnews_insertPic_Button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_above="@+id/addnews_submit_button1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
+        android:background="@drawable/login_selector"
         android:text="插入图片" />
 
 

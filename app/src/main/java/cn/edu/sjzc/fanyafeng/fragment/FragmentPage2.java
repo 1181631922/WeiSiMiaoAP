@@ -44,10 +44,16 @@ public class FragmentPage2 extends Fragment {
     }
 
     public void init() {
-        images = new int[]{R.drawable.a, R.drawable.b, R.drawable.c,
-                R.drawable.d, R.drawable.e};
-        titles = new String[]{"这是第1张图片", "这是第2张图片", "这是第3张图片", "这是第4张图片",
-                "这是第5张图片"};
+        images = new int[]{R.drawable.a_,
+                R.drawable.b_,
+                R.drawable.c_,
+                R.drawable.d_,
+                R.drawable.e_};
+        titles = new String[]{"请欣赏寺庙",
+                "请欣赏寺庙",
+                "请欣赏寺庙",
+                "请欣赏寺庙",
+                "请欣赏寺庙"};
         imageSource = new ArrayList<ImageView>();
         for (int i = 0; i < images.length; i++) {
             ImageView image = new ImageView(getActivity());

@@ -79,5 +79,19 @@
     <string name="title_activity_sing_up_pay">SingUpPayActivity</string>
     <string name="title_activity_event_apply">EventApplyActivity</string>
     <string name="title_activity_gong_zhuo">GongZhuoActivity</string>
+    <string name="title_activity_gong_zhuo_info">GongZhuoInfoActivity</string>
+    <string name="title_activity_xiang_lu">XiangLuActivity</string>
+    <string name="title_activity_xiang_lu_info">XiangLuInfoActivity</string>
+    <string name="title_activity_gu_zhong">GuZhongActivity</string>
+    <string name="title_activity_gu_zhong_info">GuZhongInfoActivity</string>
+    <string name="title_activity_si_miao_info">SiMiaoInfoActivity</string>
+    <string name="title_activity_zhuang_shi">ZhuangShiActivity</string>
+    <string name="title_activity_zhuang_shi_info">ZhuangShiInfoActivity</string>
+    <string name="title_activity_seng_fu">SengFuActivity</string>
+    <string name="title_activity_seng_fu_info">SengFuInfoActivity</string>
+    <string name="title_activity_fa_qi">FaQiActivity</string>
+    <string name="title_activity_fa_qi_info">FaQiInfoActivity</string>
+    <string name="title_activity_fo_xiang_ding_zhi">FoXiangDingZhiActivity</string>
+    <string name="title_activity_fo_xiang_info">FoXiangInfoActivity</string>
 
 </resources>

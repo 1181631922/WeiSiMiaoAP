@@ -16,4 +16,7 @@
     <color name="red">#ff0000</color>
     <color name="yellow_about">#fef9b7</color>
     <color name="yellow_about2">#fefbcd</color>
+    <color name="tab_title_normal_color">#262726</color>
+    <color name="tab_title_pressed_color">#16982b</color>
+    <color name="tab_middle_line_color">#5c882c</color>
 </resources>

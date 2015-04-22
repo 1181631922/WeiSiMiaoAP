@@ -1,10 +1,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.xj.af.gdl.ShopsyDetailActivity">
+
     <ImageView
         android:id="@+id/shopsyDetail_imageView1"
         android:layout_width="fill_parent"
@@ -24,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         style="?android:attr/buttonBarStyle"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/shopsy_pay_alipay_onlien"
@@ -40,15 +43,21 @@
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="match_parent"
             android:layout_weight="1"
-            android:layout_height="50dip"
+            android:layout_height="40dip"
+            android:background="@drawable/login_selector"
             android:text="@string/pay_alipay_foward" />
+
+        <View
+            android:layout_width="15dp"
+            android:layout_height="40dp" />
 
         <Button
             android:id="@+id/shopsy_pay_bank"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="match_parent"
             android:layout_weight="1"
-            android:layout_height="50dip"
+            android:background="@drawable/login_selector"
+            android:layout_height="40dip"
             android:text="@string/pay_bank" />
 
     </LinearLayout>

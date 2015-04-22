@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_gravity="center_horizontal"
-        android:background="#cc6633"
+        android:background="#2D3238"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -31,11 +31,13 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <ImageView
+    <TextView
         android:id="@+id/imageview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/xianjian01"></ImageView>
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:text="河北如是科技有限公司"
+        />
 
 </LinearLayout>

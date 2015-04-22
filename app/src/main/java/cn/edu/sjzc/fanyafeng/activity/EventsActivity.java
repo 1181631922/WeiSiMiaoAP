@@ -3,6 +3,7 @@ package cn.edu.sjzc.fanyafeng.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.xj.af.R;
 import com.xj.af.common.BaseBackActivity;
@@ -88,6 +90,24 @@ public class EventsActivity extends BaseBackActivity {
         }
     }
 
+    class Refresh implements Runnable {
+        @Override
+        public void run() {
+            if ("true".equals(lastPage)) {
+                k = 1;
+            } else {
+                k++;
+            }
+            initData(k);
+            eventProgressBar.setVisibility(View.GONE);
+            eventAdapter = new EventAdapter(EventsActivity.this, eventBeans);
+            event_listview.setAdapter(eventAdapter);
+
+            event_listview.setOnItemClickListener(new eventInfoOnItemClickListener());
+            refreshableView.finishRefreshing();
+        }
+    }
+
     private void initView() {
         this.eventProgressBar = (ProgressBar) EventsActivity.this.findViewById(R.id.event_progress);
         this.event_name = (TextView) EventsActivity.this.findViewById(R.id.event_name);
@@ -118,38 +138,44 @@ public class EventsActivity extends BaseBackActivity {
                         JSONArray eveArray = jsonObject.getJSONArray("content");
 
                         lastPage = jsonObject.getString("last");
+                        if (eveArray == null) {
+                            Toast.makeText(getApplicationContext(), "寺院未发布活动，敬请期待！",
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
 
-                        eventBeans = new ArrayList<EventBean>();
-                        for (int i = 0; i < eveArray.length(); i++) {
-                            JSONObject eveobj = eveArray.getJSONObject(i);
-                            String id = eveobj.getString("id");
-                            String EventInfoAPI = getServerURL() + "/m/news/newsDetail/" + id;
-                            String title = eveobj.getString("title");
-                            String createTime = eveobj.getString("createTime");
-                            if (!createTime.equals("null")) {
-                                createTime = "开始时间：" + getMilliToDate(createTime);
-                            } else {
-                                createTime = null;
+                            eventBeans = new ArrayList<EventBean>();
+                            for (int i = 0; i < eveArray.length(); i++) {
+                                JSONObject eveobj = eveArray.getJSONObject(i);
+                                String id = eveobj.getString("id");
+                                String EventInfoAPI = getServerURL() + "/m/news/newsDetail/" + id;
+                                String title = eveobj.getString("title");
+                                String createTime = eveobj.getString("createTime");
+                                if (!createTime.equals("null")) {
+                                    createTime = "开始时间：" + getMilliToDate(createTime);
+                                } else {
+                                    createTime = null;
+                                }
+                                String endTime = eveobj.getString("endTime");
+                                if (!endTime.equals("null")) {
+                                    endTime = "结束时间：" + getMilliToDate(endTime);
+                                } else {
+                                    endTime = null;
+                                }
+                                String money = "报名金额：" + eveobj.getString("money");
+                                String smallPic = getServerURL() + eveobj.getString("smallPic");
+                                String des = eveobj.getString("des");
+
+                                Map<String, Object> map = new HashMap<String, Object>();
+                                map.put("eveName", title);
+                                map.put("eveApi", EventInfoAPI);
+                                map.put("eveId", eveobj.getString("id"));
+                                map.put("eveMoney", eveobj.getString("money"));
+                                eventsList.add(map);
+                                eventBeans.add(new EventBean(smallPic, title, createTime, endTime, des, money));
+
                             }
-                            String endTime = eveobj.getString("endTime");
-                            if (!endTime.equals("null")) {
-                                endTime = "结束时间：" + getMilliToDate(endTime);
-                            } else {
-                                endTime = null;
-                            }
-                            String money = "报名金额：" + eveobj.getString("money");
-                            String smallPic = getServerURL() + eveobj.getString("smallPic");
-                            String des = eveobj.getString("des");
-
-                            Map<String, Object> map = new HashMap<String, Object>();
-                            map.put("eveName", title);
-                            map.put("eveApi", EventInfoAPI);
-                            map.put("eveId", eveobj.getString("id"));
-                            map.put("eveMoney", eveobj.getString("money"));
-                            eventsList.add(map);
-                            eventBeans.add(new EventBean(smallPic, title, createTime, endTime, des, money));
-
                         }
+
                     } catch (JSONException e) {
                         e.printStackTrace();
 
@@ -194,12 +220,11 @@ public class EventsActivity extends BaseBackActivity {
                     refreshableView.setOnRefreshListener(new RefreshableView.PullToRefreshListener() {
                         @Override
                         public void onRefresh() {
-                            if (lastPage.equalsIgnoreCase("true")) {
+                            if ("true".equals(lastPage)) {
                                 k = 1;
                             } else {
                                 k++;
                             }
-                            Log.d("-----------------------------------------------",""+k);
                             initData(k);
                             eventProgressBar.setVisibility(View.GONE);
                             eventAdapter = new EventAdapter(EventsActivity.this, eventBeans);
@@ -215,6 +240,7 @@ public class EventsActivity extends BaseBackActivity {
             }
         }
     };
+
 
     protected class eventInfoOnItemClickListener implements AdapterView.OnItemClickListener {
         @Override

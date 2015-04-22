@@ -2,29 +2,28 @@ package com.xj.af.gdl;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.xj.af.R;
-
 import com.xj.af.common.BaseXjFragment;
-import com.xj.af.gdl.dummy.DummyContent;
 import com.xj.af.util.StrUtil;
 import com.xj.af.util.http.GetUtil;
+
 import org.apache.http.ParseException;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -81,7 +80,8 @@ public class GdlItemFragment extends BaseXjFragment {
             unitId = getArguments().getString(ARG_PARAM2);
         }
         lstImageItem = new ArrayList();
-        saImageItems = new SimpleAdapter(getActivity(),lstImageItem,R.layout.shopsy_item,new String[] { "ItemImage", "ItemText" },
+        saImageItems = new SimpleAdapter(getActivity(),lstImageItem,
+                R.layout.shopsy_item,new String[] { "ItemImage", "ItemText" },
                 new int[] { R.id.shopsy_ItemImage, R.id.shopsy_ItemText });
 
     }
@@ -91,6 +91,12 @@ public class GdlItemFragment extends BaseXjFragment {
 
         View view  =  inflater.inflate(R.layout.fragment_gdl_grid,container,false);
         gridView = (GridView)view.findViewById(R.id.gdl_gridView);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                view.setBackgroundColor(Color.RED);
+            }
+        });
         //setListAdapter(saImageItems);
         return view;
     }

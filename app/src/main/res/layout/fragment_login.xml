@@ -5,78 +5,162 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin" tools:context="com.xj.af.persion.LoginFragment">
+    android:background="@drawable/index_bg_"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.xj.af.persion.LoginFragment">
+
+    <LinearLayout
+        android:id="@+id/upmost"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/bottom_bg_"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/first"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingBottom="7dp"
+                android:paddingTop="13dp"
+                android:text="个人中心"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+        </RelativeLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/persion_login_linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="10dip"
-        android:layout_marginRight="10dip"
         android:layout_marginTop="50dip"
-        android:orientation="vertical" >
+        android:orientation="vertical">
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="#808A87" />
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="#808A87" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dip">
+            android:layout_height="40dp"
+            android:background="#FFFFFF"
+            >
 
             <TextView
                 android:id="@+id/textView1"
                 style="@style/settingText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="用户名:"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="3dp"
+                android:gravity="center"
+                android:textColor="#000000" />
 
             <EditText
                 android:id="@+id/persion_username_editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10" >
+                android:layout_height="35dp"
+                android:hint="请输入用户名"
+                android:background="@android:color/transparent"
+                android:ems="10"
+                android:layout_width="fill_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="1dp"
+                android:textSize="16sp">
 
-                <requestFocus />
             </EditText>
         </LinearLayout>
 
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#808A87" />
+
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical">
+            android:layout_height="40dp"
+            android:background="#FFFFFF"
+            android:gravity="center">
 
             <TextView
                 style="@style/settingText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="密　码:"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="3dp"
+                android:gravity="center"
+                android:textColor="#000000" />
 
             <EditText
                 android:id="@+id/persion_password_editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:layout_width="fill_parent"
+                android:layout_height="35dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="1dp"
+                android:background="@android:color/transparent"
+                android:hint="请输入密码"
+                android:textSize="16sp" />
         </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#808A87" />
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dip"
             android:layout_weight="1"
-            android:gravity="center_horizontal" >
-
+            android:orientation="horizontal"
+            >
+            <View
+                android:layout_width="40dip"
+                android:layout_height="45dip"
+                android:background="@drawable/index_bg_" />
             <Button
                 android:id="@+id/persion_regedit_button"
-                android:layout_width="120dip"
-                android:layout_height="45dip"
+                android:layout_width="40dip"
+                android:layout_height="40dip"
+                android:layout_weight="1"
+                android:paddingRight="10dp"
+                android:background="@drawable/login_selector"
                 android:text="注册" />
-
+            <View
+                android:layout_width="40dip"
+                android:layout_height="45dip"
+                android:background="@drawable/index_bg_" />
             <Button
                 android:id="@+id/persion_login_button"
-                android:layout_width="120dip"
-                android:layout_height="45dip"
+                android:layout_width="40dip"
+                android:layout_height="40dip"
+                android:paddingLeft="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/login_selector"
                 android:text="登录" />
+            <View
+                android:layout_width="40dip"
+                android:layout_height="45dip"
+                android:background="@drawable/index_bg_" />
         </LinearLayout>
     </LinearLayout>
 

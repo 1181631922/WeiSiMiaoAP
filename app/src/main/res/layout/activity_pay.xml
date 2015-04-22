@@ -75,8 +75,9 @@
         <Button
             android:id="@+id/pay_submit_button1"
             android:layout_width="60dip"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_gravity="right"
+            android:background="@drawable/login_selector"
             android:layout_marginRight="50dip"
             android:text="支付" />
     </LinearLayout>

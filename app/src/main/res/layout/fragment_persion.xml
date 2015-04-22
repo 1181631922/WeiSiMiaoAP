@@ -203,11 +203,12 @@
         <Button
             android:id="@+id/persion_loginout_button"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginLeft="15dip"
             android:layout_marginRight="15dip"
             android:layout_marginTop="20dip"
             android:text="登出"
+            android:background="@drawable/login_selector"
             android:bottomLeftRadius="10.0dip"
             android:bottomRightRadius="10.0dip"
             android:topLeftRadius="10.0dip"

@@ -6,12 +6,12 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".PersionActivity" >
+    tools:context=".PersionActivity">
 
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@drawable/news_sort_bg"
+        android:background="@drawable/index_bg_"
         android:contentDescription="@string/app_name2"
         android:scaleType="fitXY" />
 
@@ -20,12 +20,12 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
+        android:layout_alignParentTop="true">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/persion_logined_linearLayout"
@@ -33,7 +33,7 @@
                 android:layout_height="0dip"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:visibility="gone" >
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -43,13 +43,13 @@
                     android:layout_marginTop="20dip"
                     android:background="@drawable/nor_concor"
                     android:orientation="vertical"
-                    android:visibility="visible" >
+                    android:visibility="visible">
 
                     <RelativeLayout
                         android:id="@+id/persion_wenti_relative"
                         android:layout_width="match_parent"
                         android:layout_height="40dip"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="12dip"
@@ -80,7 +80,7 @@
                         android:id="@+id/persion_huifu_relative"
                         android:layout_width="match_parent"
                         android:layout_height="40dip"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/persion_huifu_textView"
@@ -113,7 +113,7 @@
                     android:layout_height="0dip"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:visibility="visible" >
+                    android:visibility="visible">
 
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -123,13 +123,13 @@
                         android:layout_marginTop="20dip"
                         android:background="@drawable/nor_concor"
                         android:orientation="vertical"
-                        android:visibility="visible" >
+                        android:visibility="visible">
 
                         <RelativeLayout
                             android:id="@+id/persion_suixi_relative"
                             android:layout_width="match_parent"
                             android:layout_height="40dip"
-                            android:orientation="horizontal" >
+                            android:orientation="horizontal">
 
                             <ImageView
                                 android:layout_width="12dip"
@@ -160,7 +160,7 @@
                             android:id="@+id/persion_gdl_relative"
                             android:layout_width="match_parent"
                             android:layout_height="40dip"
-                            android:orientation="horizontal" >
+                            android:orientation="horizontal">
 
                             <TextView
                                 android:id="@+id/persion_gdl_textView"
@@ -179,7 +179,8 @@
                                 android:background="@drawable/right_arror_gray"
                                 android:contentDescription="@string/app_name2" />
                         </RelativeLayout>
-                         <ImageView
+
+                        <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="1dip"
                             android:background="@drawable/line_gray"
@@ -190,7 +191,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="40dip"
                             android:visibility="gone"
-                            android:orientation="horizontal" >
+                            android:orientation="horizontal">
 
                             <TextView
                                 android:id="@+id/persion_news_textView"
@@ -211,8 +212,7 @@
                         </RelativeLayout>
                     </LinearLayout>
                 </LinearLayout>
-                
-                
+
 
                 <Button
                     android:id="@+id/persion_loginout_button"
@@ -225,80 +225,113 @@
                     android:bottomLeftRadius="10.0dip"
                     android:bottomRightRadius="10.0dip"
                     android:topLeftRadius="10.0dip"
-                    android:topRightRadius="10.0dip" 
-                    />
+                    android:topRightRadius="10.0dip" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/persion_login_linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dip"
-                android:layout_marginRight="10dip"
                 android:layout_marginTop="50dip"
-                android:orientation="vertical" >
-
+                android:orientation="vertical">
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:background="#808A87" />
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" >
+                    android:layout_height="40dp"
+                    android:background="#FFFFFF"
+                    android:layout_weight="1">
 
                     <TextView
                         android:id="@+id/textView1"
                         style="@style/settingText"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:text="用户名:"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center"
+                        android:textColor="#000000"/>
 
                     <EditText
                         android:id="@+id/persion_username_editText"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10" >
+                        android:layout_height="35dp"
+                        android:ems="10"
+                        android:background="@android:color/transparent"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="1dp"
+                        android:textSize="16sp">
 
                         <requestFocus />
                     </EditText>
                 </LinearLayout>
-
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:background="#808A87" />
                 <LinearLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="1" >
+                    android:background="#FFFFFF"
+                    android:layout_weight="1">
 
                     <TextView
                         style="@style/settingText"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:text="密　码:"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center"
+                        android:textColor="#000000"/>
 
                     <EditText
                         android:id="@+id/persion_password_editText"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:ems="10"
-                        android:inputType="textPassword" />
+                        android:inputType="textPassword"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="1dp"
+                        android:background="@android:color/transparent"
+                        android:hint="请输入密码"
+                        android:textSize="16sp"/>
                 </LinearLayout>
-
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:background="#808A87" />
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dip"
                     android:layout_weight="1"
-                    android:gravity="center_horizontal" >
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal">
 
                     <Button
                         android:id="@+id/persion_regedit_button"
                         android:layout_width="120dip"
                         android:layout_height="45dip"
+                        android:paddingLeft="10dp"
+                        android:background="@drawable/login_selector"
                         android:text="注册" />
+
+                    <View
+                        android:layout_width="20dp"
+                        android:layout_height="45dp" />
 
                     <Button
                         android:id="@+id/persion_login_button"
                         android:layout_width="120dip"
                         android:layout_height="45dip"
+                        android:background="@drawable/login_selector"
                         android:text="登录" />
                 </LinearLayout>
             </LinearLayout>

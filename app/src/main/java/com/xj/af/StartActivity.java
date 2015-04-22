@@ -187,7 +187,6 @@ public class StartActivity extends BaseActivity {
             fileLength = connection.getContentLength();
             int bufferLen = 1024;
             byte[] buffer = new byte[bufferLen];
-            Log.d("xj", "fileLength:" + fileLength);
             message.what = 0;
             progressHandler.sendMessage(message);
             int count = 0;
@@ -237,6 +236,7 @@ public class StartActivity extends BaseActivity {
             String serverURL = "";
             unitId = DataUtils.getUnitId(getApplicationContext());
             String url = getServerURL() + "/api/start/init";
+            Log.d("-------------------------------------------------------------------------------------------url",url);
             Context context = getWindow().getContext();
             TelephonyManager telephonemanage = (TelephonyManager) context
                     .getSystemService(Context.TELEPHONY_SERVICE);
@@ -266,6 +266,7 @@ public class StartActivity extends BaseActivity {
                 String str = PostUtil.postData(url, params);
                 if (str != null && !str.equals("")) {
                     JSONObject jo = new JSONObject(str);
+                    Log.d("-------------jo-----------",jo.toString());
                     //保存登录结果
                     String loginResult = jo.getString("loginResult");
                     String unitInfo = jo.getString("unit");//单位信息，判断是否需要初始化
@@ -300,9 +301,12 @@ public class StartActivity extends BaseActivity {
 
                     // 检测版本升级
                     String appInfo = jo.getString("appInfo");
+                    Log.d("-------------------appinfo----------",appInfo);
                     if (StrUtil.isNotBlank(appInfo)) {
                         JSONObject jso = new JSONObject(appInfo);
+
                         String durl = jso.getString("downloadUrl");
+                        Log.d("--------------------------drul---------",durl);
                         String ver = jso.getString("version");
                         updateInfo = jso.getString("des");
                         int status = jso.getInt("status");

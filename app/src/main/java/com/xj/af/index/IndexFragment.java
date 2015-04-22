@@ -123,20 +123,10 @@ public class IndexFragment extends BaseFragment {
                 i.putExtra(TabActivity.key, TabActivity.JiangTang);
                 startActivity(i);
             }else if("发现".equals(txt)){
-               // Intent i = new Intent(getActivity(),SiMiaoActivity.class);
-               // i.putExtra("enName","jingDianJieDu");
-               // i.putExtra("title","经典解读" );
-               // startActivity(i);
                 Intent i = new Intent(getActivity(), MainTabActivity.class);
                 startActivity(i);
-//                Toast.makeText(getActivity(), "马上开通，敬请期待", Toast.LENGTH_SHORT).show();
             }
             else if("活动".equals(txt)){
-               // Intent i = new Intent(getActivity(),SiMiaoActivity.class);
-               // i.putExtra("url", getServerURL()+"/m/news/newsDetail/enName/dangJiaZhuChi/"+getUnitId());
-               // i.putExtra("title", "当家主持");
-               // startActivity(i);
-
                 Intent i=new Intent(getActivity(), EventsActivity.class);
                 startActivity(i);
 
@@ -169,7 +159,6 @@ public class IndexFragment extends BaseFragment {
 
     @Override
     public void onAttach(Activity activity) {
-        Log.d("xj","======================onAttach()");
         super.onAttach(activity);
         try {
             mListener = (OnFragmentInteractionListener) activity;
@@ -179,7 +168,16 @@ public class IndexFragment extends BaseFragment {
         }
         ArrayList<HashMap<String, Object>> lstImageItem = new ArrayList<HashMap<String, Object>>();
         String wenzi[] = {"寺庙","佛事","讲堂","发现","活动","结缘"};
-        int pics[]={R.drawable.index_ico_simiao,R.drawable.index_ico1,R.drawable.index_ico9,R.drawable.index_ico4,R.drawable.index_ico7,R.drawable.index_ico3,R.drawable.index_ico7,R.drawable.index_ico8,R.drawable.index_ico9};
+        int pics[]={
+                R.drawable.index_ico_simiao_,
+                R.drawable.index_ico1_,
+                R.drawable.index_ico9_,
+                R.drawable.index_ico4_,
+                R.drawable.index_ico7_,
+                R.drawable.index_ico3_,
+                R.drawable.index_ico7_,
+                R.drawable.index_ico8,
+                R.drawable.index_ico9_};
         for(int i=0;i<6;i++)  {
             HashMap<String, Object> map = new HashMap<String, Object>();
             map.put("ItemImage", pics[i]);//添加图像资源的ID
@@ -190,7 +188,8 @@ public class IndexFragment extends BaseFragment {
                 lstImageItem,
                 R.layout.index_item,
                 new String[] {"ItemImage","ItemText"},
-                new int[] {R.id.index_ItemImage,R.id.index_ItemText}
+                new int[] {R.id.index_ItemImage,
+                        R.id.index_ItemText}
         );
     }
 

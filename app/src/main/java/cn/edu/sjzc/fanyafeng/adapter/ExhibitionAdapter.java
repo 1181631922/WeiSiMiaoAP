@@ -74,7 +74,7 @@ public class ExhibitionAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.exhibition_img.setImageResource(R.drawable.event);
+//        holder.exhibition_img.setImageResource(R.drawable.event);
         mImageLoader.DisplayImage(exhibitionBeans.get(position).getExhibitionImg(), holder.exhibition_img, false);
         holder.exhibition_desc.setText(exhibitionBeans.get(position).getExhibitionDesc());
         holder.exhibition_time.setText(exhibitionBeans.get(position).getExhibitionTime());

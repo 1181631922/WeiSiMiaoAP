@@ -53,7 +53,7 @@ public class ExhibitionFragment extends Fragment{
     private void initData(){
         exhibitionBeans = new ArrayList<ExhibitionBean>();
         exhibitionBeanArray = new ExhibitionBean[]{
-                new ExhibitionBean("http://hiphotos.baidu.com/lzc196806/pic/item/d84f738da76514d2f11f3665.jpg","这是石家庄的展会","2015/4/11","石家庄",R.drawable.exhibition_back),
+                new ExhibitionBean("http://121.40.142.138:81//ueditor/jsp/upload/image/20150417/1429233271312023017.jpg","这是石家庄的展会","2015/4/11","石家庄",R.drawable.exhibition_back),
                 new ExhibitionBean("http://img.pusa123.com/www/uploads/allimg/130602/5424_130602094335_1.jpg","这是唐山的展会","2015/4/11","唐山",R.drawable.exhibition),
                 new ExhibitionBean("http://img.pusa123.com/www/uploads/allimg/150403/17422_150403102211_1.jpg","这是秦皇岛的展会","2015/3/11","秦皇岛",R.drawable.exhibition),
                 new ExhibitionBean("http://img.pusa123.com/www/uploads/allimg/150403/17422_150403151837_1.jpg","这是衡水的展会","2015/3/12","衡水",R.drawable.exhibition_back)

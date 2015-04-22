@@ -65,7 +65,6 @@ public class BaseFragment extends Fragment {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-        Log.d("xj","===================onCreate()");
 		super.onCreate(savedInstanceState);
 		context = getActivity().getApplicationContext();
         try {
@@ -82,7 +81,6 @@ public class BaseFragment extends Fragment {
 
 	@Override
 	public  View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.d("xj","===================onCreateView()");
         this.inflater = inflater;
 		this.container = container;
 		onCreateView(savedInstanceState);
@@ -97,7 +95,6 @@ public class BaseFragment extends Fragment {
 
 	@Override
 	public void onDestroyView() {
-        Log.d("xj","===================onDestroyView()");
 		super.onDestroyView();
 		contentView = null;
 		container = null;
@@ -109,7 +106,6 @@ public class BaseFragment extends Fragment {
 	}
 
 	public void setContentView(int layoutResID) {
-        Log.d("xj","===================setContentView()");
 		setContentView((ViewGroup) inflater.inflate(layoutResID, container, false));
 	}
 
@@ -130,7 +126,6 @@ public class BaseFragment extends Fragment {
 	// http://stackoverflow.com/questions/15207305/getting-the-error-java-lang-illegalstateexception-activity-has-been-destroyed
 	@Override
 	public void onDetach() {
-        Log.d("xj","===================onDetach()");
 		super.onDetach();
 		try {
 			Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
