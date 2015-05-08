@@ -25,7 +25,7 @@
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/bottom_bg_"
+                android:background="#4169E1"
                 android:gravity="center_horizontal">
 
                 <TextView
@@ -43,37 +43,284 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/imageView1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/chan_index" />
+                <FrameLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="200dip">
+
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/home_vp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="35dip"
+                        android:layout_gravity="bottom"
+
+                        android:gravity="center_horizontal"
+                        android:background="#20000000"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/home_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/white"
+                            android:layout_marginTop="3dip"
+                            android:layout_gravity="center_horizontal"
+                            android:text="这是标题" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dip"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:id="@+id/home_dot1"
+                                android:layout_height="5dip"
+                                android:layout_width="5dip"
+                                android:layout_marginLeft="3dip"
+                                android:layout_marginRight="3dip"
+                                android:background="@drawable/dot_focused" />
+
+                            <View
+                                android:id="@+id/home_dot2"
+                                android:layout_height="5dip"
+                                android:layout_width="5dip"
+                                android:layout_marginLeft="3dip"
+                                android:layout_marginRight="3dip"
+                                android:background="@drawable/dot_normal" />
+
+                            <View
+                                android:id="@+id/home_dot3"
+                                android:layout_height="5dip"
+                                android:layout_width="5dip"
+                                android:layout_marginLeft="3dip"
+                                android:layout_marginRight="3dip"
+                                android:background="@drawable/dot_normal" />
+
+                            <View
+                                android:id="@+id/home_dot4"
+                                android:layout_height="5dip"
+                                android:layout_width="5dip"
+                                android:layout_marginLeft="3dip"
+                                android:layout_marginRight="3dip"
+                                android:background="@drawable/dot_normal" />
+
+                            <View
+                                android:id="@+id/home_dot5"
+                                android:layout_height="5dip"
+                                android:layout_width="5dip"
+                                android:layout_marginLeft="3dip"
+                                android:layout_marginRight="3dip"
+                                android:background="@drawable/dot_normal" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </FrameLayout>
 
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="280dp"
-                    android:orientation="vertical"
-                    >
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp">
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="10dp">
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            >
+
+                            <Button
+                                android:id="@+id/index_simiao"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_gravity="center_horizontal"
+                                android:background="@drawable/index_ico_simiao_"
+                                android:paddingTop="5dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/black"
+                                android:text="寺庙"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            >
+
+                            <Button
+                                android:id="@+id/index_foshi"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_gravity="center_horizontal"
+                                android:background="@drawable/index_ico1_"
+                                android:paddingTop="5dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/black"
+                                android:text="佛事"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:paddingRight="7dp"
+                            android:orientation="vertical">
+                            >
+
+                            <Button
+                                android:id="@+id/index_jiangtang"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_gravity="center_horizontal"
+                                android:background="@drawable/index_ico9_"
+                                android:paddingTop="5dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/black"
+                                android:text="讲堂"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="10dp">
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            >
+
+                            <Button
+                                android:id="@+id/index_faxian"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_gravity="center_horizontal"
+                                android:background="@drawable/index_ico4_"
+                                android:paddingTop="5dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/black"
+                                android:text="发现"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            >
+
+                            <Button
+                                android:id="@+id/index_huodong"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_gravity="center_horizontal"
+                                android:background="@drawable/index_ico7_"
+                                android:paddingTop="5dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/black"
+                                android:text="活动"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:paddingRight="7dp"
+                            android:orientation="vertical">
+                            >
+
+                            <Button
+                                android:id="@+id/index_jieyuan"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_gravity="center_horizontal"
+                                android:background="@drawable/index_ico3_"
+                                android:paddingTop="5dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/black"
+                                android:text="结缘"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
 
                     <GridView
                         android:id="@+id/index_gridView"
                         android:layout_width="match_parent"
                         android:layout_height="240dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginTop="50dp"
                         android:horizontalSpacing="25dp"
                         android:numColumns="3"
+                        android:visibility="gone"
                         android:verticalSpacing="15dp"></GridView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"></LinearLayout>
 
                 </LinearLayout>
 

@@ -236,7 +236,7 @@ public class StartActivity extends BaseActivity {
             String serverURL = "";
             unitId = DataUtils.getUnitId(getApplicationContext());
             String url = getServerURL() + "/api/start/init";
-            Log.d("-------------------------------------------------------------------------------------------url",url);
+            Log.d("----------------------------------url",url);
             Context context = getWindow().getContext();
             TelephonyManager telephonemanage = (TelephonyManager) context
                     .getSystemService(Context.TELEPHONY_SERVICE);
@@ -256,6 +256,7 @@ public class StartActivity extends BaseActivity {
                 String password = sharedata.getString(Contant.LOGIN_DATA_PASSWORD, "");
                 params.put("username", username);
                 params.put("password", password);
+//                JPushInterface.setTags();
                 JPushInterface.setAlias(getApplication(),username,new TagAliasCallback() {
                     @Override
                     public void gotResult(int i, String s, Set<String> strings) {

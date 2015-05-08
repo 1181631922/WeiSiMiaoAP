@@ -3,11 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingRight="15dp"
+    android:paddingLeft="15dp"
     tools:context="cn.edu.sjzc.fanyafeng.fragment.XiangLuFragment">
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -27,7 +34,6 @@
                 android:id="@+id/xianglu_frag_one_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="这是供桌的标题1"
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:paddingTop="8dp"
@@ -44,7 +50,6 @@
                 android:id="@+id/xianglu_frag_two_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="这是供桌的标题2"
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:paddingTop="10dp"
@@ -70,7 +75,6 @@
                 android:id="@+id/xianglu_frag_three_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="这是供桌的标题3"
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:paddingTop="8dp"
@@ -87,7 +91,6 @@
                 android:id="@+id/xianglu_frag_four_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="这是供桌的标题4"
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:paddingTop="10dp"
@@ -95,5 +98,13 @@
         </LinearLayout>
     </LinearLayout>
 
-
+        <Button
+            android:id="@+id/xianglu_but"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="@drawable/login_selector"
+            android:text="查看更多香炉信息" />
+    </LinearLayout>
 </RelativeLayout>

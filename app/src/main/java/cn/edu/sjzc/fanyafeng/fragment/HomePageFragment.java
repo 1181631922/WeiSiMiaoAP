@@ -60,25 +60,19 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
     private int currPage = 0;// 当前显示的页
     private int oldPage = 0;// 上一次显示的页
     private Button home_gongzhuo, home_xianglu, home_guzhong, home_simiao, home_zhuangshi, home_sengfu, home_faqi, home_foxiang;
-    private ImageButton home_frag_one_ib,home_frag_two_ib,home_frag_three_ib,home_frag_four_ib;
+    private ImageButton home_frag_one_ib, home_frag_two_ib, home_frag_three_ib, home_frag_four_ib;
 
     //自定义viewpager小模块
-    private ViewPager viewPagerTab;
-    private ImageView imageView;
-    private TextView tab1_gongzhuo, tab1_xianglu, tab1_guzhong, tab1_simiao;
+    private ViewPager viewPagerTab, viewPagerTab2;
+    private TextView tab1_gongzhuo, tab1_xianglu, tab1_guzhong, tab1_simiao, tab2_zhuangshi, tab2_sengfu, tab2_faqi, tab2_fuxiang;
+    private ImageView tab1_gongzhuo_iv, tab1_xianglu_iv, tab1_guzhong_iv, tab1_simiao_iv, tab2_zhuangshi_iv, tab2_sengfu_iv, tab2_faqi_iv, tab2_fuxiang_iv;
     private List<Fragment> fragments;
-    private int offset;
-    private int currIndex = 0;
-    private int bmpW;
-    private int selectedColor, unSelectedColor;
-    private static final int pageSizeTab = 4;
+    private int selectedColor, unSelectedColor, tabSelectedColor, tabUnSelectedColor;
     private static String TAG = "生命周期";
-    private ImageView ceshitupian;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d("-------------------第二个-----------------onCreateView", TAG);
         return inflater.inflate(R.layout.fragment_homepage, container, false);
 
     }
@@ -86,11 +80,12 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Log.d("--------------------第四个------------------onActivityCreated", TAG);
         init();
         initView();
         InitTextView();
         InitViewPager();
+        InitTextView2();
+        InitViewPager2();
     }
 
 
@@ -111,24 +106,18 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
         this.home_faqi.setOnClickListener(this);
         this.home_foxiang = (Button) getActivity().findViewById(R.id.home_foxiang);
         this.home_foxiang.setOnClickListener(this);
-//        //viewpager
-//        selectedColor = getResources().getColor(R.color.tab_title_pressed_color);
-//        unSelectedColor = getResources().getColor(R.color.tab_title_normal_color);
-//        InitImageView();
 
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Log.d("-------------------第三个------------------onViewCreated", TAG);
 //        InitTextView();
 //        InitViewPager();
     }
 
     @Override
     public void onAttach(Activity activity) {
-        Log.d("-------------------第一个------------------onAttach", TAG);
         super.onAttach(activity);
 
     }
@@ -146,6 +135,7 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
         Fragment siMiaoFragment = new SiMiaoFragment();
 
         fragments = new ArrayList<Fragment>();
+
         fragments.add(gongZhuoFragment);
         fragments.add(xiangLuFragment);
         fragments.add(guZhongFragment);
@@ -153,7 +143,7 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
 
         viewPagerTab.setAdapter(new tabPagerAdapter(getChildFragmentManager(), fragments));
         viewPagerTab.setCurrentItem(0);
-        viewPagerTab.setOnPageChangeListener(new TabOnPageChangeListener());
+        viewPagerTab.setCanScroll(false);
     }
 
     /**
@@ -164,16 +154,28 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
         //viewpager
         this.selectedColor = getActivity().getResources().getColor(R.color.tab_title_pressed_color);
         this.unSelectedColor = getActivity().getResources().getColor(R.color.tab_title_normal_color);
+        this.tabSelectedColor = getActivity().getResources().getColor(R.color.tab_select);
+        this.tabUnSelectedColor = getActivity().getResources().getColor(R.color.tab_unselect);
 
         tab1_gongzhuo = (TextView) getActivity().findViewById(R.id.tab1_gongzhuo);
         tab1_xianglu = (TextView) getActivity().findViewById(R.id.tab1_xianglu);
         tab1_guzhong = (TextView) getActivity().findViewById(R.id.tab1_guzhong);
         tab1_simiao = (TextView) getActivity().findViewById(R.id.tab1_simiao);
 
+        tab1_gongzhuo_iv = (ImageView) getActivity().findViewById(R.id.tab1_gongzhuo_iv);
+        tab1_xianglu_iv = (ImageView) getActivity().findViewById(R.id.tab1_xianglu_iv);
+        tab1_guzhong_iv = (ImageView) getActivity().findViewById(R.id.tab1_guzhong_iv);
+        tab1_simiao_iv = (ImageView) getActivity().findViewById(R.id.tab1_simiao_iv);
+
         tab1_gongzhuo.setTextColor(selectedColor);
         tab1_xianglu.setTextColor(unSelectedColor);
         tab1_guzhong.setTextColor(unSelectedColor);
         tab1_simiao.setTextColor(unSelectedColor);
+
+        tab1_gongzhuo_iv.setBackgroundColor(tabSelectedColor);
+        tab1_xianglu_iv.setBackgroundColor(tabUnSelectedColor);
+        tab1_guzhong_iv.setBackgroundColor(tabUnSelectedColor);
+        tab1_simiao_iv.setBackgroundColor(tabUnSelectedColor);
 
         tab1_gongzhuo.setText("供桌/佛龛");
         tab1_xianglu.setText("香炉/大鼎");
@@ -184,8 +186,83 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
         tab1_xianglu.setOnClickListener(new tabOnClickListener(1));
         tab1_guzhong.setOnClickListener(new tabOnClickListener(2));
         tab1_simiao.setOnClickListener(new tabOnClickListener(3));
+
+        tab1_gongzhuo_iv.setOnClickListener(new tabOnClickListener(0));
+        tab1_xianglu_iv.setOnClickListener(new tabOnClickListener(1));
+        tab1_guzhong_iv.setOnClickListener(new tabOnClickListener(2));
+        tab1_simiao_iv.setOnClickListener(new tabOnClickListener(3));
     }
 
+
+    /**
+     * 初始化viewpager页面
+     *
+     * @param
+     */
+    private void InitViewPager2() {
+        viewPagerTab2 = (ViewPager) getActivity().findViewById(R.id.viewPagerTab2);
+        Fragment zhuangShiFragment = new ZhuangShiFragment();
+        Fragment sengFuFragment = new SengFuFragment();
+        Fragment faQiFragment = new FaQiFragment();
+        Fragment foXiangFragment = new FoXiangFragment();
+
+        fragments = new ArrayList<Fragment>();
+
+        fragments.add(zhuangShiFragment);
+        fragments.add(sengFuFragment);
+        fragments.add(faQiFragment);
+        fragments.add(foXiangFragment);
+
+        viewPagerTab2.setAdapter(new tabPagerAdapter2(getChildFragmentManager(), fragments));
+        viewPagerTab2.setCurrentItem(0);
+        viewPagerTab2.setCanScroll(false);
+    }
+
+    /**
+     * 初始化头标
+     */
+    private void InitTextView2() {
+        //viewpager
+        this.selectedColor = getActivity().getResources().getColor(R.color.tab_title_pressed_color);
+        this.unSelectedColor = getActivity().getResources().getColor(R.color.tab_title_normal_color);
+        this.tabSelectedColor = getActivity().getResources().getColor(R.color.tab_select);
+        this.tabUnSelectedColor = getActivity().getResources().getColor(R.color.tab_unselect);
+
+        tab2_zhuangshi = (TextView) getActivity().findViewById(R.id.tab2_zhuangshi);
+        tab2_sengfu = (TextView) getActivity().findViewById(R.id.tab2_sengfu);
+        tab2_faqi = (TextView) getActivity().findViewById(R.id.tab2_faqi);
+        tab2_fuxiang = (TextView) getActivity().findViewById(R.id.tab2_fuxiang);
+
+        tab2_zhuangshi_iv = (ImageView) getActivity().findViewById(R.id.tab2_zhuangshi_iv);
+        tab2_sengfu_iv = (ImageView) getActivity().findViewById(R.id.tab2_sengfu_iv);
+        tab2_faqi_iv = (ImageView) getActivity().findViewById(R.id.tab2_faqi_iv);
+        tab2_fuxiang_iv = (ImageView) getActivity().findViewById(R.id.tab2_fuxiang_iv);
+
+        tab2_zhuangshi.setTextColor(selectedColor);
+        tab2_sengfu.setTextColor(unSelectedColor);
+        tab2_faqi.setTextColor(unSelectedColor);
+        tab2_fuxiang.setTextColor(unSelectedColor);
+
+        tab2_zhuangshi_iv.setBackgroundColor(tabSelectedColor);
+        tab2_sengfu_iv.setBackgroundColor(tabUnSelectedColor);
+        tab2_faqi_iv.setBackgroundColor(tabUnSelectedColor);
+        tab2_fuxiang_iv.setBackgroundColor(tabUnSelectedColor);
+
+        tab2_zhuangshi.setText("寺庙装饰");
+        tab2_sengfu.setText("僧服/绣品");
+        tab2_faqi.setText("法器/法物");
+        tab2_fuxiang.setText("佛像定制");
+
+        tab2_zhuangshi.setOnClickListener(new tabOnClickListener2(0));
+        tab2_sengfu.setOnClickListener(new tabOnClickListener2(1));
+        tab2_faqi.setOnClickListener(new tabOnClickListener2(2));
+        tab2_fuxiang.setOnClickListener(new tabOnClickListener2(3));
+
+        tab2_zhuangshi_iv.setOnClickListener(new tabOnClickListener2(0));
+        tab2_sengfu_iv.setOnClickListener(new tabOnClickListener2(1));
+        tab2_faqi_iv.setOnClickListener(new tabOnClickListener2(2));
+        tab2_fuxiang_iv.setOnClickListener(new tabOnClickListener2(3));
+    }
 
     @Override
     public void onClick(View v) {
@@ -227,16 +304,16 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
     }
 
     public void init() {
-        images = new int[]{R.drawable.a_,
+        images = new int[]{R.drawable.a,
                 R.drawable.b_,
                 R.drawable.c_,
                 R.drawable.d_,
                 R.drawable.e_};
-        titles = new String[]{"请欣赏寺庙",
-                "请欣赏寺庙",
-                "请欣赏寺庙",
-                "请欣赏寺庙",
-                "请欣赏寺庙"};
+        titles = new String[]{"",
+                "",
+                "",
+                "",
+                ""};
         imageSource = new ArrayList<ImageView>();
         for (int i = 0; i < images.length; i++) {
             ImageView image = new ImageView(getActivity());
@@ -344,24 +421,45 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
                     tab1_xianglu.setTextColor(unSelectedColor);
                     tab1_guzhong.setTextColor(unSelectedColor);
                     tab1_simiao.setTextColor(unSelectedColor);
+
+                    tab1_gongzhuo_iv.setBackgroundColor(tabSelectedColor);
+                    tab1_xianglu_iv.setBackgroundColor(tabUnSelectedColor);
+                    tab1_guzhong_iv.setBackgroundColor(tabUnSelectedColor);
+                    tab1_simiao_iv.setBackgroundColor(tabUnSelectedColor);
+
                     break;
                 case 1:
                     tab1_gongzhuo.setTextColor(unSelectedColor);
                     tab1_xianglu.setTextColor(selectedColor);
                     tab1_guzhong.setTextColor(unSelectedColor);
                     tab1_simiao.setTextColor(unSelectedColor);
+
+                    tab1_gongzhuo_iv.setBackgroundColor(tabUnSelectedColor);
+                    tab1_xianglu_iv.setBackgroundColor(tabSelectedColor);
+                    tab1_guzhong_iv.setBackgroundColor(tabUnSelectedColor);
+                    tab1_simiao_iv.setBackgroundColor(tabUnSelectedColor);
                     break;
                 case 2:
                     tab1_gongzhuo.setTextColor(unSelectedColor);
                     tab1_xianglu.setTextColor(unSelectedColor);
                     tab1_guzhong.setTextColor(selectedColor);
                     tab1_simiao.setTextColor(unSelectedColor);
+
+                    tab1_gongzhuo_iv.setBackgroundColor(tabUnSelectedColor);
+                    tab1_xianglu_iv.setBackgroundColor(tabUnSelectedColor);
+                    tab1_guzhong_iv.setBackgroundColor(tabSelectedColor);
+                    tab1_simiao_iv.setBackgroundColor(tabUnSelectedColor);
                     break;
                 case 3:
                     tab1_gongzhuo.setTextColor(unSelectedColor);
                     tab1_xianglu.setTextColor(unSelectedColor);
                     tab1_guzhong.setTextColor(unSelectedColor);
                     tab1_simiao.setTextColor(selectedColor);
+
+                    tab1_gongzhuo_iv.setBackgroundColor(tabUnSelectedColor);
+                    tab1_xianglu_iv.setBackgroundColor(tabUnSelectedColor);
+                    tab1_guzhong_iv.setBackgroundColor(tabUnSelectedColor);
+                    tab1_simiao_iv.setBackgroundColor(tabSelectedColor);
                     break;
             }
             viewPagerTab.setCurrentItem(index);
@@ -369,50 +467,64 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    public class TabOnPageChangeListener implements OnPageChangeListener {
-        int one = offset * 3 + bmpW;//页卡1到页卡2的偏移量
-        int two = one * 3;//页卡1到页卡3的偏移量
+    private class tabOnClickListener2 implements View.OnClickListener {
+        private int index = 0;
 
-        public void onPageScrollStateChanged(int index) {
+        private tabOnClickListener2(int index) {
+            this.index = index;
         }
-
-        public void onPageScrolled(int arg0, float arg1, int arg2) {
-        }
-
 
         @Override
-        public void onPageSelected(int position) {
-            Animation animation = new TranslateAnimation(one * currIndex, one * position, 0, 0);
-            currIndex = position;
-            animation.setFillAfter(true);
-            animation.setDuration(300);
-
-            switch (position) {
+        public void onClick(View v) {
+            switch (index) {
                 case 0:
-                    tab1_gongzhuo.setTextColor(selectedColor);
-                    tab1_xianglu.setTextColor(unSelectedColor);
-                    tab1_guzhong.setTextColor(unSelectedColor);
-                    tab1_simiao.setTextColor(unSelectedColor);
+                    tab2_zhuangshi.setTextColor(selectedColor);
+                    tab2_sengfu.setTextColor(unSelectedColor);
+                    tab2_faqi.setTextColor(unSelectedColor);
+                    tab2_fuxiang.setTextColor(unSelectedColor);
+
+                    tab2_zhuangshi_iv.setBackgroundColor(tabSelectedColor);
+                    tab2_sengfu_iv.setBackgroundColor(tabUnSelectedColor);
+                    tab2_faqi_iv.setBackgroundColor(tabUnSelectedColor);
+                    tab2_fuxiang_iv.setBackgroundColor(tabUnSelectedColor);
+
                     break;
                 case 1:
-                    tab1_gongzhuo.setTextColor(unSelectedColor);
-                    tab1_xianglu.setTextColor(selectedColor);
-                    tab1_guzhong.setTextColor(unSelectedColor);
-                    tab1_simiao.setTextColor(unSelectedColor);
+                    tab2_zhuangshi.setTextColor(unSelectedColor);
+                    tab2_sengfu.setTextColor(selectedColor);
+                    tab2_faqi.setTextColor(unSelectedColor);
+                    tab2_fuxiang.setTextColor(unSelectedColor);
+
+                    tab2_zhuangshi_iv.setBackgroundColor(tabUnSelectedColor);
+                    tab2_sengfu_iv.setBackgroundColor(tabSelectedColor);
+                    tab2_faqi_iv.setBackgroundColor(tabUnSelectedColor);
+                    tab2_fuxiang_iv.setBackgroundColor(tabUnSelectedColor);
                     break;
                 case 2:
-                    tab1_gongzhuo.setTextColor(unSelectedColor);
-                    tab1_xianglu.setTextColor(unSelectedColor);
-                    tab1_guzhong.setTextColor(selectedColor);
-                    tab1_simiao.setTextColor(unSelectedColor);
+                    tab2_zhuangshi.setTextColor(unSelectedColor);
+                    tab2_sengfu.setTextColor(unSelectedColor);
+                    tab2_faqi.setTextColor(selectedColor);
+                    tab2_fuxiang.setTextColor(unSelectedColor);
+
+                    tab2_zhuangshi_iv.setBackgroundColor(tabUnSelectedColor);
+                    tab2_sengfu_iv.setBackgroundColor(tabUnSelectedColor);
+                    tab2_faqi_iv.setBackgroundColor(tabSelectedColor);
+                    tab2_fuxiang_iv.setBackgroundColor(tabUnSelectedColor);
                     break;
                 case 3:
-                    tab1_gongzhuo.setTextColor(unSelectedColor);
-                    tab1_xianglu.setTextColor(unSelectedColor);
-                    tab1_guzhong.setTextColor(unSelectedColor);
-                    tab1_simiao.setTextColor(selectedColor);
+                    tab2_zhuangshi.setTextColor(unSelectedColor);
+                    tab2_sengfu.setTextColor(unSelectedColor);
+                    tab2_faqi.setTextColor(unSelectedColor);
+                    tab2_fuxiang.setTextColor(selectedColor);
+
+                    tab2_zhuangshi_iv.setBackgroundColor(tabUnSelectedColor);
+                    tab2_sengfu_iv.setBackgroundColor(tabUnSelectedColor);
+                    tab2_faqi_iv.setBackgroundColor(tabUnSelectedColor);
+                    tab2_fuxiang_iv.setBackgroundColor(tabSelectedColor);
                     break;
             }
+            viewPagerTab2.setCurrentItem(index);
+
         }
     }
 
@@ -437,13 +549,13 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
         }
 
         public void setFragments(ArrayList<Fragment> fragments) {
-            if(this.fragmentList != null){
+            if (this.fragmentList != null) {
                 FragmentTransaction ft = fragmentManager.beginTransaction();
-                for(Fragment f:this.fragmentList){
+                for (Fragment f : this.fragmentList) {
                     ft.remove(f);
                 }
                 ft.commit();
-                ft=null;
+                ft = null;
                 fragmentManager.executePendingTransactions();
             }
             this.fragmentList = fragments;
@@ -455,27 +567,11 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
             return POSITION_NONE;
         }
 
-        /**
-         * 得到每个页面
-         *
-         * @param i
-         * @return
-         */
         @Override
         public Fragment getItem(int i) {
-//            return (fragmentList == null || fragmentList.size() == 0) ? null : fragmentList.get(i);
-//HomePageFragment homePageFragment =new HomePageFragment();
-//            Fragment gongZhuoFragment = new GongZhuoFragment();
             return fragmentList.get(i);
-//            return gongZhuoFragment;
         }
 
-        /**
-         * 得到每个title
-         *
-         * @param position
-         * @return
-         */
         @Override
         public CharSequence getPageTitle(int position) {
             return null;
@@ -483,20 +579,73 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-//GongZhuoFragment gongZhuoFragment =(GongZhuoFragment)super.instantiateItem(container, position);
-//            String title = fragmentList.get(position);
-//            gongZhuoFragment.setT
             return super.instantiateItem(container, position);
         }
 
-        /**
-         * 页面的总个数
-         *
-         * @return
-         */
         @Override
         public int getCount() {
-//            return fragmentList == null ? 0 : fragmentList.size();
+            return fragmentList.size();
+        }
+
+
+    }
+
+    /**
+     * 定义适配器
+     */
+    class tabPagerAdapter2 extends FragmentPagerAdapter {
+        private List<Fragment> fragmentList;
+        private FragmentManager fragmentManager;
+
+        /**
+         * 这个构造方法是必须写的
+         * 而且必须要重写getitem方法
+         *
+         * @param fragmentManager
+         * @param fragmentList
+         */
+        public tabPagerAdapter2(FragmentManager fragmentManager, List<Fragment> fragmentList) {
+            super(fragmentManager);
+            this.fragmentManager = fragmentManager;
+            this.fragmentList = fragmentList;
+        }
+
+        public void setFragments(ArrayList<Fragment> fragments) {
+            if (this.fragmentList != null) {
+                FragmentTransaction ft = fragmentManager.beginTransaction();
+                for (Fragment f : this.fragmentList) {
+                    ft.remove(f);
+                }
+                ft.commit();
+                ft = null;
+                fragmentManager.executePendingTransactions();
+            }
+            this.fragmentList = fragments;
+            notifyDataSetChanged();
+        }
+
+        @Override
+        public int getItemPosition(Object object) {
+            return POSITION_NONE;
+        }
+
+        @Override
+        public Fragment getItem(int i) {
+            return fragmentList.get(i);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return null;
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            return super.instantiateItem(container, position);
+        }
+
+        @Override
+        public int getCount() {
             return fragmentList.size();
         }
 

@@ -20,7 +20,7 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="40dp"
-            android:background="@drawable/bottom_bg_"
+            android:background="#4169E1"
             android:gravity="center_horizontal">
 
             <TextView
@@ -58,8 +58,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="#FFFFFF"
-            >
+            android:background="@color/white">
 
             <TextView
                 android:id="@+id/textView1"
@@ -89,13 +88,13 @@
 
         <View
             android:layout_width="fill_parent"
-            android:layout_height="1dp"
+            android:layout_height="1px"
             android:background="#808A87" />
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="40dp"
-            android:background="#FFFFFF"
+            android:background="@color/white"
             android:gravity="center">
 
             <TextView
@@ -121,9 +120,10 @@
                 android:hint="请输入密码"
                 android:textSize="16sp" />
         </LinearLayout>
+
         <View
             android:layout_width="fill_parent"
-            android:layout_height="1dp"
+            android:layout_height="1px"
             android:background="#808A87" />
 
         <LinearLayout
@@ -131,12 +131,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dip"
             android:layout_weight="1"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
+
             <View
                 android:layout_width="40dip"
-                android:layout_height="45dip"
-                android:background="@drawable/index_bg_" />
+                android:layout_height="45dip" />
+
             <Button
                 android:id="@+id/persion_regedit_button"
                 android:layout_width="40dip"
@@ -145,10 +145,11 @@
                 android:paddingRight="10dp"
                 android:background="@drawable/login_selector"
                 android:text="注册" />
+
             <View
                 android:layout_width="40dip"
-                android:layout_height="45dip"
-                android:background="@drawable/index_bg_" />
+                android:layout_height="45dip" />
+
             <Button
                 android:id="@+id/persion_login_button"
                 android:layout_width="40dip"
@@ -157,10 +158,10 @@
                 android:layout_weight="1"
                 android:background="@drawable/login_selector"
                 android:text="登录" />
+
             <View
                 android:layout_width="40dip"
-                android:layout_height="45dip"
-                android:background="@drawable/index_bg_" />
+                android:layout_height="45dip" />
         </LinearLayout>
     </LinearLayout>
 

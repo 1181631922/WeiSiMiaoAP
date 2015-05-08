@@ -32,7 +32,7 @@ public class EventInfoActivity extends BaseBackActivity implements View.OnClickL
     private ImageView event_info_img;
     private TextView event_info_name, event_info_time, event_info_detail;
     private Button event_info_submit_but;
-    private String eventinfo_img, eventinfo_name, eventinfo_detail, eventinfo_time,eventinfo_api,newsId,money;
+    private String eventinfo_img, eventinfo_name, eventinfo_detail, eventinfo_time, eventinfo_api, newsId, money;
     private ProgressDialog mDialog;
     private ProgressBar event_info_progress;
     private boolean isUse = true;
@@ -61,7 +61,7 @@ public class EventInfoActivity extends BaseBackActivity implements View.OnClickL
         eventinfo_api = it.getStringExtra("event_api");
         newsId = it.getStringExtra("event_newsId");
         money = it.getStringExtra("event_money");
-        this.event_info_progress = (ProgressBar)EventInfoActivity.this.findViewById(R.id.event_info_progress);
+        this.event_info_progress = (ProgressBar) EventInfoActivity.this.findViewById(R.id.event_info_progress);
         this.event_info_submit_but = (Button) EventInfoActivity.this.findViewById(R.id.event_info_submit_but);
         this.event_info_submit_but.setOnClickListener(this);
 
@@ -74,7 +74,8 @@ public class EventInfoActivity extends BaseBackActivity implements View.OnClickL
                 if (!Thread.currentThread().isInterrupted()) {
                     switch (msg.what) {
                         case 0:
-                            event_info_progress.showContextMenu();;
+                            event_info_progress.showContextMenu();
+                            ;
                             break;
                         case 1:
                             event_info_progress.setVisibility(View.GONE);
@@ -138,18 +139,18 @@ public class EventInfoActivity extends BaseBackActivity implements View.OnClickL
     }
 
     public void loadurl(final WebView view, final String url) {
-                handler.sendEmptyMessage(0);
-                view.loadUrl(url);// 载入网页
+        handler.sendEmptyMessage(0);
+        view.loadUrl(url);// 载入网页
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.event_info_submit_but:
-                Intent it_event_apply = new Intent(EventInfoActivity.this,EventApplyActivity.class);
-                it_event_apply.putExtra("eventapply_title",eventinfo_name);
-                it_event_apply.putExtra("newsId",newsId);
-                it_event_apply.putExtra("money",money);
+                Intent it_event_apply = new Intent(EventInfoActivity.this, EventApplyActivity.class);
+                it_event_apply.putExtra("eventapply_title", eventinfo_name);
+                it_event_apply.putExtra("newsId", newsId);
+                it_event_apply.putExtra("money", money);
                 startActivity(it_event_apply);
                 break;
             default:

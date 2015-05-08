@@ -3,7 +3,6 @@ package cn.edu.sjzc.fanyafeng.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.HandlerThread;
 import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
@@ -34,6 +33,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,9 +41,7 @@ import java.util.Map;
 
 import cn.edu.sjzc.fanyafeng.adapter.EventAdapter;
 import cn.edu.sjzc.fanyafeng.bean.EventBean;
-import cn.edu.sjzc.fanyafeng.util.RefreshableView;
-
-import java.text.SimpleDateFormat;
+import cn.edu.sjzc.fanyafeng.pulltorefresh.PullToRefreshLayout;
 
 public class EventsActivity extends BaseBackActivity {
 
@@ -52,7 +50,7 @@ public class EventsActivity extends BaseBackActivity {
     private TextView event_name, eventstart_time, eventend_time, event_money;
     private ListView event_listview;
     private EventAdapter eventAdapter;
-    private static List<EventBean> eventBeans;
+    private static List<EventBean> eventBeans=new ArrayList<EventBean>();
 
     private List<Map<String, Object>> eventsList = new ArrayList<Map<String, Object>>();
     private String eventImg, eventName, eventStartTime, eventEndTime, smallPic, createTime, endTime, des, money, lastPage;
@@ -63,9 +61,10 @@ public class EventsActivity extends BaseBackActivity {
     private int mCurIndex = 0;
     private static final int mLoadDataCount = 100;
     private boolean isNet;
-    private int k = 1;
-    private RefreshableView refreshableView;
+    private static int k = 1;
+    private boolean isFirstIn = true;
     private String SIYUANHUODOND = "/api/newssort/page/siYuanHuoDong/";
+    private PullToRefreshLayout ptrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +89,13 @@ public class EventsActivity extends BaseBackActivity {
         }
     }
 
+    class LoadThreadFirst implements Runnable {
+        @Override
+        public void run() {
+            initData(k);
+        }
+    }
+
     class Refresh implements Runnable {
         @Override
         public void run() {
@@ -104,7 +110,6 @@ public class EventsActivity extends BaseBackActivity {
             event_listview.setAdapter(eventAdapter);
 
             event_listview.setOnItemClickListener(new eventInfoOnItemClickListener());
-            refreshableView.finishRefreshing();
         }
     }
 
@@ -115,8 +120,40 @@ public class EventsActivity extends BaseBackActivity {
         this.eventend_time = (TextView) EventsActivity.this.findViewById(R.id.eventend_time);
         this.event_img = (ImageView) EventsActivity.this.findViewById(R.id.event_img);
         this.event_money = (TextView) EventsActivity.this.findViewById(R.id.event_money);
-        refreshableView = (RefreshableView) findViewById(R.id.events_refreshable);
+        ptrl = ((PullToRefreshLayout) findViewById(R.id.refresh_view));
+        ptrl.setOnRefreshListener(new MyListener());
         event_listview = (ListView) EventsActivity.this.findViewById(R.id.event_listview);
+
+    }
+
+
+
+    public class MyListener implements PullToRefreshLayout.OnRefreshListener {
+
+        @Override
+        public void onRefresh(final PullToRefreshLayout pullToRefreshLayout) {
+            new Handler() {
+                @Override
+                public void handleMessage(Message msg) {
+                    Thread refresh1 = new Thread(new LoadThreadFirst());
+                    refresh1.start();
+
+                    pullToRefreshLayout.refreshFinish(PullToRefreshLayout.SUCCEED);
+                }
+            }.sendEmptyMessageDelayed(0, 2000);
+        }
+
+        @Override
+        public void onLoadMore(final PullToRefreshLayout pullToRefreshLayout) {
+            new Handler() {
+                @Override
+                public void handleMessage(Message msg) {
+                    Thread refresh = new Thread(new Refresh());
+                    refresh.start();
+                    pullToRefreshLayout.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+                }
+            }.sendEmptyMessageDelayed(0, 2000);
+        }
 
     }
 
@@ -125,6 +162,7 @@ public class EventsActivity extends BaseBackActivity {
         HttpGet request;
         try {
             String SIYUANHUODOND_API_OLD = getServerURL() + SIYUANHUODOND + getUnitId() + "?page=";
+            Log.d("-----------------------------------------SIYUANHUODOND_API_OLD------------------------------",SIYUANHUODOND_API_OLD);
             String SIYUANHUODOND_API = SIYUANHUODOND_API_OLD + k;
             request = new HttpGet(new URI(SIYUANHUODOND_API));
             HttpResponse response = httpClient.execute(request);
@@ -139,7 +177,7 @@ public class EventsActivity extends BaseBackActivity {
 
                         lastPage = jsonObject.getString("last");
                         if (eveArray == null) {
-                            Toast.makeText(getApplicationContext(), "寺院未发布活动，敬请期待！",
+                            Toast.makeText(EventsActivity.this, "寺院未发布活动，敬请期待！",
                                     Toast.LENGTH_SHORT).show();
                         } else {
 
@@ -217,23 +255,6 @@ public class EventsActivity extends BaseBackActivity {
 
                     event_listview.setOnItemClickListener(new eventInfoOnItemClickListener());
 
-                    refreshableView.setOnRefreshListener(new RefreshableView.PullToRefreshListener() {
-                        @Override
-                        public void onRefresh() {
-                            if ("true".equals(lastPage)) {
-                                k = 1;
-                            } else {
-                                k++;
-                            }
-                            initData(k);
-                            eventProgressBar.setVisibility(View.GONE);
-                            eventAdapter = new EventAdapter(EventsActivity.this, eventBeans);
-                            event_listview.setAdapter(eventAdapter);
-
-                            event_listview.setOnItemClickListener(new eventInfoOnItemClickListener());
-                            refreshableView.finishRefreshing();
-                        }
-                    }, 0);
                     break;
                 case 1:
                     break;

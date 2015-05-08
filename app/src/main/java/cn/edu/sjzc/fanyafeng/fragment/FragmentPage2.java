@@ -44,7 +44,7 @@ public class FragmentPage2 extends Fragment {
     }
 
     public void init() {
-        images = new int[]{R.drawable.a_,
+        images = new int[]{R.drawable.a,
                 R.drawable.b_,
                 R.drawable.c_,
                 R.drawable.d_,

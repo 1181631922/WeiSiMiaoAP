@@ -131,6 +131,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="7dp"
+                    android:background="@color/white"
                     android:layout_weight="1"
                     android:orientation="vertical">
                     >
@@ -141,7 +142,7 @@
                         android:layout_height="50dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginLeft="0dp"
-                        android:background="@drawable/xiaodai"
+                        android:background="@drawable/gongzhuo"
                         android:paddingTop="5dp" />
 
                     <TextView
@@ -158,6 +159,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@color/white"
                     android:orientation="vertical">
                     >
 
@@ -167,7 +169,7 @@
                         android:layout_height="50dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_toRightOf="@id/home_gongzhuo"
-                        android:background="@drawable/rongzi"
+                        android:background="@drawable/xianglu"
                         android:paddingTop="5dp" />
 
                     <TextView
@@ -184,6 +186,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@color/white"
                     android:orientation="vertical">
                     >
 
@@ -193,7 +196,7 @@
                         android:layout_height="50dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_toRightOf="@id/home_xianglu"
-                        android:background="@drawable/danbao"
+                        android:background="@drawable/guzhong"
                         android:paddingTop="5dp" />
 
                     <TextView
@@ -209,8 +212,10 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="7dp"
+                    android:layout_marginRight="0dp"
                     android:layout_weight="1"
+                    android:paddingRight="7dp"
+                    android:background="@color/white"
                     android:orientation="vertical">
                     >
 
@@ -220,7 +225,7 @@
                         android:layout_height="50dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_toRightOf="@id/home_guzhong"
-                        android:background="@drawable/baoxian"
+                        android:background="@drawable/simiao"
                         android:paddingTop="5dp" />
 
                     <TextView
@@ -254,7 +259,7 @@
                         android:layout_below="@id/home_simiao"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/pe" />
+                        android:background="@drawable/zhuangshi" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -280,7 +285,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="5dp"
                         android:layout_toRightOf="@id/home_zhuangshi"
-                        android:background="@drawable/xintuo" />
+                        android:background="@drawable/sengfu" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -306,7 +311,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="5dp"
                         android:layout_toRightOf="@id/home_sengfu"
-                        android:background="@drawable/zhengquan" />
+                        android:background="@drawable/faqi" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -332,7 +337,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="5dp"
                         android:layout_toRightOf="@id/home_faqi"
-                        android:background="@drawable/yinhang" />
+                        android:background="@drawable/foxiang" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -347,8 +352,12 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="280dp"
-                android:paddingTop="15dp"
+                android:background="#E5E7E6"
+                android:layout_height="15dp"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -356,62 +365,120 @@
                     android:layout_width="match_parent"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:paddingBottom="10dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/tab1_gongzhuo"
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="供桌"
-                        android:textColor="@color/black"
-                        android:textSize="12dp" />
+                        android:layout_height="match_parent">
 
+                        <ImageView
+                            android:id="@+id/tab1_gongzhuo_iv"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:background="@color/tab_select" />
 
-                    <TextView
-                        android:id="@+id/tab1_xianglu"
+                        <TextView
+                            android:id="@+id/tab1_gongzhuo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingTop="12dp"
+                            android:gravity="center_horizontal"
+                            android:text="供桌"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="1px"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/tab_middle_line_color" />
+
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="香炉"
-                        android:textColor="@color/black"
-                        android:textSize="12dp" />
+                        android:layout_height="match_parent">
 
+                        <ImageView
+                            android:id="@+id/tab1_xianglu_iv"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:background="@color/tab_unselect" />
 
-                    <TextView
-                        android:id="@+id/tab1_guzhong"
+                        <TextView
+                            android:id="@+id/tab1_xianglu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="香炉"
+                            android:paddingTop="12dp"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="1px"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/tab_middle_line_color" />
+
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="古钟"
-                        android:textColor="@color/black"
-                        android:textSize="12dp" />
+                        android:layout_height="match_parent">
 
+                        <ImageView
+                            android:id="@+id/tab1_guzhong_iv"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:background="@color/tab_unselect" />
 
-                    <TextView
-                        android:id="@+id/tab1_simiao"
+                        <TextView
+                            android:id="@+id/tab1_guzhong"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="古钟"
+                            android:paddingTop="12dp"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="1px"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/tab_middle_line_color" />
+
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="寺庙建筑"
-                        android:textColor="@color/black"
-                        android:textSize="12dp" />
+                        android:layout_height="match_parent">
 
+                        <ImageView
+                            android:id="@+id/tab1_simiao_iv"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:background="@color/tab_unselect" />
+
+                        <TextView
+                            android:id="@+id/tab1_simiao"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="寺庙建筑"
+                            android:paddingTop="12dp"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+                    </RelativeLayout>
                 </LinearLayout>
 
-
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="1px"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:background="#CFCFCF" />
 
                 <android.support.v4.view.ViewPager
                     android:id="@+id/viewPagerTab"
@@ -419,12 +486,156 @@
                     android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:layout_weight="1.0"
-                    android:background="@color/white"
+                    android:paddingTop="5dp"
                     android:flipInterval="30"
                     android:persistentDrawingCache="animation" />
 
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:background="#E5E7E6"
+                android:layout_height="15dp"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/group_viewpager_02"
+                    android:layout_width="match_parent"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/tab2_zhuangshi_iv"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:background="@color/tab_select" />
+
+                        <TextView
+                            android:id="@+id/tab2_zhuangshi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingTop="12dp"
+                            android:gravity="center_horizontal"
+                            android:text="寺庙装饰"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="1px"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/tab_middle_line_color" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/tab2_sengfu_iv"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:background="@color/tab_unselect" />
+
+                        <TextView
+                            android:id="@+id/tab2_sengfu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="僧服绣品"
+                            android:paddingTop="12dp"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="1px"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/tab_middle_line_color" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/tab2_faqi_iv"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:background="@color/tab_unselect" />
+
+                        <TextView
+                            android:id="@+id/tab2_faqi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="法器法物"
+                            android:paddingTop="12dp"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="1px"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/tab_middle_line_color" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/tab2_fuxiang_iv"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:background="@color/tab_unselect" />
+
+                        <TextView
+                            android:id="@+id/tab2_fuxiang"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="佛像定制"
+                            android:paddingTop="12dp"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewPagerTab2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1.0"
+                    android:flipInterval="30"
+                    android:paddingTop="5dp"
+                    android:persistentDrawingCache="animation" />
+
+
+            </LinearLayout>
+
 
         </LinearLayout>
     </ScrollView>

@@ -2,96 +2,108 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:paddingRight="15dp"
+    android:paddingLeft="15dp"
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="horizontal">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/gongzhuo_frag_one_ib"
-                android:layout_width="160dp"
-                android:layout_height="80dp"
-                android:onClick="onClick" />
-
-            <TextView
-                android:id="@+id/gongzhuo_frag_one_text"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="这是供桌的标题1"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:textColor="@color/black" />
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/gongzhuo_frag_two_ib"
-                android:layout_width="160dp"
-                android:layout_height="80dp"
-                android:onClick="onClick" />
+                <ImageView
+                    android:id="@+id/gongzhuo_frag_one_ib"
+                    android:layout_width="160dp"
+                    android:layout_height="80dp"
+                    android:onClick="onClick" />
 
-            <TextView
-                android:id="@+id/gongzhuo_frag_two_text"
+                <TextView
+                    android:id="@+id/gongzhuo_frag_one_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/gongzhuo_frag_two_ib"
+                    android:layout_width="160dp"
+                    android:layout_height="80dp"
+                    android:onClick="onClick" />
+
+                <TextView
+                    android:id="@+id/gongzhuo_frag_two_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:paddingTop="10dp"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="这是供桌的标题2"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:paddingTop="10dp"
-                android:textColor="@color/black" />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/gongzhuo_frag_three_ib"
+                    android:layout_width="160dp"
+                    android:layout_height="80dp"
+                    android:onClick="onClick"
+
+                    />
+
+                <TextView
+                    android:id="@+id/gongzhuo_frag_three_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/gongzhuo_frag_four_ib"
+                    android:layout_width="160dp"
+                    android:layout_height="80dp"
+                    android:onClick="onClick" />
+
+                <TextView
+                    android:id="@+id/gongzhuo_frag_four_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:paddingTop="10dp"
+                    android:textColor="@color/black" />
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_height="fill_parent"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/gongzhuo_frag_three_ib"
-                android:layout_width="160dp"
-                android:layout_height="80dp"
-                android:onClick="onClick"
-
-                />
-
-            <TextView
-                android:id="@+id/gongzhuo_frag_three_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="这是供桌的标题3"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:textColor="@color/black" />
-
-            <ImageView
-                android:id="@+id/gongzhuo_frag_four_ib"
-                android:layout_width="160dp"
-                android:layout_height="80dp"
-                android:onClick="onClick" />
-
-            <TextView
-                android:id="@+id/gongzhuo_frag_four_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="这是供桌的标题4"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:paddingTop="10dp"
-                android:textColor="@color/black" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/gongzhuo_but"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="@drawable/login_selector"
+            android:text="查看更多供桌信息" />
     </LinearLayout>
-
 </RelativeLayout>

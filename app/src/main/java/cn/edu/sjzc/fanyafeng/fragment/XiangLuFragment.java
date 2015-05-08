@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,6 +34,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import cn.edu.sjzc.fanyafeng.activity.GongZhuoActivity;
+import cn.edu.sjzc.fanyafeng.activity.XiangLuActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -51,6 +53,7 @@ public class XiangLuFragment extends BaseFragment implements View.OnClickListene
     private ImageView xianglu_frag_one_ib, xianglu_frag_two_ib, xianglu_frag_three_ib, xianglu_frag_four_ib;
     private TextView xianglu_frag_one_text, xianglu_frag_two_text, xianglu_frag_three_text, xianglu_frag_four_text;
     String url = "http://img3.douban.com/spic/s27078194.jpg";
+    private Button xianglu_but;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -128,6 +131,8 @@ public class XiangLuFragment extends BaseFragment implements View.OnClickListene
         this.xianglu_frag_two_text = (TextView) getActivity().findViewById(R.id.xianglu_frag_two_text);
         this.xianglu_frag_three_text = (TextView) getActivity().findViewById(R.id.xianglu_frag_three_text);
         this.xianglu_frag_four_text = (TextView) getActivity().findViewById(R.id.xianglu_frag_four_text);
+        this.xianglu_but=(Button)getActivity().findViewById(R.id.xianglu_but);
+        this.xianglu_but.setOnClickListener(this);
     }
 
     private void initData() {
@@ -154,22 +159,22 @@ public class XiangLuFragment extends BaseFragment implements View.OnClickListene
                             if (i == 0) {
                                 SingleImageTaskUtil imageTask = new SingleImageTaskUtil(
                                         this.xianglu_frag_one_ib);
-                                imageTask.execute(url);
+                                imageTask.execute("http://a1.qpic.cn/psb?/V12cYG6y0mgzhv/feRw83MoTv.kTBH4TYdXYNXGkvZK2Sln2yD7I3wYBCo!/m/dFgAAAAAAAAAnull&bo=AAQAAgAAAAAFByI!&rf=photolist&t=5");
                             }
                             if (i == 1) {
                                 SingleImageTaskUtil imageTask = new SingleImageTaskUtil(
                                         this.xianglu_frag_two_ib);
-                                imageTask.execute(url);
+                                imageTask.execute("http://a3.qpic.cn/psb?/V12cYG6y0mgzhv/F0xmiFqWMXaDvdISQPop8LdUxWtoz91vfxcU4q984Ks!/m/dB4AAAAAAAAAnull&bo=AAQAAgAAAAAFByI!&rf=photolist&t=5");
                             }
                             if (i == 2) {
                                 SingleImageTaskUtil imageTask = new SingleImageTaskUtil(
                                         this.xianglu_frag_three_ib);
-                                imageTask.execute(url);
+                                imageTask.execute("http://a1.qpic.cn/psb?/V12cYG6y0mgzhv/l8YuRSK*iQ.LK79UrHSuUC.y8b8FFQLxkCZTqCWwJPU!/m/dFgAAAAAAAAAnull&bo=AAQAAgAAAAAFByI!&rf=photolist&t=5");
                             }
                             if (i == 3) {
                                 SingleImageTaskUtil imageTask = new SingleImageTaskUtil(
                                         this.xianglu_frag_four_ib);
-                                imageTask.execute(url);
+                                imageTask.execute("http://a3.qpic.cn/psb?/V12cYG6y0mgzhv/36YhO2cUYOmNB7UmounGVakQ1M3D8LwGD0iVKi6DERw!/m/dAoAAAAAAAAAnull&bo=AAQAAgAAAAAFByI!&rf=photolist&t=5");
                             }
 
                         }
@@ -191,8 +196,8 @@ public class XiangLuFragment extends BaseFragment implements View.OnClickListene
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.xianglu_frag_one_ib:
-                Intent it_gongzhuo = new Intent(getActivity(), GongZhuoActivity.class);
+            case R.id.xianglu_but:
+                Intent it_gongzhuo = new Intent(getActivity(), XiangLuActivity.class);
                 startActivity(it_gongzhuo);
                 break;
 //            case R.id.gongzhuo_frag_one_ib:

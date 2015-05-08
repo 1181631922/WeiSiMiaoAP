@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,8 +42,8 @@ public class TabActivity extends BaseBackFragmentActivity implements FoShiFuWuFr
     private IndicatorViewPager indicatorViewPager;
     private LayoutInflater inflate;
     private final static String [] HUO_DONG  =     {"",""};
-    private final static String [] SI_MIAO =     {"住持","寺院概况","高僧大德","寺院动态","联系我们"};
-    private final static String [] JIANG_TANG =  {"每日开始","讲经说法","答疑解惑","佛学基础"};
+    private final static String [] SI_MIAO =     {"住持","寺院概况","高僧大德","联系我们"};
+    private final static String [] JIANG_TANG =  {"每日开示","讲经说法","答疑解惑","佛学基础"};
     private final static String [] FA_XIAN = {"",""};
     private String [] tabsName = HUO_DONG;
     public final static String key = "tabsName";
@@ -149,10 +150,13 @@ public class TabActivity extends BaseBackFragmentActivity implements FoShiFuWuFr
                 } else if (position == 2) {
                     String url = getServerURL() + "/api/newssort/page/gaoSengDaDe/" + getUnitId();
                     return NewsSortFragment.newInstance(url, "gaoSengDaDe", 0, "gaoSengDaDe");
-                } else if (position == 3) {
-                    String url = getServerURL() + "/api/newssort/page/siYuanDongTai/" + getUnitId();
-                    return NewsSortFragment.newInstance(url, "siYuanDongTai", 0, "siYuanDongTai");
-                } else if (position == 4) {
+                }
+//                else if (position == 3) {
+//                    String url = getServerURL() + "/api/newssort/page/siYuanDongTai/" + getUnitId();
+//                    Log.d("--------------------------------------url", url);
+//                    return NewsSortFragment.newInstance(url, "siYuanDongTai", 0, "siYuanDongTai");
+//                }
+                else if (position == 3) {
                     return new AbuoutFragment();
                 }
             }else if(value.equals(JiangTang)) {

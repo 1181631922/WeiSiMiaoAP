@@ -12,10 +12,11 @@
         android:layout_weight="1" />
 
     <com.shizhefei.view.indicator.FixedIndicatorView
-        android:background="@drawable/bottom_bg_"
+        android:background="#0D2B45"
         android:id="@+id/tabmain_indicator"
-        android:paddingTop="3dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="2dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="55dp" />
 
 </LinearLayout>

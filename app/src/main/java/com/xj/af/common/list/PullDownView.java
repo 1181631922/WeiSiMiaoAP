@@ -241,13 +241,13 @@ public class PullDownView extends LinearLayout implements ScrollOverListView.OnS
         if(mHeaderViewParams.height >= DEFAULT_HEADER_VIEW_HEIGHT){
             if(mHeaderViewState == HEADER_VIEW_STATE_OVER_HEIGHT) return;
             mHeaderViewState = HEADER_VIEW_STATE_OVER_HEIGHT;
-            mHeaderTextView.setText("松开可以刷新");
+            mHeaderTextView.setText("松开刷新");
             mHeaderArrowView.startAnimation(mRotateOTo180Animation);
         }else{
             if(mHeaderViewState == HEADER_VIEW_STATE_NOT_OVER_HEIGHT
                     || mHeaderViewState == HEADER_VIEW_STATE_IDLE) return;
             mHeaderViewState = HEADER_VIEW_STATE_NOT_OVER_HEIGHT;
-            mHeaderTextView.setText("下拉可以刷新");
+            mHeaderTextView.setText("下拉刷新");
             mHeaderArrowView.startAnimation(mRotate180To0Animation);
         }
     }
@@ -315,9 +315,9 @@ public class PullDownView extends LinearLayout implements ScrollOverListView.OnS
                     mHeaderLoadingView.setVisibility(View.GONE);
                     mHeaderTextView.setText("下拉可以刷新");
                     mHeaderViewDateView = (TextView) mHeaderView.findViewById(R.id.pulldown_header_date);
-                    mHeaderViewDateView.setVisibility(View.VISIBLE);
+//                    mHeaderViewDateView.setVisibility(View.VISIBLE);
                     mHeaderViewDateView.setText("更新于：" + dateFormat.format(new Date(System.currentTimeMillis())));
-                    mHeaderArrowView.setVisibility(View.VISIBLE);
+//                    mHeaderArrowView.setVisibility(View.VISIBLE);
                     showFooterView();
                     return;
                 }

@@ -52,10 +52,10 @@ public class MainFragment extends BaseFragment {
 			//indicator.setScrollBar(new ColorBar(getApplicationContext(), Color.RED, 5));
 			break;
 		case 1:
-			indicator.setScrollBar(new ColorBar(getApplicationContext(), Color.RED, 0, Gravity.CENTENT_BACKGROUND));
+			indicator.setScrollBar(new ColorBar(getApplicationContext(), Color.WHITE, 0, Gravity.CENTENT_BACKGROUND));
 			break;
 		case 2:
-			indicator.setScrollBar(new ColorBar(getApplicationContext(), Color.RED, 5, Gravity.TOP));
+			indicator.setScrollBar(new ColorBar(getApplicationContext(), Color.WHITE, 5, Gravity.TOP));
 			break;
 		case 3:
 			indicator.setScrollBar(new LayoutBar(getApplicationContext(), R.layout.layout_slidebar, Gravity.CENTENT_BACKGROUND));
@@ -66,7 +66,7 @@ public class MainFragment extends BaseFragment {
 		float selectSize = unSelectSize * 1.2f;
 
 		int selectColor = res.getColor(R.color.tab_top_text_2);
-		int unSelectColor = res.getColor(R.color.tab_top_text_1);
+		int unSelectColor = res.getColor(R.color.white);
 		indicator.setOnTransitionListener(new OnTransitionTextListener(selectSize, unSelectSize, selectColor, unSelectColor));
 
 		viewPager.setOffscreenPageLimit(4);
@@ -80,8 +80,7 @@ public class MainFragment extends BaseFragment {
         /**获取上面的标签，加载，如打开首页会加载所有的上面的标签*/
 		@Override
 		public View getViewForTab(int position, View convertView, ViewGroup container) {
-			Log.d("xj", "getViewForTab position:"+position);
-			
+
 			if (convertView == null) {
 				convertView = inflate.inflate(R.layout.tab_top, container, false);
 			}
@@ -99,7 +98,6 @@ public class MainFragment extends BaseFragment {
 				convertView = inflate.inflate(R.layout.fragment_tabmain_item, container, false);
 			}
 		
-			Log.d("xj", "getViewForPage position:"+position);
 			final TextView textView = (TextView) convertView.findViewById(R.id.fragment_mainTab_item_textView);
 			textView.setText(tabName + " " + position + " 界面加载完毕");
 			final ProgressBar progressBar = (ProgressBar) convertView.findViewById(R.id.fragment_mainTab_item_progressBar);

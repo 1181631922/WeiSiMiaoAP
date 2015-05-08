@@ -26,7 +26,7 @@
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/bottom_bg_"
+                android:background="#4169E1"
                 android:gravity="center_horizontal">
 
                 <TextView

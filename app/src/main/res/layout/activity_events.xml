@@ -15,18 +15,22 @@
         android:layout_width="24dp"
         android:layout_height="24dp" />
 
-    <cn.edu.sjzc.fanyafeng.util.RefreshableView
-        android:id="@+id/events_refreshable"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
 
-        <ListView
+    <cn.edu.sjzc.fanyafeng.pulltorefresh.PullToRefreshLayout
+        android:id="@+id/refresh_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/refresh_head" />
+
+        <cn.edu.sjzc.fanyafeng.pulltorefresh.PullableListView
             android:id="@+id/event_listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:divider="#DADBDA"
-            android:fadingEdge="none"></ListView>
-    </cn.edu.sjzc.fanyafeng.util.RefreshableView>
+            android:fadingEdge="none" />
+
+        <include layout="@layout/load_more" />
+    </cn.edu.sjzc.fanyafeng.pulltorefresh.PullToRefreshLayout>
 
 
 </RelativeLayout>

@@ -8,7 +8,6 @@
         android:layout_height="78dp"
         android:layout_width="78dp"
         android:id="@+id/index_ItemImage"
-        android:src="@drawable/index_ico1"
         android:padding="5dp"
         android:scaleType="fitCenter"
         android:layout_centerHorizontal="true"></ImageView>

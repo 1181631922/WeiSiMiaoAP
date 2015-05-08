@@ -1,6 +1,7 @@
 package cn.edu.sjzc.fanyafeng.fragment;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,9 +10,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.xj.af.R;
+import com.xj.af.common.BaseFragment;
 import com.xj.af.util.SingleImageTaskUtil;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import cn.edu.sjzc.fanyafeng.activity.SiMiaoActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,7 +41,7 @@ import com.xj.af.util.SingleImageTaskUtil;
  * Use the {@link SiMiaoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SiMiaoFragment extends Fragment {
+public class SiMiaoFragment extends BaseFragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -30,7 +50,11 @@ public class SiMiaoFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private ImageView simiao_ceshi;
+
+    private String SIYUANHUODOND = "/api/newssort/page/findByEnName/global_simiao";
+    private ImageView simiao_frag_one_ib, simiao_frag_two_ib, simiao_frag_three_ib, simiao_frag_four_ib;
+    private TextView simiao_frag_one_text, simiao_frag_two_text, simiao_frag_three_text, simiao_frag_four_text;
+    String url = "http://img3.douban.com/spic/s27078194.jpg";
 
 //    private OnFragmentInteractionListener mListener;
 
@@ -59,7 +83,6 @@ public class SiMiaoFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("---------------------------------------------------","onCreate");
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -68,20 +91,17 @@ public class SiMiaoFragment extends Fragment {
 
     @Override
     public void onAttach(Activity activity) {
-        Log.d("---------------------------------------------------","onAttach");
         super.onAttach(activity);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d("---------------------------------------------------","onCreateView");
         return inflater.inflate(R.layout.fragment_si_miao, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        Log.d("---------------------------------------------------","onViewCreated");
         super.onViewCreated(view, savedInstanceState);
     }
 
@@ -90,47 +110,133 @@ public class SiMiaoFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Log.d("---------------------------------------------------","onActivityCreated");
         initView();
+        Thread loadThread = new Thread(new LoadThread());
+        loadThread.start();
     }
-
+    class LoadThread implements Runnable {
+        @Override
+        public void run() {
+            initData();
+        }
+    }
     @Override
     public void onStart() {
-        Log.d("---------------------------------------------------","onStart");
         super.onStart();
     }
 
     @Override
     public void onResume() {
-        Log.d("---------------------------------------------------","onResume");
         super.onResume();
     }
 
     @Override
     public void onPause() {
-        Log.d("---------------------------------------------------","onPause");
         super.onPause();
     }
 
     @Override
     public void onStop() {
-        Log.d("---------------------------------------------------","onStop");
         super.onStop();
     }
 
     @Override
     public void onDestroyView() {
-        Log.d("---------------------------------------------------","onDestroyView");
         super.onDestroyView();
     }
 
-    private void initView(){
-        this.simiao_ceshi=(ImageView)getActivity().findViewById(R.id.simiao_ceshiyixia);
-        SingleImageTaskUtil imageTask = new SingleImageTaskUtil(this.simiao_ceshi);
-        imageTask.execute("http://s16.sinaimg.cn/orignal/89429f6dhb99b4903ebcf&690");
+    private void initView() {
+        this.simiao_frag_one_ib = (ImageView) getActivity().findViewById(R.id.simiao_frag_one_ib);
+        this.simiao_frag_one_ib.setOnClickListener(this);
+        this.simiao_frag_two_ib = (ImageView) getActivity().findViewById(R.id.simiao_frag_two_ib);
+        this.simiao_frag_two_ib.setOnClickListener(this);
+        this.simiao_frag_three_ib = (ImageView) getActivity().findViewById(R.id.simiao_frag_three_ib);
+        this.simiao_frag_three_ib.setOnClickListener(this);
+        this.simiao_frag_four_ib = (ImageView) getActivity().findViewById(R.id.simiao_frag_four_ib);
+        this.simiao_frag_four_ib.setOnClickListener(this);
+        this.simiao_frag_one_text = (TextView) getActivity().findViewById(R.id.simiao_frag_one_text);
+        this.simiao_frag_two_text = (TextView) getActivity().findViewById(R.id.simiao_frag_two_text);
+        this.simiao_frag_three_text = (TextView) getActivity().findViewById(R.id.simiao_frag_three_text);
+        this.simiao_frag_four_text = (TextView) getActivity().findViewById(R.id.simiao_frag_four_text);
     }
 
+    private void initData() {
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpGet request;
+        try {
+            String SIYUANHUODOND_API_OLD = getServerURL() + SIYUANHUODOND;
+            request = new HttpGet(new URI(SIYUANHUODOND_API_OLD));
+            HttpResponse response = httpClient.execute(request);
+            if (response.getStatusLine().getStatusCode() == 200) {
+                HttpEntity entity = response.getEntity();
+                if (entity != null) {
+                    String out = EntityUtils.toString(entity, "UTF-8");
+                    try {
+                        JSONObject jsonObject = new JSONObject(out);
+                        JSONArray eveArray = jsonObject.getJSONArray("content");
+                        for (int i = 0; i < 4; i++) {
+//                            JSONObject eveobj = eveArray.getJSONObject(i);
+//                            String smallPic = getServerURL() + eveobj.getString("smallPic");
+//                            Log.d("----------------------------------smallPic", smallPic);
+//                            String title = eveobj.getString("title");
+                            if (i == 0) {
+                                SingleImageTaskUtil imageTask = new SingleImageTaskUtil(
+                                        this.simiao_frag_one_ib);
+                                imageTask.execute("http://a2.qpic.cn/psb?/V12cYG6y0mgzhv/iXoHLlryAuS8kx7SjdoAs5*zn7bifXj7uP7dQVvJyAY!/m/dAkAAAAAAAAAnull&bo=AAQAAgAAAAAFByI!&rf=photolist&t=5");
+                            }
+                            if (i == 1) {
+                                SingleImageTaskUtil imageTask = new SingleImageTaskUtil(
+                                        this.simiao_frag_two_ib);
+                                imageTask.execute("http://a4.qpic.cn/psb?/V12cYG6y0mgzhv/fnHBbb5BKWN7iUWn7Yr8ArXu36IduIT7s3FYkwXFhSw!/m/dGMAAAAAAAAAnull&bo=IAOQAQAAAAAFB5Y!&rf=photolist&t=5");
+                            }
+                            if (i == 2) {
+                                SingleImageTaskUtil imageTask = new SingleImageTaskUtil(
+                                        this.simiao_frag_three_ib);
+                                imageTask.execute("http://a1.qpic.cn/psb?/V12cYG6y0mgzhv/CH3wWhgeLy.Jyh3vcKa6GXorgnQmctDKskSr5G8FmEk!/m/dFgAAAAAAAAAnull&bo=*gP*AQAAAAAFByc!&rf=photolist&t=5");
+                            }
+                            if (i == 3) {
+                                SingleImageTaskUtil imageTask = new SingleImageTaskUtil(
+                                        this.simiao_frag_four_ib);
+                                imageTask.execute("http://a4.qpic.cn/psb?/V12cYG6y0mgzhv/Qrg2.MtIszqX5FwOC*hbUeiqIDJ4RQ0TYv2mm1MnO6E!/m/dFMAAAAAAAAAnull&bo=4wJxAQAAAAAFB7U!&rf=photolist&t=5");
+                            }
 
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            } else {
+            }
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.simiao_frag_one_ib:
+                Intent it_simiao = new Intent(getActivity(), SiMiaoActivity.class);
+                startActivity(it_simiao);
+                break;
+//            case R.id.simiao_frag_one_ib:
+//                Intent it_simiao = new Intent(getActivity(), simiaoActivity.class);
+//                startActivity(it_simiao);
+//                break;
+//            case R.id.simiao_frag_one_ib:
+//                Intent it_simiao = new Intent(getActivity(), simiaoActivity.class);
+//                startActivity(it_simiao);
+//                break;
+//            case R.id.simiao_frag_one_ib:
+//                Intent it_simiao = new Intent(getActivity(), simiaoActivity.class);
+//                startActivity(it_simiao);
+//                break;
+        }
+    }
     // TODO: Rename method, update argument and hook method into UI event
 //    public void onButtonPressed(Uri uri) {
 //        if (mListener != null) {

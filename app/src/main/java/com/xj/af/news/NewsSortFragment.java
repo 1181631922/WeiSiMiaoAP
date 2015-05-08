@@ -54,10 +54,10 @@ import java.util.Map;
  * <p/>
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
- *
+ * <p/>
  * 显示新闻列表
  */
-public class NewsSortFragment extends BaseXjFragment  implements PullDownView.OnPullDownListener, AdapterView.OnItemClickListener {
+public class NewsSortFragment extends BaseXjFragment implements PullDownView.OnPullDownListener, AdapterView.OnItemClickListener {
     private static final int WHAT_DID_LOAD_DATA = 0;
     private static final int WHAT_DID_REFRESH = 1;
     private static final int WHAT_DID_MORE = 2;
@@ -83,13 +83,13 @@ public class NewsSortFragment extends BaseXjFragment  implements PullDownView.On
     private OnFragmentInteractionListener mListener;
 
 
-    public static NewsSortFragment newInstance(String url, String title,long id,String enName) {
+    public static NewsSortFragment newInstance(String url, String title, long id, String enName) {
         NewsSortFragment fragment = new NewsSortFragment();
         Bundle args = new Bundle();
         args.putString(ARG_URL, url);
         args.putString(ARG_TITLE, title);
         args.putLong(ARG_ID, id);
-        args.putString(ARG_ENNAME,enName);
+        args.putString(ARG_ENNAME, enName);
         fragment.setArguments(args);
         return fragment;
     }
@@ -104,7 +104,6 @@ public class NewsSortFragment extends BaseXjFragment  implements PullDownView.On
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("xj","this is onCreate()");
         if (getArguments() != null) {
             url = getArguments().getString(ARG_URL);
             title = getArguments().getString(ARG_TITLE);
@@ -115,31 +114,29 @@ public class NewsSortFragment extends BaseXjFragment  implements PullDownView.On
         listItem = new ArrayList();
         listItemAdapter = new SimpleAdapter(getActivity(), listItem,// 数据源
                 R.layout.news_sort_list,
-                new String[] {  "ItemTitle" },
-                new int[] {  R.id.newsSortList_ItemTitle });
+                new String[]{"ItemTitle"},
+                new int[]{R.id.newsSortList_ItemTitle});
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.d("xj","this is onCreateView()");
-        View view  =  inflater.inflate(R.layout.pulldown,container,false);
+        View view = inflater.inflate(R.layout.pulldown, container, false);
         mPullDownView = (PullDownView) view.findViewById(R.id.pull_down_view);
         mPullDownView.setOnPullDownListener(this);
-        listView =  mPullDownView.getListView();
+        listView = mPullDownView.getListView();
         return view;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Log.d("xj","this is onActivityCreated()");
         listView.setAdapter(listItemAdapter);
         mPullDownView.enableAutoFetchMore(true, 0);
-        loadData( );
+        loadData();
     }
 
-    public void loadData( ){
+    public void loadData() {
         UIhandler = new UIHandler();
         UIThread thread = new UIThread(WHAT_DID_LOAD_DATA);
         thread.start();
@@ -147,19 +144,20 @@ public class NewsSortFragment extends BaseXjFragment  implements PullDownView.On
 
     @Override
     public void onRefresh() {
-        UIThread thread = new UIThread( WHAT_DID_REFRESH);
+        UIThread thread = new UIThread(WHAT_DID_REFRESH);
         thread.start();
     }
 
     @Override
     public void onMore() {
-        if(hasMore) {
+        if (hasMore) {
             UIThread thread = new UIThread(WHAT_DID_MORE);
             thread.start();
-        }else{
+        } else {
             mPullDownView.notifyDidMore();
         }
     }
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Toast.makeText(getActivity(), "啊，你点中我了 " + position, Toast.LENGTH_SHORT).show();
@@ -168,7 +166,6 @@ public class NewsSortFragment extends BaseXjFragment  implements PullDownView.On
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        Log.d("xj","this is onAttach()");
         try {
             mListener = (OnFragmentInteractionListener) activity;
         } catch (ClassCastException e) {
@@ -180,7 +177,6 @@ public class NewsSortFragment extends BaseXjFragment  implements PullDownView.On
     @Override
     public void onDetach() {
         super.onDetach();
-        Log.d("xj","this is onDetach()");
         mListener = null;
     }
 
@@ -209,22 +205,25 @@ public class NewsSortFragment extends BaseXjFragment  implements PullDownView.On
             msg.what = opt;
             NewsSortFragment.this.UIhandler.sendMessage(msg);
         }
-        /**给请求地址增加分页参数*/
+
+        /**
+         * 给请求地址增加分页参数
+         */
         private String getUrl() {
             String _url = url;
-            if(opt == WHAT_DID_MORE){
-                page = page + 1 ;
-            }else if(opt == WHAT_DID_REFRESH){
+            if (opt == WHAT_DID_MORE) {
+                page = page + 1;
+            } else if (opt == WHAT_DID_REFRESH) {
                 page = 1;
-            }else if (opt == WHAT_DID_LOAD_DATA){
+            } else if (opt == WHAT_DID_LOAD_DATA) {
                 page = 1;
             }
-            if(url.contains("?")){
+            if (url.contains("?")) {
                 _url += "&";
-            }else{
+            } else {
                 _url += "?";
             }
-            _url += "page="+page+"&pageSize="+pageSize;
+            _url += "page=" + page + "&pageSize=" + pageSize;
             return _url;
         }
     }
@@ -237,12 +236,12 @@ public class NewsSortFragment extends BaseXjFragment  implements PullDownView.On
             String emsg = bundle.getString("emsg");
             String message = bundle.getString("msg");
             boolean lastPage = false;//是否到了最后一页
-            if(message==null)return;
-            if(msg.what == WHAT_DID_REFRESH){
+            if (message == null) return;
+            if (msg.what == WHAT_DID_REFRESH) {
                 listItem.clear();
             }
             try {
-                if(StrUtil.isNotBlank(enName) && enName.equals(Constant.NEWSSORT_ENNAME_jingDianJieDu)){
+                if (StrUtil.isNotBlank(enName) && enName.equals(Constant.NEWSSORT_ENNAME_jingDianJieDu)) {
                     //分类列表  经典解读
                     lastPage = true;
                     JSONArray sortJsonArray = new JSONArray(message);
@@ -257,7 +256,7 @@ public class NewsSortFragment extends BaseXjFragment  implements PullDownView.On
                         map.put("enName", jsonObj.getString("enName"));
                         listItem.add(map);
                     }
-                }else {//新闻列表
+                } else {//新闻列表
                     JSONObject jo = new JSONObject(message);
                     JSONArray jsonObjs = jo.getJSONArray("content");
                     lastPage = jo.getBoolean("lastPage");
@@ -272,34 +271,34 @@ public class NewsSortFragment extends BaseXjFragment  implements PullDownView.On
                         listItem.add(map);
                     }
                 }
-                if(lastPage) {
+                if (lastPage) {
                     hasMore = false;
-                    mPullDownView.enableAutoFetchMore(false,0);
+                    mPullDownView.enableAutoFetchMore(false, 0);
 
                 }
 
                 switch (msg.what) {
-                    case WHAT_DID_LOAD_DATA:{
+                    case WHAT_DID_LOAD_DATA: {
                         mPullDownView.notifyDidLoad();
                         break;
                     }
-                    case WHAT_DID_REFRESH : {
-                        mPullDownView.enableAutoFetchMore(true,0);
+                    case WHAT_DID_REFRESH: {
+                        mPullDownView.enableAutoFetchMore(true, 0);
                         mPullDownView.notifyDidRefresh();
                         hasMore = true;
                         break;
                     }
-                    case WHAT_DID_MORE:{
+                    case WHAT_DID_MORE: {
                         mPullDownView.notifyDidMore();
-                        if(lastPage){
-                            Toast.makeText(getActivity(),"已经到了最后一页",Toast.LENGTH_SHORT).show();
+                        if (lastPage) {
+                            Toast.makeText(getActivity(), "已经到了最后一页", Toast.LENGTH_SHORT).show();
                         }
                         break;
                     }
                 }
 
                 listItemAdapter.notifyDataSetChanged();
-            }catch (JSONException e) {
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
 
@@ -315,29 +314,29 @@ public class NewsSortFragment extends BaseXjFragment  implements PullDownView.On
                     i.putExtra("id", (Long) map.get("id"));
 
                     Object obj = map.get("ItemTitle");
-                    if(obj!=null){
-                        String title = (String)obj;
+                    if (obj != null) {
+                        String title = (String) obj;
                         i.putExtra("title", title);
                     }
                     Object typeObj = map.get("type");
-                    if(typeObj != null && typeObj.toString().equals("newsSort")){
-                    //newsSort
-                       // i.putExtra("enName",enName);
-                        i.setClass(getActivity(),NewsSortActivity.class);
-                    }else {
-                    //news
+                    if (typeObj != null && typeObj.toString().equals("newsSort")) {
+                        //newsSort
+                        // i.putExtra("enName",enName);
+                        i.setClass(getActivity(), NewsSortActivity.class);
+                    } else {
+                        //news
                         i.setClass(getActivity(), NewsActivitActivity.class);
                     }
                     startActivity(i);
                 }
 
-                private SimpleAdapter getSimpleAdapter(ListAdapter la){
-                    if(la instanceof HeaderViewListAdapter){
-                        HeaderViewListAdapter hvla = (HeaderViewListAdapter)la;
+                private SimpleAdapter getSimpleAdapter(ListAdapter la) {
+                    if (la instanceof HeaderViewListAdapter) {
+                        HeaderViewListAdapter hvla = (HeaderViewListAdapter) la;
                         ListAdapter _la = hvla.getWrappedAdapter();
                         return getSimpleAdapter(_la);
-                    }else{
-                        return (SimpleAdapter)la;
+                    } else {
+                        return (SimpleAdapter) la;
                     }
                 }
             });
@@ -345,14 +344,12 @@ public class NewsSortFragment extends BaseXjFragment  implements PullDownView.On
 
         private void setTitle(HashMap<String, Object> map, String name, String kaishi) {
             DateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
-            if("jinRiShuoFa".equals(enName) || (url!=null && url.indexOf("jinRiShuoFa") != -1)){
-                if(kaishi!=null && !"".equals(kaishi))
-                {
+            if ("jinRiShuoFa".equals(enName) || (url != null && url.indexOf("jinRiShuoFa") != -1)) {
+                if (kaishi != null && !"".equals(kaishi)) {
                     String reTime = sdf.format(Long.parseLong(kaishi));
-                    map.put("ItemTitle", reTime+"开示");
+                    map.put("ItemTitle", reTime + "开示");
                 }
-            }
-            else {
+            } else {
                 map.put("ItemTitle", name);
             }
         }

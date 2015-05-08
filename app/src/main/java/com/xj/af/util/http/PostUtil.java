@@ -1,5 +1,7 @@
 package com.xj.af.util.http;
 
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,18 +15,17 @@ import java.util.Map;
 public class PostUtil {
     public static String SESSIONID = null;
 
-    public static String postData(String address, Map<String, String> params)
-            throws IOException {
+    public static String postData(String address, Map<String, String> params)throws IOException {
         String paramStr = "";
         if (params != null) {
             for (Map.Entry<String, String> entry : params.entrySet()) {
                 if (entry.getValue() != null)
-                    paramStr += "&" + entry.getKey() + "="
-                            + URLEncoder.encode(entry.getValue());
+                    paramStr += "&" + entry.getKey() + "="+ URLEncoder.encode(entry.getValue(),"UTF-8");
             }
             if (paramStr.length() == 0)
                 return "";
             paramStr = paramStr.substring(1, paramStr.length());
+            Log.d("------------------------------",paramStr);
         }
         byte[] data = paramStr.getBytes();
         URL url = new URL(address);
@@ -37,8 +38,7 @@ public class PostUtil {
         // 这是请求方式为POST
         conn.setRequestMethod("POST");
         // 设置post请求必要的请求头
-        conn.setRequestProperty("Content-Type",
-                "application/x-www-form-urlencoded");// 请求头, 必须设置
+        conn.setRequestProperty("Content-Type","application/x-www-form-urlencoded");// 请求头, 必须设置
         conn.setRequestProperty("Content-Length", data.length + "");// 注意是字节长度,不是字符长度
         conn.setRequestProperty("Connection", "Keep-Alive");// 维持长连接
         conn.setRequestProperty("Charset", "UTF-8");

@@ -76,14 +76,14 @@ public class AbuoutFragment extends BaseFragment {
     @Override
     public void onCreateView(Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       setContentView(R.layout.fragment_abuout);
+        setContentView(R.layout.fragment_abuout);
         button = (Button) findViewById(R.id.about_call_Button);
-        tv = (TextView)findViewById(R.id.about_textView);
+        tv = (TextView) findViewById(R.id.about_textView);
 
     }
 
     @Override
-    public void onActivityCreated( Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         /**一键直呼设置电话*/
         handler = new Handler() {
@@ -92,23 +92,23 @@ public class AbuoutFragment extends BaseFragment {
                 super.handleMessage(msg);
                 Bundle bd = msg.getData();
                 if (msg.what == 0) {
-                    String jsonStr =bd.getString("imsg");
+                    String jsonStr = bd.getString("imsg");
                     Unit unit = JsonUtil.getEntity(jsonStr, Unit.class);
                     phoneNumber = unit.getPhoneNumber();
                     button.setOnClickListener(new CallOnClick());
                     String str = "";
-                    if(StrUtil.isNotBlank(unit.getPhoneNumber()))
-                        str += "\n电话："+unit.getPhoneNumber();
-                    if(StrUtil.isNotBlank(unit.getAddress()))
-                        str += "\n地址："+unit.getAddress();
-                    if(StrUtil.isNotBlank(unit.getDomain()))
-                        str += "\n网址："+unit.getDomain();
-                    if(StrUtil.isNotBlank(unit.getQq()))
-                        str += "\nQQ交流群："+unit.getQq();
-                    if(StrUtil.isNotBlank(unit.getWeixin()))
-                        str += "\n微信："+unit.getWeixin();
+                    if (StrUtil.isNotBlank(unit.getPhoneNumber()))
+                        str += "\n电话：" + unit.getPhoneNumber();
+                    if (StrUtil.isNotBlank(unit.getAddress()))
+                        str += "\n地址：" + unit.getAddress();
+                    if (StrUtil.isNotBlank(unit.getDomain()))
+                        str += "\n网址：" + unit.getDomain();
+                    if (StrUtil.isNotBlank(unit.getQq()))
+                        str += "\nQQ交流群：" + unit.getQq();
+                    if (StrUtil.isNotBlank(unit.getWeixin()))
+                        str += "\n微信：" + unit.getWeixin();
                     tv.setText(str);
-                }else{
+                } else {
                     Toast.makeText(getActivity(), bd.getString("emsg"), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -117,16 +117,24 @@ public class AbuoutFragment extends BaseFragment {
         new ThreadUtil(handler, getUrl("/api/unit/") + getUnitId()).start();
 
     }
-    /** 一键直呼 */
+
+    /**
+     * 一键直呼
+     */
     class CallOnClick implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             if (StrUtil.isNotBlank(phoneNumber)) {
-                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"
-                        + phoneNumber));
-                startActivity(intent);
+                Uri uri = Uri.parse("tel:" + phoneNumber) ;	// 设置操作的路径
+                Intent it = new Intent() ;
+                it.setAction(Intent.ACTION_DIAL) ;	// 设置要操作的Action
+                it.setData(uri) ;	// 要设置的数据
+                startActivity(it) ;
+
+//                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+ phoneNumber));
+//                startActivity(intent);
             } else {
-                Toast.makeText(getActivity(), "电话号码错误:"+phoneNumber, Toast.LENGTH_SHORT)
+                Toast.makeText(getActivity(), "电话号码错误:" + phoneNumber, Toast.LENGTH_SHORT)
                         .show();
             }
         }

@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +42,7 @@ public class TabFixActivity extends BaseBackFragmentActivity implements FoShiFuW
         ,JieYuanFragment.OnFragmentInteractionListener{
     private IndicatorViewPager indicatorViewPager;
     private LayoutInflater inflate;
-    private final static String [] FO_SHI  =     {"法会信息","佛事服务"};
+    private final static String [] FO_SHI  =     {"法会信息","佛事服务","寺院动态"};
     private final static String [] JIE_YUAN = {"结缘","助印"};
     private String [] tabsName = FO_SHI;
     public final static String key = "tabsName";
@@ -64,7 +65,7 @@ public class TabFixActivity extends BaseBackFragmentActivity implements FoShiFuW
         {
             if (value.equals(FoShi)) {
                 tabsName = FO_SHI;
-                title = "佛事";
+                title = "法讯";
             }else if(value.equals(JieYuan)){
                     tabsName = JIE_YUAN;
                     title = "结缘";
@@ -123,9 +124,15 @@ public class TabFixActivity extends BaseBackFragmentActivity implements FoShiFuW
 
                 if (position == 0) {
                     String url = getServerURL() + "/api/newssort/page/fahuiInfo/" + getUnitId();
+                    Log.d("--------------------------------------url",url);
                     return NewsSortFragment.newInstance(url, "", 0, "fahuiInfo");
                 } else if (position == 1) {
                     return FoShiFuWuFragment.newInstance(getServerURL(), getUnitId());
+                }
+                else if (position == 2) {//改动寺院动态
+                    String url = getServerURL() + "/api/newssort/page/siYuanDongTai/" + getUnitId();
+                    Log.d("--------------------------------------url",url);
+                    return NewsSortFragment.newInstance(url, "siYuanDongTai", 0, "siYuanDongTai");
                 }
             }else if(value.equals( TabFixActivity.JieYuan)){
                 if(position==0){//结缘

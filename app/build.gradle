@@ -9,6 +9,10 @@ android {
             storePassword '5072172'
         }
     }
+
+//    lintOptions {
+//        abortOnError false
+//    }
     compileSdkVersion 21
     buildToolsVersion "21.1.1"
     defaultConfig {
@@ -17,7 +21,7 @@ android {
         targetSdkVersion 21
 
         versionCode 1
-        versionName "5.1.9"
+        versionName "5.2.1"
         signingConfig signingConfigs.configSign
     }
     compileOptions {
@@ -57,10 +61,6 @@ android {
             applicationId "com.xj.af.u652484321"
             manifestPlaceholders = [APP_NAME: "广灵极乐寺", JPUSH_APPKEY: "b4be8117dee9025d8ca3cb4e", JPUSH_PACKAGE: "com.xj.af.u652484321"]
         }
-        u694959572 {
-            applicationId "com.xj.af.u694959572"
-            manifestPlaceholders = [APP_NAME: "广灵极乐寺", JPUSH_APPKEY: "1a14f0ec934fe1d2b6778986", JPUSH_PACKAGE: "com.xj.af.u694959572"]
-        }
         u1061674483 {
             applicationId "com.xj.af.u1061674483"
             manifestPlaceholders = [APP_NAME: "晋州普光寺", JPUSH_APPKEY: "d881571528ed96941fd00e44", JPUSH_PACKAGE: "com.xj.af.u1061674483"]
@@ -89,6 +89,700 @@ android {
             applicationId "com.xj.af.u128197423"
             manifestPlaceholders = [APP_NAME: "浙江东林福寺", JPUSH_APPKEY: "47f20abde6e672e982095e57", JPUSH_PACKAGE: "com.xj.af.u128197423"]
         }
+        u32602644 {
+            applicationId "com.xj.af.u32602644"
+            manifestPlaceholders = [APP_NAME: "安徽省巢湖市居巢区北外环路凤凰山定林寺", JPUSH_APPKEY: " 2b4151eb5164c6a527bfa2b0 ", JPUSH_PACKAGE: "com.xj.af.u32602644"]
+        }
+        u90027381 {
+            applicationId "com.xj.af.u90027381"
+            manifestPlaceholders = [APP_NAME: "福建省晋江市池店镇池店村福海堂", JPUSH_APPKEY: "92762aa98300d53e590c6c1e", JPUSH_PACKAGE: "com.xj.af.u90027381"]
+        }
+        u104943708 {
+            applicationId "com.xj.af.u104943708"
+            manifestPlaceholders = [APP_NAME: "浙江省台州福音山风景名胜区吉祥寺", JPUSH_APPKEY: "acf69ce19429ff929af29861", JPUSH_PACKAGE: "com.xj.af.u104943708"]
+        }
+        u147063671 {
+            applicationId "com.xj.af.u147063671"
+            manifestPlaceholders = [APP_NAME: "河南省信阳市浉河区湖东开发区贤山贤隐寺", JPUSH_APPKEY: "86cb0ab7e9b25f1563f323ff", JPUSH_PACKAGE: "com.xj.af.u147063671"]
+        }
+        u156685732 {
+            applicationId "com.xj.af.u156685732"
+            manifestPlaceholders = [APP_NAME: "浙江省海宁市长安镇鹿耳村万寿寺", JPUSH_APPKEY: "9e54ab0bd4bcc862997bfa56", JPUSH_PACKAGE: "com.xj.af.u156685732"]
+        }
+        u161132624 {
+            applicationId "com.xj.af.u161132624"
+            manifestPlaceholders = [APP_NAME: "江西省乐平市翥山报恩寺", JPUSH_APPKEY: "a5293db8c8a6740f7dbc74d6", JPUSH_PACKAGE: "com.xj.af.u161132624"]
+        }
+        u187578950 {
+            applicationId "com.xj.af.u187578950"
+            manifestPlaceholders = [APP_NAME: "中国广东省梅州市梅县区扶大佛光寺", JPUSH_APPKEY: "17f75d7197ce18bbb5394870", JPUSH_PACKAGE: "com.xj.af.u187578950"]
+        }
+        u214730290 {
+            applicationId "com.xj.af.u214730290"
+            manifestPlaceholders = [APP_NAME: "山西大同广灵九龙山极乐寺", JPUSH_APPKEY: "7dfbdfd12d77fcbb2ac8d25a", JPUSH_PACKAGE: "com.xj.af.u214730290"]
+        }
+        u253711941 {
+            applicationId "com.xj.af.u253711941"
+            manifestPlaceholders = [APP_NAME: "浙江省义乌市礼经寺", JPUSH_APPKEY: "f4eb00b9557632550304ce7e", JPUSH_PACKAGE: "com.xj.af.u253711941"]
+        }
+        u58844479 {
+            applicationId "com.xj.af.u58844479"
+            manifestPlaceholders = [APP_NAME: "河南省虞城县李老家乡王牌寺", JPUSH_APPKEY: "d953b8dad4a054b90d4e1b6c", JPUSH_PACKAGE: "com.xj.af.u58844479"]
+        }
+        u114921917 {
+            applicationId "com.xj.af.u114921917"
+            manifestPlaceholders = [APP_NAME: "河南南阳豫山禅寺", JPUSH_APPKEY: "0b49ce7d9c6d8410c8c9754c", JPUSH_PACKAGE: "com.xj.af.u114921917"]
+        }
+        u147063671 {
+            applicationId "com.xj.af.u147063671"
+            manifestPlaceholders = [APP_NAME: "河南省信阳市浉河区湖东开发区贤山贤隐寺", JPUSH_APPKEY: "86cb0ab7e9b25f1563f323ff", JPUSH_PACKAGE: "com.xj.af.u147063671"]
+        }
+        u255117982 {
+            applicationId "com.xj.af.u255117982"
+            manifestPlaceholders = [APP_NAME: "福建省宁德市古田县鹤塘镇观音寺", JPUSH_APPKEY: "8e8f8dd7744dc9b76a116ce7", JPUSH_PACKAGE: "com.xj.af.u255117982"]
+        }
+        u298255290 {
+            applicationId "com.xj.af.u298255290"
+            manifestPlaceholders = [APP_NAME: "湖南祁东县黄山寺", JPUSH_APPKEY: "07aa52c4a852067e7a797fa1", JPUSH_PACKAGE: "com.xj.af.u298255290"]
+        }
+        u312360855 {
+            applicationId "com.xj.af.u312360855"
+            manifestPlaceholders = [APP_NAME: "唐山药王寺", JPUSH_APPKEY: "f28c63b7d43730da89c0466f", JPUSH_PACKAGE: "com.xj.af.u312360855"]
+        }
+        u389408860 {
+            applicationId "com.xj.af.u389408860"
+            manifestPlaceholders = [APP_NAME: "四川省甘孜州炉霍县雅德乡觉姆修行圣地·吉绒寺", JPUSH_APPKEY: "8eb6c1ff275a1bab93c3de92", JPUSH_PACKAGE: "com.xj.af.u389408860"]
+        }
+        u413382575 {
+            applicationId "com.xj.af.u413382575"
+            manifestPlaceholders = [APP_NAME: "邯郸肥乡观音寺", JPUSH_APPKEY: "48fa19f22364f0bcb71eee69", JPUSH_PACKAGE: "com.xj.af.u413382575"]
+        }
+        u426925386 {
+            applicationId "com.xj.af.u426925386"
+            manifestPlaceholders = [APP_NAME: "安徽庐江观音禅寺", JPUSH_APPKEY: "efa5361232b9bf52f71ec371", JPUSH_PACKAGE: "com.xj.af.u426925386"]
+        }
+        u427470441 {
+            applicationId "com.xj.af.u427470441"
+            manifestPlaceholders = [APP_NAME: "山东省博山正觉寺", JPUSH_APPKEY: "3f5e25db832c541df5008c89", JPUSH_PACKAGE: "com.xj.af.u427470441"]
+        }
+        u435691664 {
+            applicationId "com.xj.af.u435691664"
+            manifestPlaceholders = [APP_NAME: "河南省南阳淅川县净土寺", JPUSH_APPKEY: "3c20c6bdd0032cadaff9de9e", JPUSH_PACKAGE: "com.xj.af.u435691664"]
+        }
+        u183950272 {
+            applicationId "com.xj.af.u183950272"
+            manifestPlaceholders = [APP_NAME: "无锡市惠山区前洲街道黄石街东林古寺", JPUSH_APPKEY: "008be74185603a70271e02b2", JPUSH_PACKAGE: "com.xj.af.u183950272"]
+        }
+        u438179925 {
+            applicationId "com.xj.af.u438179925"
+            manifestPlaceholders = [APP_NAME: "山东省临沂市慈云禅寺", JPUSH_APPKEY: "320db8226fbdd627b55ec835", JPUSH_PACKAGE: "com.xj.af.u438179925"]
+        }
+        u447853247 {
+            applicationId "com.xj.af.u447853247"
+            manifestPlaceholders = [APP_NAME: "锦州市北普陀山北普陀禅寺", JPUSH_APPKEY: "adf3fa1a355546925312d068", JPUSH_PACKAGE: "com.xj.af.u447853247"]
+        }
+        u461156849 {
+            applicationId "com.xj.af.u461156849"
+            manifestPlaceholders = [APP_NAME: "黑龙江省林口县莲花寺", JPUSH_APPKEY: "0991970d70127cec7b42e665", JPUSH_PACKAGE: "com.xj.af.u461156849"]
+        }
+        u470885231 {
+            applicationId "com.xj.af.u470885231"
+            manifestPlaceholders = [APP_NAME: "邯郸香城固杏林寺", JPUSH_APPKEY: "55f91ec74c59b988f8bf76a4", JPUSH_PACKAGE: "com.xj.af.u470885231"]
+        }
+        u475019743 {
+            applicationId "com.xj.af.u475019743"
+            manifestPlaceholders = [APP_NAME: "黑龙江省牡丹江市法明寺", JPUSH_APPKEY: "a65c7102c55dcf182245e437", JPUSH_PACKAGE: "com.xj.af.u475019743"]
+        }
+        u515124291 {
+            applicationId "com.xj.af.u515124291"
+            manifestPlaceholders = [APP_NAME: "江苏镇江谏壁太平庵", JPUSH_APPKEY: "93158ddb756a3ee10a213906", JPUSH_PACKAGE: "com.xj.af.u515124291"]
+        }
+        u580227897 {
+            applicationId "com.xj.af.u580227897"
+            manifestPlaceholders = [APP_NAME: "河北省平乡县清凉寺", JPUSH_APPKEY: "b8d3dd3d12667e3bf0627dae", JPUSH_PACKAGE: "com.xj.af.u580227897"]
+        }
+        u694959572 {
+            applicationId "com.xj.af.u694959572"
+            manifestPlaceholders = [APP_NAME: "邢台南和白雀庵", JPUSH_APPKEY: "1a14f0ec934fe1d2b6778986", JPUSH_PACKAGE: "com.xj.af.u694959572"]
+        }
+        u764934683 {
+            applicationId "com.xj.af.u764934683"
+            manifestPlaceholders = [APP_NAME: "江苏省 阜宁县 东沟太平庵", JPUSH_APPKEY: "2b4a80b2305c6a1accc720ea", JPUSH_PACKAGE: "com.xj.af.u764934683"]
+        }
+        u845130483 {
+            applicationId "com.xj.af.u845130483"
+            manifestPlaceholders = [APP_NAME: "吉林省榆树市北山永济寺", JPUSH_APPKEY: "16a4e43c336b630f8f86ad4d", JPUSH_PACKAGE: "com.xj.af.u845130483"]
+        }
+        u866412992 {
+            applicationId "com.xj.af.u866412992"
+            manifestPlaceholders = [APP_NAME: "山西和顺青岗寺", JPUSH_APPKEY: "67d0d186e6f7b4c5e7fc83be", JPUSH_PACKAGE: "com.xj.af.u866412992"]
+        }
+        u909966413 {
+            applicationId "com.xj.af.u909966413"
+            manifestPlaceholders = [APP_NAME: "河北隆尧县报恩寺", JPUSH_APPKEY: "4e0e6e05c87b94930e313480", JPUSH_PACKAGE: "com.xj.af.u909966413"]
+        }
+        u968476951 {
+            applicationId "com.xj.af.u968476951"
+            manifestPlaceholders = [APP_NAME: "江苏龙山寺", JPUSH_APPKEY: "6a89f13b65359a8dae7334d9", JPUSH_PACKAGE: "com.xj.af.u968476951"]
+        }
+        u978870523 {
+            applicationId "com.xj.af.u978870523"
+            manifestPlaceholders = [APP_NAME: "柏乡崇光寺", JPUSH_APPKEY: "e42f9891ba990fdf65c3d2e7", JPUSH_PACKAGE: "com.xj.af.u978870523"]
+        }
+        u978870523 {
+            applicationId "com.xj.af.u978870523"
+            manifestPlaceholders = [APP_NAME: "柏乡崇光寺", JPUSH_APPKEY: "e42f9891ba990fdf65c3d2e7", JPUSH_PACKAGE: "com.xj.af.u978870523"]
+        }
+        u1064890149 {
+            applicationId "com.xj.af.u1064890149"
+            manifestPlaceholders = [APP_NAME: "黑龙江巴彦驿马山灵隐寺", JPUSH_APPKEY: "4f7c0bc405d3d4cb9e41d65a", JPUSH_PACKAGE: "com.xj.af.u1064890149"]
+        }
+        u1079339014 {
+            applicationId "com.xj.af.u1079339014"
+            manifestPlaceholders = [APP_NAME: "大连观海寺", JPUSH_APPKEY: "565c4e87a684bfcf4f6544b0", JPUSH_PACKAGE: "com.xj.af.u1079339014"]
+        }
+        u1121940757 {
+            applicationId "com.xj.af.u1121940757"
+            manifestPlaceholders = [APP_NAME: "东光县印心精舍", JPUSH_APPKEY: "4e842cdeb2d6da814a77bcc6", JPUSH_PACKAGE: "com.xj.af.u1121940757"]
+        }
+        u1121940757 {
+            applicationId "com.xj.af.u1121940757"
+            manifestPlaceholders = [APP_NAME: "东光县印心精舍", JPUSH_APPKEY: "4e842cdeb2d6da814a77bcc6", JPUSH_PACKAGE: "com.xj.af.u1121940757"]
+        }
+        u1175137536 {
+            applicationId "com.xj.af.u1175137536"
+            manifestPlaceholders = [APP_NAME: "涉县开法寺", JPUSH_APPKEY: "626670345cfbb5729be11337", JPUSH_PACKAGE: "com.xj.af.u1175137536"]
+        }
+        u1185738658 {
+            applicationId "com.xj.af.u1185738658"
+            manifestPlaceholders = [APP_NAME: "辽宁省牛头山双泉寺", JPUSH_APPKEY: "432637d3b11ecd1bfbd8c24c", JPUSH_PACKAGE: "com.xj.af.u1185738658"]
+        }
+        u1209642438 {
+            applicationId "com.xj.af.u1209642438"
+            manifestPlaceholders = [APP_NAME: "山西省忻州区五台县西台法雷寺", JPUSH_APPKEY: "eb181179b600b3b5992bfdbb", JPUSH_PACKAGE: "com.xj.af.u1209642438"]
+        }
+        u1225241320 {
+            applicationId "com.xj.af.u1225241320"
+            manifestPlaceholders = [APP_NAME: "黑龙江铁力崇圣讲寺", JPUSH_APPKEY: "66e67c3aafe89ee2fd79c32c", JPUSH_PACKAGE: "com.xj.af.u1225241320"]
+        }
+        u1227863132 {
+            applicationId "com.xj.af.u1227863132"
+            manifestPlaceholders = [APP_NAME: "河北高阳普照寺", JPUSH_APPKEY: "97dec90aa51f1bd9d16ad4c0", JPUSH_PACKAGE: "com.xj.af.u1227863132"]
+        }
+        u1331828804 {
+            applicationId "com.xj.af.u1331828804"
+            manifestPlaceholders = [APP_NAME: "吉林省柳河县东山寺", JPUSH_APPKEY: "6c264fd75816e8a0d7c46d08", JPUSH_PACKAGE: "com.xj.af.u1331828804"]
+        }
+        u1331828804 {
+            applicationId "com.xj.af.u1331828804"
+            manifestPlaceholders = [APP_NAME: "吉林省柳河县东山寺", JPUSH_APPKEY: "6c264fd75816e8a0d7c46d08", JPUSH_PACKAGE: "com.xj.af.u1331828804"]
+        }
+        u1368690643 {
+            applicationId "com.xj.af.u1368690643"
+            manifestPlaceholders = [APP_NAME: "河间千佛寺", JPUSH_APPKEY: "485d2932e15d81e0a278f2e2", JPUSH_PACKAGE: "com.xj.af.u1368690643"]
+        }
+        u1398963589 {
+            applicationId "com.xj.af.u1398963589"
+            manifestPlaceholders = [APP_NAME: "江苏盘龙古寺", JPUSH_APPKEY: "f9bae5b90564326c1fed156c", JPUSH_PACKAGE: "com.xj.af.u1398963589"]
+        }
+        u1489750810 {
+            applicationId "com.xj.af.u1398963589"
+            manifestPlaceholders = [APP_NAME: "观音祖庭--五台山普庵寺", JPUSH_APPKEY: "941d98fe0da267f0393b597a", JPUSH_PACKAGE: "com.xj.af.u1489750810"]
+        }
+        u1491991992 {
+            applicationId "com.xj.af.u1491991992"
+            manifestPlaceholders = [APP_NAME: "山西省襄汾县香严禅院", JPUSH_APPKEY: "2305079cc31ad3232ce4ab93", JPUSH_PACKAGE: "com.xj.af.u1491991992"]
+        }
+        u1516462728 {
+            applicationId "com.xj.af.u1516462728"
+            manifestPlaceholders = [APP_NAME: "辽宁省龙华寺", JPUSH_APPKEY: "7c6a355d82bb8228e181fb3a", JPUSH_PACKAGE: "com.xj.af.u1516462728"]
+        }
+        u1775247153 {
+            applicationId "com.xj.af.u1775247153"
+            manifestPlaceholders = [APP_NAME: "太原龙泉寺 ", JPUSH_APPKEY: "475bd415832dbcc85090d64c", JPUSH_PACKAGE: "com.xj.af.u1775247153"]
+        }
+        u1776846073 {
+            applicationId "com.xj.af.u1776846073"
+            manifestPlaceholders = [APP_NAME: "涞源莲池寺 ", JPUSH_APPKEY: "13ee2bc9142b5c92642aac9c", JPUSH_PACKAGE: "com.xj.af.u1776846073"]
+        }
+        u1789931862 {
+            applicationId "com.xj.af.u1789931862"
+            manifestPlaceholders = [APP_NAME: "山西河津市龙泽寺 ", JPUSH_APPKEY: "f0519743bce3b7854c536ee3", JPUSH_PACKAGE: "com.xj.af.u1789931862"]
+        }
+        u1824573772 {
+            applicationId "com.xj.af.u1824573772"
+            manifestPlaceholders = [APP_NAME: "江苏观音古寺 ", JPUSH_APPKEY: "3213f2b7fd1024f9f1a3a1f3", JPUSH_PACKAGE: "com.xj.af.u1824573772"]
+        }
+        u1826457196 {
+            applicationId "com.xj.af.u1826457196"
+            manifestPlaceholders = [APP_NAME: "江苏扬州大明寺 ", JPUSH_APPKEY: "757a3e3457ec389dc4bfb51c", JPUSH_PACKAGE: "com.xj.af.u1826457196"]
+        }
+        u1831008313 {
+            applicationId "com.xj.af.u1831008313"
+            manifestPlaceholders = [APP_NAME: "江苏省射阳县海河镇三里寺 ", JPUSH_APPKEY: "edb74e58c5583cca75491184", JPUSH_PACKAGE: "com.xj.af.u1831008313"]
+        }
+        u1853631755 {
+            applicationId "com.xj.af.u1853631755"
+            manifestPlaceholders = [APP_NAME: "河北省石家庄市鹿泉市韩庄乡龙泉寺 ", JPUSH_APPKEY: "4aa3c97a5bb2947b7948b873", JPUSH_PACKAGE: "com.xj.af.u1853631755"]
+        }
+        u1892691516 {
+            applicationId "com.xj.af.u1892691516"
+            manifestPlaceholders = [APP_NAME: "衡水安平县宝莲禅寺 ", JPUSH_APPKEY: "24378d9841aa707ee7f54905", JPUSH_PACKAGE: "com.xj.af.u1892691516"]
+        }
+        u1906238621 {
+            applicationId "com.xj.af.u1906238621"
+            manifestPlaceholders = [APP_NAME: "辽宁省抚顺市三慧寺 ", JPUSH_APPKEY: "488ec45a67de9ec5b0006cdd", JPUSH_PACKAGE: "com.xj.af.u1906238621"]
+        }
+        u1918541727 {
+            applicationId "com.xj.af.u1918541727"
+            manifestPlaceholders = [APP_NAME: "邢台市南海观音寺 ", JPUSH_APPKEY: "135be788317dc80ebe4d17f9", JPUSH_PACKAGE: "com.xj.af.u1918541727"]
+        }
+        u2030635017 {
+            applicationId "com.xj.af.u2030635017"
+            manifestPlaceholders = [APP_NAME: "山西永安寺 ", JPUSH_APPKEY: "e06c5e34e6fd90e47bcc21b3", JPUSH_PACKAGE: "com.xj.af.u2030635017"]
+        }
+        u10405454 {
+            applicationId "com.xj.af.u10405454"
+            manifestPlaceholders = [APP_NAME: "山东省滕州龙泉寺 ", JPUSH_APPKEY: "8bab4b5c9c51303519a7c86d", JPUSH_PACKAGE: "com.xj.af.u10405454"]
+        }
+        u28510366 {
+            applicationId "com.xj.af.u28510366"
+            manifestPlaceholders = [APP_NAME: "山东招远祥光寺 ", JPUSH_APPKEY: "c2a168c8a45ba6b4db99eb2d", JPUSH_PACKAGE: "com.xj.af.u28510366"]
+        }
+        u118298993 {
+            applicationId "com.xj.af.u118298993"
+            manifestPlaceholders = [APP_NAME: "山东省临清市大宁寺 ", JPUSH_APPKEY: "5feaecd085ea0940bbc10176", JPUSH_PACKAGE: "com.xj.af.u118298993"]
+        }
+        u160263346 {
+            applicationId "com.xj.af.u160263346"
+            manifestPlaceholders = [APP_NAME: "山东无棣大觉寺 ", JPUSH_APPKEY: "17f44e67140dc23480958fa3", JPUSH_PACKAGE: "com.xj.af.u160263346"]
+        }
+        u449639478 {
+            applicationId "com.xj.af.u449639478"
+            manifestPlaceholders = [APP_NAME: "山东省东阿县净觉寺 ", JPUSH_APPKEY: "411ed3d566c096ecabe7e30c", JPUSH_PACKAGE: "com.xj.af.u449639478"]
+        }
+        u468717329 {
+            applicationId "com.xj.af.u468717329"
+            manifestPlaceholders = [APP_NAME: "福建省南平市松溪县城关北门福德寺 ", JPUSH_APPKEY: "b68dd18ef262b5a356154bce", JPUSH_PACKAGE: "com.xj.af.u468717329"]
+        }
+        u486802402 {
+            applicationId "com.xj.af.u486802402"
+            manifestPlaceholders = [APP_NAME: "浙江省湖州市南浔区双林镇灵济寺", JPUSH_APPKEY: "75594de6817e14bb6b62d308", JPUSH_PACKAGE: "com.xj.af.u486802402"]
+        }
+        u508526555 {
+            applicationId "com.xj.af.u508526555"
+            manifestPlaceholders = [APP_NAME: "山东章丘兴隆寺", JPUSH_APPKEY: "a0075a46fb36d208b359ac3d", JPUSH_PACKAGE: "com.xj.af.u508526555"]
+        }
+        u521979190 {
+            applicationId "com.xj.af.u521979190"
+            manifestPlaceholders = [APP_NAME: "福建省漳浦县东罗岩白云寺", JPUSH_APPKEY: "644a646c08889f09e85f33f4", JPUSH_PACKAGE: "com.xj.af.u521979190"]
+        }
+        u541308924 {
+            applicationId "com.xj.af.u541308924"
+            manifestPlaceholders = [APP_NAME: "山西省大同县周士庄镇二十里铺村普渡寺", JPUSH_APPKEY: "ac61a9366286a5e7ab380a27", JPUSH_PACKAGE: "com.xj.af.u541308924"]
+        }
+        u556470182 {
+            applicationId "com.xj.af.u556470182"
+            manifestPlaceholders = [APP_NAME: "山东省滨州兴国寺", JPUSH_APPKEY: "d49855ce82a88d6f40a2560d", JPUSH_PACKAGE: "com.xj.af.u556470182"]
+        }
+        u562264772 {
+            applicationId "com.xj.af.u562264772"
+            manifestPlaceholders = [APP_NAME: "浙江省梵严禅寺", JPUSH_APPKEY: "1c11473bc33b1569dfd23960", JPUSH_PACKAGE: "com.xj.af.u562264772"]
+        }
+        u640878083 {
+            applicationId "com.xj.af.u640878083"
+            manifestPlaceholders = [APP_NAME: "浙江省梵严禅寺", JPUSH_APPKEY: "9dbd1fe74db8362f1ffb3f18", JPUSH_PACKAGE: "com.xj.af.u640878083"]
+        }
+        u685417355 {
+            applicationId "com.xj.af.u685417355"
+            manifestPlaceholders = [APP_NAME: "山东龙泉寺", JPUSH_APPKEY: "99975baf65004cef70954672", JPUSH_PACKAGE: "com.xj.af.u685417355"]
+        }
+        u754499171 {
+            applicationId "com.xj.af.u754499171"
+            manifestPlaceholders = [APP_NAME: "浙江省宁波永泉寺", JPUSH_APPKEY: "3b73ab1f8886ab335475cb1c", JPUSH_PACKAGE: "com.xj.af.u754499171"]
+        }
+        u760177195 {
+            applicationId "com.xj.af.u760177195"
+            manifestPlaceholders = [APP_NAME: "浙江省瑞龙寺", JPUSH_APPKEY: "703f38e5499a267a347a0a3e", JPUSH_PACKAGE: "com.xj.af.u760177195"]
+        }
+        u772061100 {
+            applicationId "com.xj.af.u772061100"
+            manifestPlaceholders = [APP_NAME: "浙江省天缘禅寺", JPUSH_APPKEY: "416e5f1633a1020e68a46f38", JPUSH_PACKAGE: "com.xj.af.u772061100"]
+        }
+        u780584881 {
+            applicationId "com.xj.af.u780584881"
+            manifestPlaceholders = [APP_NAME: "湖北省 广水市 广水 圆通寺", JPUSH_APPKEY: "6a6a0289b917ab0275150b36", JPUSH_PACKAGE: "com.xj.af.u780584881"]
+        }
+        u897317021 {
+            applicationId "com.xj.af.u897317021"
+            manifestPlaceholders = [APP_NAME: "浙江省南北洋紫福寺", JPUSH_APPKEY: "4df368132e616bc35649134e", JPUSH_PACKAGE: "com.xj.af.u897317021"]
+        }
+        u901003818 {
+            applicationId "com.xj.af.u901003818"
+            manifestPlaceholders = [APP_NAME: "广州市花都区芙蓉镇芙蓉大道华严寺", JPUSH_APPKEY: "fe4ee6b2fc9b0b2ec6259cd3", JPUSH_PACKAGE: "com.xj.af.u901003818"]
+        }
+        u907425084 {
+            applicationId "com.xj.af.u907425084"
+            manifestPlaceholders = [APP_NAME: "福建省惠安县螺城梅山华林寺", JPUSH_APPKEY: "7450df75cddb5e84086fa257", JPUSH_PACKAGE: "com.xj.af.u907425084"]
+        }
+        u948948475 {
+            applicationId "com.xj.af.u948948475"
+            manifestPlaceholders = [APP_NAME: "四川省大英县魁山玉佛寺", JPUSH_APPKEY: "1637dde1d10e07b154ed69df", JPUSH_PACKAGE: "com.xj.af.u948948475"]
+        }
+        u977159554 {
+            applicationId "com.xj.af.u977159554"
+            manifestPlaceholders = [APP_NAME: "甘肃省陇南市文殊晨光寺", JPUSH_APPKEY: "0eaf1037421d60034e306e60", JPUSH_PACKAGE: "com.xj.af.u977159554"]
+        }
+        u982373494 {
+            applicationId "com.xj.af.u982373494"
+            manifestPlaceholders = [APP_NAME: "湖南省郴州别境禅院", JPUSH_APPKEY: "303c716eab8f4a0cf9d7d9e3", JPUSH_PACKAGE: "com.xj.af.u982373494"]
+        }
+        u982664488 {
+            applicationId "com.xj.af.u982664488"
+            manifestPlaceholders = [APP_NAME: "广东省韶关市曲江区南华禅寺", JPUSH_APPKEY: "f7d6dbe43368a51896e3bf73", JPUSH_PACKAGE: "com.xj.af.u982664488"]
+        }
+        u2140878853 {
+            applicationId "com.xj.af.u2140878853"
+            manifestPlaceholders = [APP_NAME: "浙江省温州市瑞安塘下镇韩田村尖山寒山寺", JPUSH_APPKEY: "42de9c7a42302ad5c1a684d1", JPUSH_PACKAGE: "com.xj.af.u2140878853"]
+        }
+        u2123690439 {
+            applicationId "com.xj.af.u2123690439"
+            manifestPlaceholders = [APP_NAME: "河北赞皇准泉寺", JPUSH_APPKEY: "cc9ef0707a592c04218dffa1", JPUSH_PACKAGE: "com.xj.af.u2123690439"]
+        }
+        u607730857 {
+            applicationId "com.xj.af.u607730857"
+            manifestPlaceholders = [APP_NAME: "贵州省威宁准提阁", JPUSH_APPKEY: "08e04c095c5804d01dd0e833", JPUSH_PACKAGE: "com.xj.af.u607730857"]
+        }
+        u658753924 {
+            applicationId "com.xj.af.u658753924"
+            manifestPlaceholders = [APP_NAME: "安徽省八宝禅寺", JPUSH_APPKEY: "9eab625d2adb4a1afb4c954e", JPUSH_PACKAGE: "com.xj.af.u658753924"]
+        }
+        u763400885 {
+            applicationId "com.xj.af.u763400885"
+            manifestPlaceholders = [APP_NAME: "四川省泸州市纳溪区天仙镇天全寺", JPUSH_APPKEY: "ca088a6e920083de2c4f688a", JPUSH_PACKAGE: "com.xj.af.u763400885"]
+        }
+        u838102904 {
+            applicationId "com.xj.af.u838102904"
+            manifestPlaceholders = [APP_NAME: "甘肃武威海藏寺 ", JPUSH_APPKEY: "29813565adb3180f025fcaa7", JPUSH_PACKAGE: "com.xj.af.u838102904"]
+        }
+        u991098441 {
+            applicationId "com.xj.af.u991098441"
+            manifestPlaceholders = [APP_NAME: " 郑州小普陀—祥云古寺", JPUSH_APPKEY: "d80b01ec839cdd5315ca8687", JPUSH_PACKAGE: "com.xj.af.u991098441"]
+        }
+        u1002607563 {
+            applicationId "com.xj.af.u1002607563"
+            manifestPlaceholders = [APP_NAME: "山东济南义净寺", JPUSH_APPKEY: "e72b1d4eb51af74d7dcc0745", JPUSH_PACKAGE: "com.xj.af.u1002607563"]
+        }
+        u1009907501 {
+            applicationId "com.xj.af.u1009907501"
+            manifestPlaceholders = [APP_NAME: "福建省柘荣县赤岭东峰寺", JPUSH_APPKEY: "8fc34e2a3c4184d3c45a7434", JPUSH_PACKAGE: "com.xj.af.u1009907501"]
+        }
+        u1014574258 {
+            applicationId "com.xj.af.u1014574258"
+            manifestPlaceholders = [APP_NAME: "安徽省潜山县三祖禅寺", JPUSH_APPKEY: "a0c771a34889bffdf8fd214f", JPUSH_PACKAGE: "com.xj.af.u1014574258"]
+        }
+        u1037067609 {
+            applicationId "com.xj.af.u1037067609"
+            manifestPlaceholders = [APP_NAME: "云南鸡足山碧云寺", JPUSH_APPKEY: "333c7a26c9c94301a07c67c7", JPUSH_PACKAGE: "com.xj.af.u1037067609"]
+        }
+        u1042329505 {
+            applicationId "com.xj.af.u1042329505"
+            manifestPlaceholders = [APP_NAME: "浙江省永康市南都禅寺", JPUSH_APPKEY: "f0108742d2f1d5fe66f840fd", JPUSH_PACKAGE: "com.xj.af.u1042329505"]
+        }
+        u1085921845 {
+            applicationId "com.xj.af.u1085921845"
+            manifestPlaceholders = [APP_NAME: "福建省漳浦县东罗白云岩寺", JPUSH_APPKEY: "7f1631118e314e8ab9dde437", JPUSH_PACKAGE: "com.xj.af.u1085921845"]
+        }
+        u1094385274 {
+            applicationId "com.xj.af.u1094385274"
+            manifestPlaceholders = [APP_NAME: "中国四川古宇寺—蜀东净土", JPUSH_APPKEY: "498de9a0bc2245243e61de46", JPUSH_PACKAGE: "com.xj.af.u1094385274"]
+        }
+        u1141679034 {
+            applicationId "com.xj.af.u1141679034"
+            manifestPlaceholders = [APP_NAME: "广东省深圳市莲塘仙湖弘法寺", JPUSH_APPKEY: "1070d98ef64c4509377ee0a0", JPUSH_PACKAGE: "com.xj.af.u1141679034"]
+        }
+        u1144306656 {
+            applicationId "com.xj.af.u1144306656"
+            manifestPlaceholders = [APP_NAME: "山东省新泰市莲花山观音院", JPUSH_APPKEY: "d802820a70ca07be44c0d4d2", JPUSH_PACKAGE: "com.xj.af.u1144306656"]
+        }
+        u1158178346 {
+            applicationId "com.xj.af.u1158178346"
+            manifestPlaceholders = [APP_NAME: "江西省吉安市遂川县森林公园资福禅寺", JPUSH_APPKEY: "ccadd11a7552e49e37af5fae", JPUSH_PACKAGE: "com.xj.af.u1158178346"]
+        }
+        u1170599242 {
+            applicationId "com.xj.af.u1170599242"
+            manifestPlaceholders = [APP_NAME: "甘肃省兰州后五泉灵岩寺", JPUSH_APPKEY: "c4f9b8a3e02b517b786afd30", JPUSH_PACKAGE: "com.xj.af.u1170599242"]
+        }
+        u1175909670 {
+            applicationId "com.xj.af.u1175909670"
+            manifestPlaceholders = [APP_NAME: "甘肃省武威市凉州区发放镇恒沙寺", JPUSH_APPKEY: "91e4e3c63ccf924b5429d7e4", JPUSH_PACKAGE: "com.xj.af.u1175909670"]
+        }
+        u1229681711 {
+            applicationId "com.xj.af.u1229681711"
+            manifestPlaceholders = [APP_NAME: "山东省济南慧心精舍", JPUSH_APPKEY: "0d6a97008d588b6cc89ef4d0", JPUSH_PACKAGE: "com.xj.af.u1229681711"]
+        }
+        u1234223054 {
+            applicationId "com.xj.af.u1234223054"
+            manifestPlaceholders = [APP_NAME: "湖北省武汉市新洲区道观河风景区菩提弥陀寺", JPUSH_APPKEY: "2449c58260a58f048e47b65f", JPUSH_PACKAGE: "com.xj.af.u1234223054"]
+        }
+        u1234541801 {
+            applicationId "com.xj.af.u1234541801"
+            manifestPlaceholders = [APP_NAME: "山东省济南市灵鹫禅林", JPUSH_APPKEY: "ab40da1357bbb7b9f9201374", JPUSH_PACKAGE: "com.xj.af.u1234541801"]
+        }
+        u1243167568 {
+            applicationId "com.xj.af.u1243167568"
+            manifestPlaceholders = [APP_NAME: "广东省潮州市湘桥区意溪镇紫莲山佛母寺", JPUSH_APPKEY: "469e8dc231678473be26c2c6", JPUSH_PACKAGE: "com.xj.af.u1243167568"]
+        }
+        u1275760755 {
+            applicationId "com.xj.af.u1275760755"
+            manifestPlaceholders = [APP_NAME: "福建省三明市清流县龙津镇横溪村青峰寺", JPUSH_APPKEY: "c61c7ac6e2ad5ba8bae708bc", JPUSH_PACKAGE: "com.xj.af.u1275760755"]
+        }
+        u1285099231 {
+            applicationId "com.xj.af.u1285099231"
+            manifestPlaceholders = [APP_NAME: "广东省 普宁市 梅林镇 盘龙阁寺禅悦斋", JPUSH_APPKEY: "17b64cee92a432966a9d9f9f", JPUSH_PACKAGE: "com.xj.af.u1285099231"]
+        }
+        u1300424819 {
+            applicationId "com.xj.af.u1300424819"
+            manifestPlaceholders = [APP_NAME: "江西省南昌安义县石鼻镇慈云禅寺", JPUSH_APPKEY: "a5ce07dd29ad44d44b6f8446", JPUSH_PACKAGE: "com.xj.af.u1300424819"]
+        }
+        u1320795314 {
+            applicationId "com.xj.af.u1320795314"
+            manifestPlaceholders = [APP_NAME: "广东省新兴国恩寺", JPUSH_APPKEY: "d18223c9d4ce35105e24ae1b", JPUSH_PACKAGE: "com.xj.af.u1320795314"]
+        }
+        u1329369721 {
+            applicationId "com.xj.af.u1329369721"
+            manifestPlaceholders = [APP_NAME: "江西省吉安县（梅塘乡）龙须山资国禅寺", JPUSH_APPKEY: "2dfdc94f64d9cad1e11eb7b2", JPUSH_PACKAGE: "com.xj.af.u1329369721"]
+        }
+        u1337948682 {
+            applicationId "com.xj.af.u1337948682"
+            manifestPlaceholders = [APP_NAME: "中国殊圣精舍", JPUSH_APPKEY: "f4ab9a0de791f3a5759a696a", JPUSH_PACKAGE: "com.xj.af.u1337948682"]
+        }
+        u1347975796 {
+            applicationId "com.xj.af.u1347975796"
+            manifestPlaceholders = [APP_NAME: "福建省将乐县万全乡证觉寺", JPUSH_APPKEY: "89459e6f6c9ccd03ab2184c4", JPUSH_PACKAGE: "com.xj.af.u1347975796"]
+        }
+        u1351153742 {
+            applicationId "com.xj.af.u1351153742"
+            manifestPlaceholders = [APP_NAME: "山东省沂源县普安禅寺", JPUSH_APPKEY: "33e2fb941e4627d5a9146050", JPUSH_PACKAGE: "com.xj.af.u1351153742"]
+        }
+        u1358511780 {
+            applicationId "com.xj.af.u1358511780"
+            manifestPlaceholders = [APP_NAME: "安徽淮北大方寺", JPUSH_APPKEY: "779951d9dbf89a966b0e8070", JPUSH_PACKAGE: "com.xj.af.u1358511780"]
+        }
+        u1373961388 {
+            applicationId "com.xj.af.u1373961388"
+            manifestPlaceholders = [APP_NAME: "广州大佛寺", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u1373961388"]
+        }
+        u1374033519 {
+            applicationId "com.xj.af.u1374033519"
+            manifestPlaceholders = [APP_NAME: "四川省内江市东兴区褚古寺", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u1374033519"]
+        }
+        u1391929932 {
+            applicationId "com.xj.af.u1391929932"
+            manifestPlaceholders = [APP_NAME: "浙江省宁海油盐寺", JPUSH_APPKEY: "ba9ce2f794fa259eab50111f", JPUSH_PACKAGE: "com.xj.af.u1391929932"]
+        }
+        u1393553814 {
+            applicationId "com.xj.af.u1393553814"
+            manifestPlaceholders = [APP_NAME: "江西省南昌县广渡禅寺", JPUSH_APPKEY: "0d8c2c5b5d9579ba326dd92c", JPUSH_PACKAGE: "com.xj.af.u1393553814"]
+        }
+        u1409656784 {
+            applicationId "com.xj.af.u1409656784"
+            manifestPlaceholders = [APP_NAME: "甘肃省定西市渭源县清源镇苏家窑马藏寺", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u1409656784"]
+        }
+        u1439646591 {
+            applicationId "com.xj.af.u1439646591"
+            manifestPlaceholders = [APP_NAME: "江西双洲寺", JPUSH_APPKEY: "9695f55d67700c7f6464578b", JPUSH_PACKAGE: "com.xj.af.u1439646591"]
+        }
+        u1446791249 {
+            applicationId "com.xj.af.u1446791249"
+            manifestPlaceholders = [APP_NAME: "安徽省宁国市玄果精舍", JPUSH_APPKEY: "787fc5c7e8e021d8e2dd74df", JPUSH_PACKAGE: "com.xj.af.u1446791249"]
+        }
+        u1450494061 {
+            applicationId "com.xj.af.u1450494061"
+            manifestPlaceholders = [APP_NAME: "四川省遂宁市安居区磨溪镇遂宁净宗莲寺", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u1450494061"]
+        }
+        u1466474525 {
+            applicationId "com.xj.af.u1466474525"
+            manifestPlaceholders = [APP_NAME: "福建省宁化县湖村镇店上村高菩寺", JPUSH_APPKEY: "77207f22b923c2dacb0bee1d", JPUSH_PACKAGE: "com.xj.af.u1466474525"]
+        }
+        u1468745154 {
+            applicationId "com.xj.af.u1468745154"
+            manifestPlaceholders = [APP_NAME: "甘肃古浪县永丰滩乡甘露寺", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u1468745154"]
+        }
+        u1469729034 {
+            applicationId "com.xj.af.u1469729034"
+            manifestPlaceholders = [APP_NAME: "安徽合肥紫蓬山西庐寺", JPUSH_APPKEY: "b355291a50aafbd13b5e39c3", JPUSH_PACKAGE: "com.xj.af.u1469729034"]
+        }
+        u1474950126 {
+            applicationId "com.xj.af.u1474950126"
+            manifestPlaceholders = [APP_NAME: "四川.邛崃.南岳禅院", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u1474950126"]
+        }
+        u1495034333 {
+            applicationId "com.xj.af.u1495034333"
+            manifestPlaceholders = [APP_NAME: "广东省梅州市梅江区千佛塔寺 ", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u1495034333"]
+        }
+        u1502831211 {
+            applicationId "com.xj.af.u1502831211"
+            manifestPlaceholders = [APP_NAME: "安徽省天柱山余公禅寺", JPUSH_APPKEY: "526578059b455337d16d5f97", JPUSH_PACKAGE: "com.xj.af.u1502831211"]
+        }
+        u1508453970 {
+            applicationId "com.xj.af.u1508453970"
+            manifestPlaceholders = [APP_NAME: "湖南省长沙市人民东路大汉建材批发城红旗路口，望龙新城A区7栋302室褚古长沙精舍", JPUSH_APPKEY: "485761d7894dd86f1e7628e0", JPUSH_PACKAGE: "com.xj.af.u1508453970"]
+        }
+        u1515205793 {
+            applicationId "com.xj.af.u1515205793"
+            manifestPlaceholders = [APP_NAME: "广东省河源市连平县高莞镇灵鹫禅寺", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u1515205793"]
+        }
+        u1527004351 {
+            applicationId "com.xj.af.u1527004351"
+            manifestPlaceholders = [APP_NAME: "四川省成都市青白江区寿佛寺", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u1527004351"]
+        }
+        u1543541548 {
+            applicationId "com.xj.af.u1543541548"
+            manifestPlaceholders = [APP_NAME: "无锡永兴寺", JPUSH_APPKEY: "8bb004b7fdb7d4f7673f3438", JPUSH_PACKAGE: "com.xj.af.u1543541548"]
+        }
+        u1574512743 {
+            applicationId "com.xj.af.u1574512743"
+            manifestPlaceholders = [APP_NAME: "重庆市大足宝顶佛祖寺", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u1574512743"]
+        }
+        u1585382464 {
+            applicationId "com.xj.af.u1585382464"
+            manifestPlaceholders = [APP_NAME: "黄骅市齐乡寺", JPUSH_APPKEY: "fa8d027536017127b5e6b473", JPUSH_PACKAGE: "com.xj.af.u1585382464"]
+        }
+        u1590963477 {
+            applicationId "com.xj.af.u1590963477"
+            manifestPlaceholders = [APP_NAME: "广东省茂名信宜市朱砂镇石根山明觉禅寺", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u1590963477"]
+        }
+        u1634663978 {
+            applicationId "com.xj.af.u1634663978"
+            manifestPlaceholders = [APP_NAME: "湖南省桂阳县下高山风景名胜区回龙禅寺", JPUSH_APPKEY: "40258b01fd16cbfff712cd73", JPUSH_PACKAGE: "com.xj.af.u1634663978"]
+        }
+        u1644409761 {
+            applicationId "com.xj.af.u1644409761"
+            manifestPlaceholders = [APP_NAME: "浙江省紫竹林 石山古寺", JPUSH_APPKEY: "46f272dc76d481b7afdcfe07", JPUSH_PACKAGE: "com.xj.af.u1644409761"]
+        }
+        u1662526055 {
+            applicationId "com.xj.af.u1662526055"
+            manifestPlaceholders = [APP_NAME: "江苏省武宁县达摩寺", JPUSH_APPKEY: "46c4f8ba0b31f5395f5a388e", JPUSH_PACKAGE: "com.xj.af.u1662526055"]
+        }
+        u1670151455 {
+            applicationId "com.xj.af.u1670151455"
+            manifestPlaceholders = [APP_NAME: "陕西宝鸡市陈仓区法林禅寺", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u1670151455"]
+        }
+        u1671649968 {
+            applicationId "com.xj.af.u1671649968"
+            manifestPlaceholders = [APP_NAME: "甘肃山丹广佛寺", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u1671649968"]
+        }
+        u1706195475 {
+            applicationId "com.xj.af.u1706195475"
+            manifestPlaceholders = [APP_NAME: "内蒙古呼和浩特市千手千眼观音院", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u1706195475"]
+        }
+        u1713605941 {
+            applicationId "com.xj.af.u1713605941"
+            manifestPlaceholders = [APP_NAME: "湖南省湘潭县易俗河金霞山龙兴寺", JPUSH_APPKEY: "57db237ddea893469137be50", JPUSH_PACKAGE: "com.xj.af.u1713605941"]
+        }
+        u1728705412 {
+            applicationId "com.xj.af.u1728705412"
+            manifestPlaceholders = [APP_NAME: "福建省龙岩市连城县龙泉禅寺", JPUSH_APPKEY: "81101bafd9dfe0780ec21148", JPUSH_PACKAGE: "com.xj.af.u1728705412"]
+        }
+        u1755409381 {
+            applicationId "com.xj.af.u1755409381"
+            manifestPlaceholders = [APP_NAME: "安徽省宿州市夹沟林场龙脊山大方寺", JPUSH_APPKEY: "114a1d978c5458526b4b5cd6", JPUSH_PACKAGE: "com.xj.af.u1755409381"]
+        }
+        u1777855374 {
+            applicationId "com.xj.af.u1777855374"
+            manifestPlaceholders = [APP_NAME: "四川遂宁拦江镇金龙寺", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u1777855374"]
+        }
+        u1788842364 {
+            applicationId "com.xj.af.u1788842364"
+            manifestPlaceholders = [APP_NAME: "安徽省利辛县观音寺", JPUSH_APPKEY: "b9bab5a76ae937f05cce8191", JPUSH_PACKAGE: "com.xj.af.u1788842364"]
+        }
+        u1806730497 {
+            applicationId "com.xj.af.u1806730497"
+            manifestPlaceholders = [APP_NAME: "甘肃省山丹县玉龙寺", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u1806730497"]
+        }
+        u1808210074 {
+            applicationId "com.xj.af.u1808210074"
+            manifestPlaceholders = [APP_NAME: "湖南韶山银田镇银田寺", JPUSH_APPKEY: "c71586358231be9a0ee5b80c", JPUSH_PACKAGE: "com.xj.af.u1808210074"]
+        }
+        u1830064940 {
+            applicationId "com.xj.af.u1830064940"
+            manifestPlaceholders = [APP_NAME: "湖北武汉江夏经济开发区莲华寺", JPUSH_APPKEY: "dfdada610107256312596f6a", JPUSH_PACKAGE: "com.xj.af.u1830064940"]
+        }
+        u1831305866 {
+            applicationId "com.xj.af.u1831305866"
+            manifestPlaceholders = [APP_NAME: "福建省永安市大湖新冲“迎福寺” ", JPUSH_APPKEY: "d9c119de752c3835d51b9be6", JPUSH_PACKAGE: "com.xj.af.u1831305866"]
+        }
+        u1836685229 {
+            applicationId "com.xj.af.u1836685229"
+            manifestPlaceholders = [APP_NAME: "广东省惠州市惠城区莲花禅寺", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u1836685229"]
+        }
+        u1884661725 {
+            applicationId "com.xj.af.u1884661725"
+            manifestPlaceholders = [APP_NAME: "上海市青浦区宝庆寺", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u1884661725"]
+        }
+        u1912722779 {
+            applicationId "com.xj.af.u1912722779"
+            manifestPlaceholders = [APP_NAME: "甘肃省兰州市安宁区沙井驿报恩寺 ", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u1912722779"]
+        }
+        u1917601258 {
+            applicationId "com.xj.af.u1917601258"
+            manifestPlaceholders = [APP_NAME: "四川省邛崃市.南岳禅院", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u1917601258"]
+        }
+        u1924893715 {
+            applicationId "com.xj.af.u1924893715"
+            manifestPlaceholders = [APP_NAME: "浙江省舟山市普陀区朱家尖七星寺", JPUSH_APPKEY: "183bafa8ad55c655475d4763", JPUSH_PACKAGE: "com.xj.af.u1924893715"]
+        }
+        u1963451368 {
+            applicationId "com.xj.af.u1963451368"
+            manifestPlaceholders = [APP_NAME: "江西省九江市庐山东林寺", JPUSH_APPKEY: "bfcb4676727bd08b2ce1d39a", JPUSH_PACKAGE: "com.xj.af.u1963451368"]
+        }
+        u1975839969 {
+            applicationId "com.xj.af.u1975839969"
+            manifestPlaceholders = [APP_NAME: "湖南省益阳市广法寺", JPUSH_APPKEY: "8ef77f9ce673ef679b9cb2c4", JPUSH_PACKAGE: "com.xj.af.u1975839969"]
+        }
+        u1990701106 {
+            applicationId "com.xj.af.u1990701106"
+            manifestPlaceholders = [APP_NAME: "广东省翁源县东华禅寺", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u1990701106"]
+        }
+        u1993471144 {
+            applicationId "com.xj.af.u1993471144"
+            manifestPlaceholders = [APP_NAME: "云南省西双版纳勐海县打洛镇曼佧村佛寺", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u1993471144"]
+        }
+        u2017419913 {
+            applicationId "com.xj.af.u2017419913"
+            manifestPlaceholders = [APP_NAME: "甘肃陇南渭子沟普化寺", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u2017419913"]
+        }
+
+        u2041759466 {
+            applicationId "com.xj.af.u2041759466"
+            manifestPlaceholders = [APP_NAME: "湖南常宁市胜桥镇泉峰观村印心寺", JPUSH_APPKEY: "266fa51dbacc96caf5825a5b", JPUSH_PACKAGE: "com.xj.af.u2041759466"]
+        }
+        u2053170560 {
+            applicationId "com.xj.af.u2053170560"
+            manifestPlaceholders = [APP_NAME: "甘肃省天井山金顶峰寺", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u2053170560"]
+        }
+        u2060334890 {
+            applicationId "com.xj.af.u2060334890"
+            manifestPlaceholders = [APP_NAME: "陕西省长安东大灵应寺", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u2060334890"]
+        }
+        u2062267846 {
+            applicationId "com.xj.af.u2062267846"
+            manifestPlaceholders = [APP_NAME: "江西省余干县阳水沟禅林古寺", JPUSH_APPKEY: "0bb4f805b743620d377ec87c", JPUSH_PACKAGE: "com.xj.af.u2062267846"]
+        }
+        u2079505040 {
+            applicationId "com.xj.af.u2079505040"
+            manifestPlaceholders = [APP_NAME: "中国河南省许昌市鄢陵县陶城镇陶南村观音寺", JPUSH_APPKEY: "32b101499af78e0952107718", JPUSH_PACKAGE: "com.xj.af.u2079505040"]
+        }
+        u2095531662 {
+            applicationId "com.xj.af.u2095531662"
+            manifestPlaceholders = [APP_NAME: "湖南省祁东县茶园寺", JPUSH_APPKEY: "07210212d85dee4440f35c34", JPUSH_PACKAGE: "com.xj.af.u2095531662"]
+        }
+        u2138261620 {
+            applicationId "com.xj.af.u2138261620"
+            manifestPlaceholders = [APP_NAME: "广东省河源市紫金县柏埔镇凤华寺", JPUSH_APPKEY: "", JPUSH_PACKAGE: "com.xj.af.u2138261620"]
+        }
+
 
     }
     aaptOptions {
